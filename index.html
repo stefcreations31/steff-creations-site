@@ -3675,12 +3675,40 @@
             e.target.reset();
         }
 
-        // Gold prices
+        // Gold prices avec marges configurables
         let GOLD_SPOT_PRICE = 88;
         let SILVER_SPOT_PRICE = 1.0;
-        let GOLD_PRICE = 88;
-        let SILVER_PRICE = 1.0;
         let currentType = 'bijou';
+
+        // Marges par defaut (seront chargees depuis le fichier JSON)
+        let MARGES = {
+            or24k: { marge: 5 },
+            or18k: { marge: 5 },
+            or14k: { marge: 5 },
+            or9k: { marge: 8 },
+            pieces: { marge: 3 },
+            lingots: { marge: 2 },
+            argent925: { marge: 10 },
+            argent800: { marge: 12 }
+        };
+
+        // Charger les marges depuis le fichier JSON
+        async function loadMarges() {
+            try {
+                const response = await fetch('/_data/marges.json');
+                if (response.ok) {
+                    MARGES = await response.json();
+                    console.log('Marges chargees:', MARGES);
+                }
+            } catch (e) {
+                console.log('Utilisation des marges par defaut');
+            }
+        }
+
+        // Calculer le prix avec marge
+        function getPrixAvecMarge(prixSpot, margePercent) {
+            return prixSpot * (1 - margePercent / 100);
+        }
 
         async function fetchPrices() {
             try {
@@ -3696,16 +3724,20 @@
             } catch (e) {
                 console.log('Using default prices');
             }
-            GOLD_PRICE = GOLD_SPOT_PRICE * 0.95;
-            SILVER_PRICE = SILVER_SPOT_PRICE * 0.90;
             updatePriceDisplay();
         }
 
         function updatePriceDisplay() {
-            document.getElementById('price24k').textContent = GOLD_PRICE.toFixed(2) + ' EUR/g';
-            document.getElementById('price18k').textContent = (GOLD_PRICE * 0.750).toFixed(2) + ' EUR/g';
-            document.getElementById('price14k').textContent = (GOLD_PRICE * 0.585).toFixed(2) + ' EUR/g';
-            document.getElementById('priceAg').textContent = (SILVER_PRICE * 0.925).toFixed(2) + ' EUR/g';
+            // Prix affiches avec les marges configurees
+            const prix24k = getPrixAvecMarge(GOLD_SPOT_PRICE, MARGES.or24k.marge);
+            const prix18k = getPrixAvecMarge(GOLD_SPOT_PRICE, MARGES.or18k.marge) * 0.750;
+            const prix14k = getPrixAvecMarge(GOLD_SPOT_PRICE, MARGES.or14k.marge) * 0.585;
+            const prixAg = getPrixAvecMarge(SILVER_SPOT_PRICE, MARGES.argent925.marge) * 0.925;
+
+            document.getElementById('price24k').textContent = prix24k.toFixed(2) + ' EUR/g';
+            document.getElementById('price18k').textContent = prix18k.toFixed(2) + ' EUR/g';
+            document.getElementById('price14k').textContent = prix14k.toFixed(2) + ' EUR/g';
+            document.getElementById('priceAg').textContent = prixAg.toFixed(2) + ' EUR/g';
             document.getElementById('updateTime').textContent = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
         }
 
@@ -3738,21 +3770,38 @@
                 const purity = parseFloat(document.getElementById('carat').value);
                 const weight = parseFloat(document.getElementById('weight').value);
                 if (!weight || weight <= 0) return alert('Veuillez entrer un poids valide');
-                amount = weight * GOLD_PRICE * purity;
+
+                // Determiner la marge selon la purete
+                let marge = MARGES.or18k.marge;
+                if (purity >= 0.999) marge = MARGES.or24k.marge;
+                else if (purity >= 0.750) marge = MARGES.or18k.marge;
+                else if (purity >= 0.585) marge = MARGES.or14k.marge;
+                else marge = MARGES.or9k.marge;
+
+                const prixOr = getPrixAvecMarge(GOLD_SPOT_PRICE, marge);
+                amount = weight * prixOr * purity;
             } else if (currentType === 'piece') {
                 const sel = document.getElementById('pieceType');
                 const opt = sel.options[sel.selectedIndex];
                 const qty = parseInt(document.getElementById('quantity').value) || 1;
-                amount = parseFloat(opt.dataset.weight) * GOLD_PRICE * parseFloat(opt.dataset.purity) * qty;
+                const prixOr = getPrixAvecMarge(GOLD_SPOT_PRICE, MARGES.pieces.marge);
+                amount = parseFloat(opt.dataset.weight) * prixOr * parseFloat(opt.dataset.purity) * qty;
             } else if (currentType === 'lingot') {
                 const weight = parseFloat(document.getElementById('lingotType').value);
                 const qty = parseInt(document.getElementById('quantity').value) || 1;
-                amount = weight * GOLD_PRICE * 0.999 * qty;
+                const prixOr = getPrixAvecMarge(GOLD_SPOT_PRICE, MARGES.lingots.marge);
+                amount = weight * prixOr * 0.999 * qty;
             } else if (currentType === 'argent') {
                 const purity = parseFloat(document.getElementById('argentPurity').value);
                 const weight = parseFloat(document.getElementById('weight').value);
                 if (!weight || weight <= 0) return alert('Veuillez entrer un poids valide');
-                amount = weight * SILVER_PRICE * purity;
+
+                // Determiner la marge selon la purete argent
+                let marge = MARGES.argent925.marge;
+                if (purity < 0.900) marge = MARGES.argent800.marge;
+
+                const prixAg = getPrixAvecMarge(SILVER_SPOT_PRICE, marge);
+                amount = weight * prixAg * purity;
             }
             document.getElementById('resultAmount').textContent = new Intl.NumberFormat('fr-FR', {
                 style: 'currency', currency: 'EUR', minimumFractionDigits: 0
@@ -3760,7 +3809,10 @@
             document.getElementById('resultBox').classList.add('show');
         }
 
-        fetchPrices();
+        // Initialisation : charger les marges puis les prix
+        loadMarges().then(() => {
+            fetchPrices();
+        });
         setInterval(fetchPrices, 300000);
 
         // ===== TRANSLATION SYSTEM =====

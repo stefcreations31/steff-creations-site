@@ -43,3 +43,48 @@ collections:
           - {label: "Téléphone mobile", name: "mobile", widget: "string"}
           - {label: "Email", name: "email", widget: "string"}
           - {label: "Adresse", name: "address", widget: "string"}
+
+      - label: "Marges Rachat d'Or"
+        name: "marges"
+        file: "_data/marges.json"
+        fields:
+          - label: "Or 24 carats (999)"
+            name: "or24k"
+            widget: "object"
+            fields:
+              - {label: "Marge (%)", name: "marge", widget: "number", default: 5, min: 0, max: 30, hint: "Pourcentage deduit du cours. Ex: 5 = vous payez 95% du cours"}
+          - label: "Or 18 carats (750)"
+            name: "or18k"
+            widget: "object"
+            fields:
+              - {label: "Marge (%)", name: "marge", widget: "number", default: 5, min: 0, max: 30}
+          - label: "Or 14 carats (585)"
+            name: "or14k"
+            widget: "object"
+            fields:
+              - {label: "Marge (%)", name: "marge", widget: "number", default: 5, min: 0, max: 30}
+          - label: "Or 9 carats (375)"
+            name: "or9k"
+            widget: "object"
+            fields:
+              - {label: "Marge (%)", name: "marge", widget: "number", default: 8, min: 0, max: 30}
+          - label: "Pieces d'or (Napoleon, etc.)"
+            name: "pieces"
+            widget: "object"
+            fields:
+              - {label: "Marge (%)", name: "marge", widget: "number", default: 3, min: 0, max: 30}
+          - label: "Lingots d'or"
+            name: "lingots"
+            widget: "object"
+            fields:
+              - {label: "Marge (%)", name: "marge", widget: "number", default: 2, min: 0, max: 30}
+          - label: "Argent 925"
+            name: "argent925"
+            widget: "object"
+            fields:
+              - {label: "Marge (%)", name: "marge", widget: "number", default: 10, min: 0, max: 40}
+          - label: "Argent 800"
+            name: "argent800"
+            widget: "object"
+            fields:
+              - {label: "Marge (%)", name: "marge", widget: "number", default: 12, min: 0, max: 40}

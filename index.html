@@ -3488,22 +3488,24 @@
 
             <div class="contact-form reveal-right">
                 <h3 data-translate="write_us">Nous Ecrire</h3>
-                <form onsubmit="handleSubmit(event)">
+                <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contact">
+                    <p class="hidden" style="display:none"><input name="bot-field"></p>
                     <div class="form-group">
                         <label class="form-label" data-translate="form_name">Nom</label>
-                        <input type="text" class="form-input" data-placeholder="form_name_ph" placeholder="Votre nom" required>
+                        <input type="text" name="nom" class="form-input" data-placeholder="form_name_ph" placeholder="Votre nom" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label" data-translate="form_email">Email</label>
-                        <input type="email" class="form-input" data-placeholder="form_email_ph" placeholder="Votre email" required>
+                        <input type="email" name="email" class="form-input" data-placeholder="form_email_ph" placeholder="Votre email" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label" data-translate="form_phone">Telephone</label>
-                        <input type="tel" class="form-input" data-placeholder="form_phone_ph" placeholder="Votre telephone">
+                        <input type="tel" name="telephone" class="form-input" data-placeholder="form_phone_ph" placeholder="Votre telephone">
                     </div>
                     <div class="form-group">
                         <label class="form-label" data-translate="form_message">Message</label>
-                        <textarea class="form-input" data-placeholder="form_message_ph" placeholder="Decrivez votre projet..." required></textarea>
+                        <textarea name="message" class="form-input" data-placeholder="form_message_ph" placeholder="Decrivez votre projet..." required></textarea>
                     </div>
                     <button type="submit" class="btn-submit" data-translate="form_send">Envoyer</button>
                 </form>

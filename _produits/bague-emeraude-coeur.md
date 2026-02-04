@@ -6,5 +6,5 @@ price: Sur demande
 badge: Piece Unique
 description: Or jaune 18 carats, emeraude taille coeur, pave de diamants.
   Creation artisanale realisée dans notre atelier.
-visible: true
+visible: false
 ---

@@ -4264,29 +4264,34 @@
     </script>
 
 <script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.init();
+  // Attendre que le DOM et le widget soient prêts
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.init();
 
-    // Gestion du token de récupération de mot de passe
-    const hash = window.location.hash;
-    if (hash && hash.includes('recovery_token')) {
-      window.netlifyIdentity.open('recover');
-    }
-    if (hash && hash.includes('invite_token')) {
-      window.netlifyIdentity.open('invite');
-    }
-    if (hash && hash.includes('confirmation_token')) {
-      window.netlifyIdentity.open('signup');
-    }
+      // Gestion des tokens dans l'URL
+      const hash = window.location.hash;
 
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-  }
+      window.netlifyIdentity.on("init", user => {
+        // Ouvrir le formulaire approprié selon le token
+        if (hash && hash.includes('recovery_token')) {
+          setTimeout(() => window.netlifyIdentity.open('recover'), 100);
+        }
+        if (hash && hash.includes('invite_token')) {
+          setTimeout(() => window.netlifyIdentity.open('invite'), 100);
+        }
+        if (hash && hash.includes('confirmation_token')) {
+          setTimeout(() => window.netlifyIdentity.open('signup'), 100);
+        }
+
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  });
 </script>
 
 <script>

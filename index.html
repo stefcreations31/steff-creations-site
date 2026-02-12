@@ -4266,6 +4266,19 @@
 <script>
   if (window.netlifyIdentity) {
     window.netlifyIdentity.init();
+
+    // Gestion du token de récupération de mot de passe
+    const hash = window.location.hash;
+    if (hash && hash.includes('recovery_token')) {
+      window.netlifyIdentity.open('recover');
+    }
+    if (hash && hash.includes('invite_token')) {
+      window.netlifyIdentity.open('invite');
+    }
+    if (hash && hash.includes('confirmation_token')) {
+      window.netlifyIdentity.open('signup');
+    }
+
     window.netlifyIdentity.on("init", user => {
       if (!user) {
         window.netlifyIdentity.on("login", () => {

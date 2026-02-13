@@ -30,6 +30,91 @@
             min-height: 100vh;
         }
 
+        /* LOGIN PAGE */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .login-box {
+            background: var(--noir-surface);
+            border: 1px solid var(--or);
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .login-box h1 {
+            color: var(--or);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-box p {
+            color: var(--gris);
+            margin-bottom: 2rem;
+        }
+
+        .login-box .form-group {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-box label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gris);
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 1rem;
+            background: var(--noir-elevated);
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: var(--blanc);
+            font-size: 1rem;
+        }
+
+        .login-box input:focus {
+            outline: none;
+            border-color: var(--or);
+        }
+
+        .login-box .btn {
+            width: 100%;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .login-error {
+            background: rgba(231, 76, 60, 0.2);
+            border: 1px solid var(--rouge);
+            color: var(--rouge);
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .login-error.show {
+            display: block;
+        }
+
+        /* ADMIN PANEL - Hidden by default */
+        .admin-panel {
+            display: none;
+        }
+
+        .admin-panel.active {
+            display: block;
+        }
+
         /* Header */
         .header {
             background: var(--noir-surface);
@@ -64,7 +149,9 @@
             transition: all 0.2s;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
+            text-decoration: none;
         }
 
         .btn-primary {
@@ -93,6 +180,17 @@
 
         .btn-success {
             background: var(--vert);
+            color: white;
+        }
+
+        .btn-logout {
+            background: transparent;
+            color: var(--rouge);
+            border: 1px solid var(--rouge);
+        }
+
+        .btn-logout:hover {
+            background: var(--rouge);
             color: white;
         }
 
@@ -127,6 +225,7 @@
             padding: 2rem;
             max-width: 1400px;
             margin: 0 auto;
+            padding-bottom: 100px;
         }
 
         /* Section */
@@ -466,6 +565,10 @@
                 flex-direction: column;
                 text-align: center;
             }
+
+            .login-box {
+                padding: 2rem;
+            }
         }
 
         /* Image preview */
@@ -525,188 +628,191 @@
             margin-bottom: 1rem;
         }
 
-        /* File input styling */
-        .file-input-wrapper {
-            position: relative;
+        /* Password section */
+        .password-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
         }
 
-        .file-input-wrapper input[type="file"] {
-            position: absolute;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-        }
-
-        .file-input-label {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            background: var(--noir-elevated);
-            border: 2px dashed #333;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .file-input-label:hover {
-            border-color: var(--or);
-        }
-
-        /* GitHub config banner */
-        .config-banner {
-            background: var(--noir-elevated);
-            border: 1px solid var(--or);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .config-banner p {
-            flex: 1;
+        .password-section h4 {
             color: var(--or);
+            margin-bottom: 1rem;
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <h1>Stef Creations - Admin</h1>
-        <div class="header-actions">
-            <a href="/" class="btn btn-secondary" target="_blank">Voir le site</a>
+
+    <!-- LOGIN PAGE -->
+    <div class="login-container" id="login-page">
+        <div class="login-box">
+            <h1>Stef Creations</h1>
+            <p>Panneau d'administration</p>
+
+            <div class="login-error" id="login-error">
+                Mot de passe incorrect
+            </div>
+
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Mot de passe</label>
+                    <input type="password" id="login-password" placeholder="Entrez le mot de passe" autofocus>
+                </div>
+                <button type="submit" class="btn btn-primary">Se connecter</button>
+            </form>
         </div>
-    </header>
+    </div>
 
-    <nav class="tabs">
-        <div class="tab active" data-tab="produits">Produits</div>
-        <div class="tab" data-tab="contact">Contact</div>
-        <div class="tab" data-tab="marges">Marges Or</div>
-        <div class="tab" data-tab="config">Configuration</div>
-    </nav>
-
-    <main class="main">
-        <!-- Section Produits -->
-        <section class="section active" id="section-produits">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-                <h2>Gestion des produits</h2>
-                <button class="btn btn-primary" onclick="openProductModal()">+ Ajouter un produit</button>
+    <!-- ADMIN PANEL -->
+    <div class="admin-panel" id="admin-panel">
+        <header class="header">
+            <h1>Stef Creations - Admin</h1>
+            <div class="header-actions">
+                <a href="/" class="btn btn-secondary" target="_blank">Voir le site</a>
+                <button class="btn btn-logout" onclick="logout()">Deconnexion</button>
             </div>
-            <div id="products-container" class="products-grid">
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p>Chargement des produits...</p>
-                </div>
-            </div>
-        </section>
+        </header>
 
-        <!-- Section Contact -->
-        <section class="section" id="section-contact">
-            <h2>Informations de contact</h2>
-            <div class="config-card" style="max-width: 500px; margin-top: 1.5rem;">
-                <div class="form-group">
-                    <label>Telephone fixe</label>
-                    <input type="text" id="contact-phone" placeholder="05 61 XX XX XX">
-                </div>
-                <div class="form-group">
-                    <label>Telephone mobile</label>
-                    <input type="text" id="contact-mobile" placeholder="06 XX XX XX XX">
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" id="contact-email" placeholder="contact@example.com">
-                </div>
-                <div class="form-group">
-                    <label>Adresse</label>
-                    <input type="text" id="contact-address" placeholder="Adresse complete">
-                </div>
-                <button class="btn btn-primary" onclick="saveContact()">Sauvegarder</button>
-            </div>
-        </section>
+        <nav class="tabs">
+            <div class="tab active" data-tab="produits">Produits</div>
+            <div class="tab" data-tab="contact">Contact</div>
+            <div class="tab" data-tab="marges">Marges Or</div>
+            <div class="tab" data-tab="config">Configuration</div>
+        </nav>
 
-        <!-- Section Marges -->
-        <section class="section" id="section-marges">
-            <h2>Marges rachat d'or</h2>
-            <p style="color: var(--gris); margin: 1rem 0;">Pourcentage deduit du cours. Ex: 5 = vous payez 95% du cours</p>
-            <div class="config-grid" style="margin-top: 1.5rem;">
-                <div class="config-card">
-                    <h3>Or</h3>
-                    <div class="form-group">
-                        <label>Or 24 carats (999) - Marge %</label>
-                        <input type="number" id="marge-or24k" min="0" max="30">
-                    </div>
-                    <div class="form-group">
-                        <label>Or 18 carats (750) - Marge %</label>
-                        <input type="number" id="marge-or18k" min="0" max="30">
-                    </div>
-                    <div class="form-group">
-                        <label>Or 14 carats (585) - Marge %</label>
-                        <input type="number" id="marge-or14k" min="0" max="30">
-                    </div>
-                    <div class="form-group">
-                        <label>Or 9 carats (375) - Marge %</label>
-                        <input type="number" id="marge-or9k" min="0" max="30">
+        <main class="main">
+            <!-- Section Produits -->
+            <section class="section active" id="section-produits">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <h2>Gestion des produits</h2>
+                    <button class="btn btn-primary" onclick="openProductModal()">+ Ajouter un produit</button>
+                </div>
+                <div id="products-container" class="products-grid">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Chargement des produits...</p>
                     </div>
                 </div>
-                <div class="config-card">
-                    <h3>Pieces, Lingots & Argent</h3>
-                    <div class="form-group">
-                        <label>Pieces d'or (Napoleon) - Marge %</label>
-                        <input type="number" id="marge-pieces" min="0" max="30">
-                    </div>
-                    <div class="form-group">
-                        <label>Lingots d'or - Marge %</label>
-                        <input type="number" id="marge-lingots" min="0" max="30">
-                    </div>
-                    <div class="form-group">
-                        <label>Argent 925 - Marge %</label>
-                        <input type="number" id="marge-argent925" min="0" max="40">
-                    </div>
-                    <div class="form-group">
-                        <label>Argent 800 - Marge %</label>
-                        <input type="number" id="marge-argent800" min="0" max="40">
-                    </div>
-                </div>
-            </div>
-            <button class="btn btn-primary" style="margin-top: 1.5rem;" onclick="saveMarges()">Sauvegarder les marges</button>
-        </section>
+            </section>
 
-        <!-- Section Configuration -->
-        <section class="section" id="section-config">
-            <h2>Configuration GitHub</h2>
-            <p style="color: var(--gris); margin: 1rem 0;">
-                Pour sauvegarder les modifications directement sur le site, configurez l'acces GitHub.
-            </p>
-            <div class="config-card settings-form" style="margin-top: 1.5rem;">
-                <div class="form-group">
-                    <label>Token GitHub (Personal Access Token)</label>
-                    <input type="password" id="github-token" placeholder="ghp_xxxxxxxxxxxx">
-                    <p style="font-size: 0.8rem; color: var(--gris); margin-top: 0.5rem;">
-                        Creez un token sur github.com > Settings > Developer settings > Personal access tokens
-                    </p>
+            <!-- Section Contact -->
+            <section class="section" id="section-contact">
+                <h2>Informations de contact</h2>
+                <div class="config-card" style="max-width: 500px; margin-top: 1.5rem;">
+                    <div class="form-group">
+                        <label>Telephone fixe</label>
+                        <input type="text" id="contact-phone" placeholder="05 61 XX XX XX">
+                    </div>
+                    <div class="form-group">
+                        <label>Telephone mobile</label>
+                        <input type="text" id="contact-mobile" placeholder="06 XX XX XX XX">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="contact-email" placeholder="contact@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Adresse</label>
+                        <input type="text" id="contact-address" placeholder="Adresse complete">
+                    </div>
+                    <button class="btn btn-primary" onclick="saveContact()">Sauvegarder</button>
                 </div>
-                <div class="form-group">
-                    <label>Proprietaire du repo</label>
-                    <input type="text" id="github-owner" placeholder="stefcreations31" value="stefcreations31">
-                </div>
-                <div class="form-group">
-                    <label>Nom du repo</label>
-                    <input type="text" id="github-repo" placeholder="steff-creations-site" value="steff-creations-site">
-                </div>
-                <button class="btn btn-primary" onclick="saveConfig()">Sauvegarder la configuration</button>
-                <button class="btn btn-secondary" style="margin-left: 0.5rem;" onclick="testGitHub()">Tester la connexion</button>
-            </div>
-        </section>
-    </main>
+            </section>
 
-    <!-- Status Bar -->
-    <div class="status-bar" id="status-bar">
-        <span class="status-text" id="status-text">Pret</span>
-        <div id="status-actions" style="display: none;">
-            <button class="btn btn-success" onclick="publishChanges()">Publier les modifications</button>
+            <!-- Section Marges -->
+            <section class="section" id="section-marges">
+                <h2>Marges rachat d'or</h2>
+                <p style="color: var(--gris); margin: 1rem 0;">Pourcentage deduit du cours. Ex: 5 = vous payez 95% du cours</p>
+                <div class="config-grid" style="margin-top: 1.5rem;">
+                    <div class="config-card">
+                        <h3>Or</h3>
+                        <div class="form-group">
+                            <label>Or 24 carats (999) - Marge %</label>
+                            <input type="number" id="marge-or24k" min="0" max="30">
+                        </div>
+                        <div class="form-group">
+                            <label>Or 18 carats (750) - Marge %</label>
+                            <input type="number" id="marge-or18k" min="0" max="30">
+                        </div>
+                        <div class="form-group">
+                            <label>Or 14 carats (585) - Marge %</label>
+                            <input type="number" id="marge-or14k" min="0" max="30">
+                        </div>
+                        <div class="form-group">
+                            <label>Or 9 carats (375) - Marge %</label>
+                            <input type="number" id="marge-or9k" min="0" max="30">
+                        </div>
+                    </div>
+                    <div class="config-card">
+                        <h3>Pieces, Lingots & Argent</h3>
+                        <div class="form-group">
+                            <label>Pieces d'or (Napoleon) - Marge %</label>
+                            <input type="number" id="marge-pieces" min="0" max="30">
+                        </div>
+                        <div class="form-group">
+                            <label>Lingots d'or - Marge %</label>
+                            <input type="number" id="marge-lingots" min="0" max="30">
+                        </div>
+                        <div class="form-group">
+                            <label>Argent 925 - Marge %</label>
+                            <input type="number" id="marge-argent925" min="0" max="40">
+                        </div>
+                        <div class="form-group">
+                            <label>Argent 800 - Marge %</label>
+                            <input type="number" id="marge-argent800" min="0" max="40">
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" style="margin-top: 1.5rem;" onclick="saveMarges()">Sauvegarder les marges</button>
+            </section>
+
+            <!-- Section Configuration -->
+            <section class="section" id="section-config">
+                <h2>Configuration GitHub</h2>
+                <p style="color: var(--gris); margin: 1rem 0;">
+                    Pour sauvegarder les modifications directement sur le site, configurez l'acces GitHub.
+                </p>
+                <div class="config-card settings-form" style="margin-top: 1.5rem;">
+                    <div class="form-group">
+                        <label>Token GitHub (Personal Access Token)</label>
+                        <input type="password" id="github-token" placeholder="ghp_xxxxxxxxxxxx">
+                        <p style="font-size: 0.8rem; color: var(--gris); margin-top: 0.5rem;">
+                            Creez un token sur github.com > Settings > Developer settings > Personal access tokens
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label>Proprietaire du repo</label>
+                        <input type="text" id="github-owner" placeholder="stefcreations31" value="stefcreations31">
+                    </div>
+                    <div class="form-group">
+                        <label>Nom du repo</label>
+                        <input type="text" id="github-repo" placeholder="steff-creations-site" value="steff-creations-site">
+                    </div>
+                    <button class="btn btn-primary" onclick="saveConfig()">Sauvegarder la configuration</button>
+                    <button class="btn btn-secondary" style="margin-left: 0.5rem;" onclick="testGitHub()">Tester la connexion</button>
+
+                    <div class="password-section">
+                        <h4>Changer le mot de passe admin</h4>
+                        <div class="form-group">
+                            <label>Nouveau mot de passe</label>
+                            <input type="password" id="new-password" placeholder="Nouveau mot de passe">
+                        </div>
+                        <div class="form-group">
+                            <label>Confirmer le mot de passe</label>
+                            <input type="password" id="confirm-password" placeholder="Confirmer">
+                        </div>
+                        <button class="btn btn-primary" onclick="changePassword()">Changer le mot de passe</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Status Bar -->
+        <div class="status-bar" id="status-bar">
+            <span class="status-text" id="status-text">Pret</span>
+            <div id="status-actions" style="display: none;">
+                <button class="btn btn-success" onclick="publishChanges()">Publier les modifications</button>
+            </div>
         </div>
     </div>
 
@@ -781,26 +887,112 @@
     </div>
 
     <script>
-        // State
+        // ============ AUTHENTICATION ============
+        // Mot de passe par defaut: "stef2024" - Hash SHA-256
+        const DEFAULT_PASSWORD_HASH = '50456030af2e78995a200ceac54c9ff3abf2514beb88721255db3ecfb6d7a00f'; // Toulouse31.
+        const AUTH_KEY = 'stef-admin-auth';
+        const PASSWORD_KEY = 'stef-admin-password';
+
+        // Hash function
+        async function hashPassword(password) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(password);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // Get stored password hash or default
+        function getPasswordHash() {
+            return localStorage.getItem(PASSWORD_KEY) || DEFAULT_PASSWORD_HASH;
+        }
+
+        // Check if logged in
+        function checkAuth() {
+            const session = sessionStorage.getItem(AUTH_KEY);
+            if (session === 'true') {
+                showAdminPanel();
+            } else {
+                showLoginPage();
+            }
+        }
+
+        // Handle login
+        async function handleLogin(e) {
+            e.preventDefault();
+            const password = document.getElementById('login-password').value;
+            const hash = await hashPassword(password);
+
+            if (hash === getPasswordHash()) {
+                sessionStorage.setItem(AUTH_KEY, 'true');
+                showAdminPanel();
+                loadData();
+            } else {
+                document.getElementById('login-error').classList.add('show');
+                document.getElementById('login-password').value = '';
+                setTimeout(() => {
+                    document.getElementById('login-error').classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // Logout
+        function logout() {
+            sessionStorage.removeItem(AUTH_KEY);
+            showLoginPage();
+        }
+
+        // Change password
+        async function changePassword() {
+            const newPass = document.getElementById('new-password').value;
+            const confirmPass = document.getElementById('confirm-password').value;
+
+            if (!newPass || newPass.length < 4) {
+                showToast('Le mot de passe doit faire au moins 4 caracteres', 'error');
+                return;
+            }
+
+            if (newPass !== confirmPass) {
+                showToast('Les mots de passe ne correspondent pas', 'error');
+                return;
+            }
+
+            const hash = await hashPassword(newPass);
+            localStorage.setItem(PASSWORD_KEY, hash);
+            document.getElementById('new-password').value = '';
+            document.getElementById('confirm-password').value = '';
+            showToast('Mot de passe change avec succes!', 'success');
+        }
+
+        function showLoginPage() {
+            document.getElementById('login-page').style.display = 'flex';
+            document.getElementById('admin-panel').classList.remove('active');
+        }
+
+        function showAdminPanel() {
+            document.getElementById('login-page').style.display = 'none';
+            document.getElementById('admin-panel').classList.add('active');
+        }
+
+        // ============ STATE ============
         let products = [];
         let contact = {};
         let marges = {};
         let hasChanges = false;
         let editingProductIndex = -1;
 
-        // Config
         const CONFIG_KEY = 'stef-admin-config';
         const DATA_KEY = 'stef-admin-data';
 
-        // Init
+        // ============ INIT ============
         document.addEventListener('DOMContentLoaded', () => {
+            checkAuth();
             loadConfig();
-            loadData();
             setupTabs();
             setupImagePreview();
         });
 
-        // Tabs
+        // ============ TABS ============
         function setupTabs() {
             document.querySelectorAll('.tab').forEach(tab => {
                 tab.addEventListener('click', () => {
@@ -812,7 +1004,7 @@
             });
         }
 
-        // Image preview
+        // ============ IMAGE PREVIEW ============
         function setupImagePreview() {
             document.getElementById('product-image').addEventListener('input', (e) => {
                 updateImagePreview(e.target.value);
@@ -828,7 +1020,7 @@
             }
         }
 
-        // Config
+        // ============ CONFIG ============
         function loadConfig() {
             const saved = localStorage.getItem(CONFIG_KEY);
             if (saved) {
@@ -854,16 +1046,14 @@
             return saved ? JSON.parse(saved) : {};
         }
 
-        // Data loading
+        // ============ DATA LOADING ============
         async function loadData() {
             try {
-                // Load products
                 const prodRes = await fetch('/data/produits.json');
                 const prodData = await prodRes.json();
                 products = prodData.produits || [];
                 renderProducts();
 
-                // Load contact
                 const contactRes = await fetch('/data/contact.json');
                 contact = await contactRes.json();
                 document.getElementById('contact-phone').value = contact.phone || '';
@@ -871,7 +1061,6 @@
                 document.getElementById('contact-email').value = contact.email || '';
                 document.getElementById('contact-address').value = contact.address || '';
 
-                // Load marges
                 const margesRes = await fetch('/data/marges.json');
                 marges = await margesRes.json();
                 document.getElementById('marge-or24k').value = marges.or24k?.marge || 5;
@@ -889,7 +1078,7 @@
             }
         }
 
-        // Products
+        // ============ PRODUCTS ============
         function renderProducts() {
             const container = document.getElementById('products-container');
 
@@ -1006,7 +1195,7 @@
             showToast('Produit sauvegarde', 'success');
         }
 
-        // Contact
+        // ============ CONTACT ============
         function saveContact() {
             contact = {
                 phone: document.getElementById('contact-phone').value,
@@ -1018,7 +1207,7 @@
             showToast('Contact sauvegarde localement', 'success');
         }
 
-        // Marges
+        // ============ MARGES ============
         function saveMarges() {
             marges = {
                 or24k: { marge: parseInt(document.getElementById('marge-or24k').value) || 5 },
@@ -1034,19 +1223,17 @@
             showToast('Marges sauvegardees localement', 'success');
         }
 
-        // Changes
+        // ============ CHANGES ============
         function markChanges() {
             hasChanges = true;
             document.getElementById('status-bar').classList.add('has-changes');
             document.getElementById('status-text').textContent = 'Modifications non publiees';
             document.getElementById('status-text').classList.add('warning');
             document.getElementById('status-actions').style.display = 'block';
-
-            // Save locally
             localStorage.setItem(DATA_KEY, JSON.stringify({ products, contact, marges }));
         }
 
-        // GitHub
+        // ============ GITHUB ============
         async function testGitHub() {
             const config = getConfig();
             if (!config.token) {
@@ -1083,13 +1270,8 @@
             document.getElementById('status-text').textContent = 'Publication en cours...';
 
             try {
-                // Publish products
                 await updateGitHubFile(config, 'data/produits.json', JSON.stringify({ produits: products }, null, 2), 'Mise a jour produits');
-
-                // Publish contact
                 await updateGitHubFile(config, 'data/contact.json', JSON.stringify(contact, null, 2), 'Mise a jour contact');
-
-                // Publish marges
                 await updateGitHubFile(config, 'data/marges.json', JSON.stringify(marges, null, 2), 'Mise a jour marges');
 
                 hasChanges = false;
@@ -1110,7 +1292,6 @@
         async function updateGitHubFile(config, path, content, message) {
             const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}`;
 
-            // Get current file SHA
             const getRes = await fetch(url, {
                 headers: {
                     'Authorization': `token ${config.token}`,
@@ -1124,7 +1305,6 @@
                 sha = data.sha;
             }
 
-            // Update file
             const body = {
                 message: message,
                 content: btoa(unescape(encodeURIComponent(content))),
@@ -1151,7 +1331,7 @@
             }
         }
 
-        // Toast
+        // ============ TOAST ============
         function showToast(message, type = 'success') {
             const existing = document.querySelector('.toast');
             if (existing) existing.remove();

@@ -1,13 +1,1168 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin | Stef Creations</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Stef Creations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --noir: #0A0A0A;
+            --noir-surface: #151515;
+            --noir-elevated: #1E1E1E;
+            --or: #C9A227;
+            --or-clair: #D4AF37;
+            --blanc: #FAFAFA;
+            --gris: #888;
+            --rouge: #E74C3C;
+            --vert: #27AE60;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--noir);
+            color: var(--blanc);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: var(--noir-surface);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--or);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header h1 {
+            color: var(--or);
+            font-size: 1.5rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* Boutons */
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--or);
+            color: var(--noir);
+        }
+
+        .btn-primary:hover {
+            background: var(--or-clair);
+        }
+
+        .btn-secondary {
+            background: var(--noir-elevated);
+            color: var(--blanc);
+            border: 1px solid #333;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--or);
+        }
+
+        .btn-danger {
+            background: var(--rouge);
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--vert);
+            color: white;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            background: var(--noir-surface);
+            border-bottom: 1px solid #333;
+            overflow-x: auto;
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            color: var(--gris);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .tab:hover {
+            color: var(--blanc);
+        }
+
+        .tab.active {
+            color: var(--or);
+            border-bottom-color: var(--or);
+        }
+
+        /* Main Content */
+        .main {
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Section */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Grille produits */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Carte produit */
+        .product-card {
+            background: var(--noir-surface);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #222;
+            transition: all 0.2s;
+        }
+
+        .product-card:hover {
+            border-color: var(--or);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-card-body {
+            padding: 1rem;
+        }
+
+        .product-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--or);
+        }
+
+        .product-card p {
+            font-size: 0.85rem;
+            color: var(--gris);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-card .price {
+            font-weight: 600;
+            color: var(--blanc);
+        }
+
+        .product-card .badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            background: var(--or);
+            color: var(--noir);
+            font-size: 0.7rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+
+        .product-card-actions {
+            display: flex;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-top: 1px solid #222;
+        }
+
+        .product-card-actions .btn {
+            flex: 1;
+            justify-content: center;
+            padding: 0.5rem;
+        }
+
+        .visibility-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .visibility-badge.visible {
+            background: var(--vert);
+            color: white;
+        }
+
+        .visibility-badge.hidden {
+            background: var(--rouge);
+            color: white;
+        }
+
+        .product-card-image {
+            position: relative;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--noir-surface);
+            border-radius: 12px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid var(--or);
+        }
+
+        .modal-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            color: var(--or);
+            font-size: 1.2rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--gris);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        /* Formulaire */
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gris);
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--noir-elevated);
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: var(--blanc);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--or);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-group input {
+            width: auto;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .form-actions .btn {
+            flex: 1;
+        }
+
+        /* Status bar */
+        .status-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 2rem;
+            background: var(--noir-surface);
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .status-bar.has-changes {
+            border-top-color: var(--or);
+            background: linear-gradient(to right, var(--noir-surface), rgba(201, 162, 39, 0.1));
+        }
+
+        .status-text {
+            color: var(--gris);
+        }
+
+        .status-text.warning {
+            color: var(--or);
+        }
+
+        /* Settings */
+        .settings-form {
+            max-width: 500px;
+        }
+
+        /* Contact & Marges */
+        .config-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .config-card {
+            background: var(--noir-surface);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #222;
+        }
+
+        .config-card h3 {
+            color: var(--or);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Toast notifications */
+        .toast {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 2000;
+            animation: slideIn 0.3s ease;
+        }
+
+        .toast.success {
+            background: var(--vert);
+        }
+
+        .toast.error {
+            background: var(--rouge);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.2rem;
+            }
+
+            .main {
+                padding: 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .tab {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .status-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Image preview */
+        .image-preview {
+            width: 100%;
+            height: 150px;
+            background: var(--noir-elevated);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .image-preview-placeholder {
+            color: var(--gris);
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--gris);
+        }
+
+        .spinner {
+            border: 3px solid var(--noir-elevated);
+            border-top-color: var(--or);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--gris);
+        }
+
+        .empty-state h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* File input styling */
+        .file-input-wrapper {
+            position: relative;
+        }
+
+        .file-input-wrapper input[type="file"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-input-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: var(--noir-elevated);
+            border: 2px dashed #333;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .file-input-label:hover {
+            border-color: var(--or);
+        }
+
+        /* GitHub config banner */
+        .config-banner {
+            background: var(--noir-elevated);
+            border: 1px solid var(--or);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .config-banner p {
+            flex: 1;
+            color: var(--or);
+        }
+    </style>
 </head>
 <body>
-  <!-- Decap CMS (successeur de Netlify CMS) -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <header class="header">
+        <h1>Stef Creations - Admin</h1>
+        <div class="header-actions">
+            <a href="/" class="btn btn-secondary" target="_blank">Voir le site</a>
+        </div>
+    </header>
+
+    <nav class="tabs">
+        <div class="tab active" data-tab="produits">Produits</div>
+        <div class="tab" data-tab="contact">Contact</div>
+        <div class="tab" data-tab="marges">Marges Or</div>
+        <div class="tab" data-tab="config">Configuration</div>
+    </nav>
+
+    <main class="main">
+        <!-- Section Produits -->
+        <section class="section active" id="section-produits">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <h2>Gestion des produits</h2>
+                <button class="btn btn-primary" onclick="openProductModal()">+ Ajouter un produit</button>
+            </div>
+            <div id="products-container" class="products-grid">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Chargement des produits...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Contact -->
+        <section class="section" id="section-contact">
+            <h2>Informations de contact</h2>
+            <div class="config-card" style="max-width: 500px; margin-top: 1.5rem;">
+                <div class="form-group">
+                    <label>Telephone fixe</label>
+                    <input type="text" id="contact-phone" placeholder="05 61 XX XX XX">
+                </div>
+                <div class="form-group">
+                    <label>Telephone mobile</label>
+                    <input type="text" id="contact-mobile" placeholder="06 XX XX XX XX">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="contact-email" placeholder="contact@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Adresse</label>
+                    <input type="text" id="contact-address" placeholder="Adresse complete">
+                </div>
+                <button class="btn btn-primary" onclick="saveContact()">Sauvegarder</button>
+            </div>
+        </section>
+
+        <!-- Section Marges -->
+        <section class="section" id="section-marges">
+            <h2>Marges rachat d'or</h2>
+            <p style="color: var(--gris); margin: 1rem 0;">Pourcentage deduit du cours. Ex: 5 = vous payez 95% du cours</p>
+            <div class="config-grid" style="margin-top: 1.5rem;">
+                <div class="config-card">
+                    <h3>Or</h3>
+                    <div class="form-group">
+                        <label>Or 24 carats (999) - Marge %</label>
+                        <input type="number" id="marge-or24k" min="0" max="30">
+                    </div>
+                    <div class="form-group">
+                        <label>Or 18 carats (750) - Marge %</label>
+                        <input type="number" id="marge-or18k" min="0" max="30">
+                    </div>
+                    <div class="form-group">
+                        <label>Or 14 carats (585) - Marge %</label>
+                        <input type="number" id="marge-or14k" min="0" max="30">
+                    </div>
+                    <div class="form-group">
+                        <label>Or 9 carats (375) - Marge %</label>
+                        <input type="number" id="marge-or9k" min="0" max="30">
+                    </div>
+                </div>
+                <div class="config-card">
+                    <h3>Pieces, Lingots & Argent</h3>
+                    <div class="form-group">
+                        <label>Pieces d'or (Napoleon) - Marge %</label>
+                        <input type="number" id="marge-pieces" min="0" max="30">
+                    </div>
+                    <div class="form-group">
+                        <label>Lingots d'or - Marge %</label>
+                        <input type="number" id="marge-lingots" min="0" max="30">
+                    </div>
+                    <div class="form-group">
+                        <label>Argent 925 - Marge %</label>
+                        <input type="number" id="marge-argent925" min="0" max="40">
+                    </div>
+                    <div class="form-group">
+                        <label>Argent 800 - Marge %</label>
+                        <input type="number" id="marge-argent800" min="0" max="40">
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" style="margin-top: 1.5rem;" onclick="saveMarges()">Sauvegarder les marges</button>
+        </section>
+
+        <!-- Section Configuration -->
+        <section class="section" id="section-config">
+            <h2>Configuration GitHub</h2>
+            <p style="color: var(--gris); margin: 1rem 0;">
+                Pour sauvegarder les modifications directement sur le site, configurez l'acces GitHub.
+            </p>
+            <div class="config-card settings-form" style="margin-top: 1.5rem;">
+                <div class="form-group">
+                    <label>Token GitHub (Personal Access Token)</label>
+                    <input type="password" id="github-token" placeholder="ghp_xxxxxxxxxxxx">
+                    <p style="font-size: 0.8rem; color: var(--gris); margin-top: 0.5rem;">
+                        Creez un token sur github.com > Settings > Developer settings > Personal access tokens
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Proprietaire du repo</label>
+                    <input type="text" id="github-owner" placeholder="stefcreations31" value="stefcreations31">
+                </div>
+                <div class="form-group">
+                    <label>Nom du repo</label>
+                    <input type="text" id="github-repo" placeholder="steff-creations-site" value="steff-creations-site">
+                </div>
+                <button class="btn btn-primary" onclick="saveConfig()">Sauvegarder la configuration</button>
+                <button class="btn btn-secondary" style="margin-left: 0.5rem;" onclick="testGitHub()">Tester la connexion</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Status Bar -->
+    <div class="status-bar" id="status-bar">
+        <span class="status-text" id="status-text">Pret</span>
+        <div id="status-actions" style="display: none;">
+            <button class="btn btn-success" onclick="publishChanges()">Publier les modifications</button>
+        </div>
+    </div>
+
+    <!-- Modal Produit -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Ajouter un produit</h2>
+                <button class="modal-close" onclick="closeProductModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="product-id">
+                <div class="form-group">
+                    <label>Nom du produit *</label>
+                    <input type="text" id="product-title" placeholder="Ex: Bague Emeraude" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Categorie *</label>
+                        <select id="product-category">
+                            <option value="bagues">Bagues</option>
+                            <option value="colliers">Colliers</option>
+                            <option value="chevalieres">Chevalieres</option>
+                            <option value="creations">Creations</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Prix</label>
+                        <input type="text" id="product-price" placeholder="Ex: 2 500 EUR ou Sur demande">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Badge</label>
+                        <select id="product-badge">
+                            <option value="Piece Unique">Piece Unique</option>
+                            <option value="Exclusif">Exclusif</option>
+                            <option value="Artisanal">Artisanal</option>
+                            <option value="Elegant">Elegant</option>
+                            <option value="Precieux">Precieux</option>
+                            <option value="Raffine">Raffine</option>
+                            <option value="Moderne">Moderne</option>
+                            <option value="Best-seller">Best-seller</option>
+                            <option value="Signature">Signature</option>
+                            <option value="Nouveau">Nouveau</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-group">
+                            <input type="checkbox" id="product-visible" checked>
+                            Visible sur le site
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Image</label>
+                    <input type="text" id="product-image" placeholder="/images/nom-image.jpg">
+                    <div class="image-preview" id="image-preview">
+                        <span class="image-preview-placeholder">Apercu de l'image</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="product-description" placeholder="Description du produit..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-secondary" onclick="closeProductModal()">Annuler</button>
+                    <button class="btn btn-primary" onclick="saveProduct()">Sauvegarder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State
+        let products = [];
+        let contact = {};
+        let marges = {};
+        let hasChanges = false;
+        let editingProductIndex = -1;
+
+        // Config
+        const CONFIG_KEY = 'stef-admin-config';
+        const DATA_KEY = 'stef-admin-data';
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            loadConfig();
+            loadData();
+            setupTabs();
+            setupImagePreview();
+        });
+
+        // Tabs
+        function setupTabs() {
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                    tab.classList.add('active');
+                    document.getElementById('section-' + tab.dataset.tab).classList.add('active');
+                });
+            });
+        }
+
+        // Image preview
+        function setupImagePreview() {
+            document.getElementById('product-image').addEventListener('input', (e) => {
+                updateImagePreview(e.target.value);
+            });
+        }
+
+        function updateImagePreview(src) {
+            const preview = document.getElementById('image-preview');
+            if (src) {
+                preview.innerHTML = `<img src="${src}" onerror="this.parentElement.innerHTML='<span class=\\'image-preview-placeholder\\'>Image non trouvee</span>'">`;
+            } else {
+                preview.innerHTML = '<span class="image-preview-placeholder">Apercu de l\'image</span>';
+            }
+        }
+
+        // Config
+        function loadConfig() {
+            const saved = localStorage.getItem(CONFIG_KEY);
+            if (saved) {
+                const config = JSON.parse(saved);
+                document.getElementById('github-token').value = config.token || '';
+                document.getElementById('github-owner').value = config.owner || 'stefcreations31';
+                document.getElementById('github-repo').value = config.repo || 'steff-creations-site';
+            }
+        }
+
+        function saveConfig() {
+            const config = {
+                token: document.getElementById('github-token').value,
+                owner: document.getElementById('github-owner').value,
+                repo: document.getElementById('github-repo').value
+            };
+            localStorage.setItem(CONFIG_KEY, JSON.stringify(config));
+            showToast('Configuration sauvegardee', 'success');
+        }
+
+        function getConfig() {
+            const saved = localStorage.getItem(CONFIG_KEY);
+            return saved ? JSON.parse(saved) : {};
+        }
+
+        // Data loading
+        async function loadData() {
+            try {
+                // Load products
+                const prodRes = await fetch('/data/produits.json');
+                const prodData = await prodRes.json();
+                products = prodData.produits || [];
+                renderProducts();
+
+                // Load contact
+                const contactRes = await fetch('/data/contact.json');
+                contact = await contactRes.json();
+                document.getElementById('contact-phone').value = contact.phone || '';
+                document.getElementById('contact-mobile').value = contact.mobile || '';
+                document.getElementById('contact-email').value = contact.email || '';
+                document.getElementById('contact-address').value = contact.address || '';
+
+                // Load marges
+                const margesRes = await fetch('/data/marges.json');
+                marges = await margesRes.json();
+                document.getElementById('marge-or24k').value = marges.or24k?.marge || 5;
+                document.getElementById('marge-or18k').value = marges.or18k?.marge || 5;
+                document.getElementById('marge-or14k').value = marges.or14k?.marge || 5;
+                document.getElementById('marge-or9k').value = marges.or9k?.marge || 8;
+                document.getElementById('marge-pieces').value = marges.pieces?.marge || 3;
+                document.getElementById('marge-lingots').value = marges.lingots?.marge || 2;
+                document.getElementById('marge-argent925').value = marges.argent925?.marge || 10;
+                document.getElementById('marge-argent800').value = marges.argent800?.marge || 12;
+
+            } catch (error) {
+                console.error('Erreur chargement:', error);
+                showToast('Erreur de chargement des donnees', 'error');
+            }
+        }
+
+        // Products
+        function renderProducts() {
+            const container = document.getElementById('products-container');
+
+            if (products.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <h3>Aucun produit</h3>
+                        <p>Cliquez sur "Ajouter un produit" pour commencer</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = products.map((product, index) => `
+                <div class="product-card">
+                    <div class="product-card-image">
+                        <img src="${product.image}" alt="${product.title}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><rect fill=%22%23222%22 width=%22200%22 height=%22200%22/><text fill=%22%23666%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22>Image</text></svg>'">
+                        <span class="visibility-badge ${product.visible ? 'visible' : 'hidden'}">
+                            ${product.visible ? 'Visible' : 'Cache'}
+                        </span>
+                    </div>
+                    <div class="product-card-body">
+                        <h3>${product.title}</h3>
+                        <p>${product.description || 'Pas de description'}</p>
+                        <div class="price">${product.price || 'Sur demande'}</div>
+                        <span class="badge">${product.badge}</span>
+                    </div>
+                    <div class="product-card-actions">
+                        <button class="btn btn-secondary" onclick="editProduct(${index})">Modifier</button>
+                        <button class="btn btn-danger" onclick="deleteProduct(${index})">Supprimer</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openProductModal(index = -1) {
+            editingProductIndex = index;
+            const modal = document.getElementById('product-modal');
+            const title = document.getElementById('modal-title');
+
+            if (index >= 0) {
+                title.textContent = 'Modifier le produit';
+                const product = products[index];
+                document.getElementById('product-id').value = product.id;
+                document.getElementById('product-title').value = product.title;
+                document.getElementById('product-category').value = product.category;
+                document.getElementById('product-price').value = product.price;
+                document.getElementById('product-badge').value = product.badge;
+                document.getElementById('product-visible').checked = product.visible;
+                document.getElementById('product-image').value = product.image;
+                document.getElementById('product-description').value = product.description || '';
+                updateImagePreview(product.image);
+            } else {
+                title.textContent = 'Ajouter un produit';
+                document.getElementById('product-id').value = '';
+                document.getElementById('product-title').value = '';
+                document.getElementById('product-category').value = 'bagues';
+                document.getElementById('product-price').value = 'Sur demande';
+                document.getElementById('product-badge').value = 'Piece Unique';
+                document.getElementById('product-visible').checked = true;
+                document.getElementById('product-image').value = '';
+                document.getElementById('product-description').value = '';
+                updateImagePreview('');
+            }
+
+            modal.classList.add('active');
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.remove('active');
+            editingProductIndex = -1;
+        }
+
+        function editProduct(index) {
+            openProductModal(index);
+        }
+
+        function deleteProduct(index) {
+            if (confirm('Supprimer ce produit ?')) {
+                products.splice(index, 1);
+                renderProducts();
+                markChanges();
+                showToast('Produit supprime', 'success');
+            }
+        }
+
+        function saveProduct() {
+            const title = document.getElementById('product-title').value.trim();
+            if (!title) {
+                showToast('Le nom du produit est requis', 'error');
+                return;
+            }
+
+            const product = {
+                id: document.getElementById('product-id').value || String(Date.now()),
+                title: title,
+                image: document.getElementById('product-image').value || '/images/placeholder.jpg',
+                category: document.getElementById('product-category').value,
+                price: document.getElementById('product-price').value || 'Sur demande',
+                badge: document.getElementById('product-badge').value,
+                description: document.getElementById('product-description').value,
+                visible: document.getElementById('product-visible').checked
+            };
+
+            if (editingProductIndex >= 0) {
+                products[editingProductIndex] = product;
+            } else {
+                products.push(product);
+            }
+
+            renderProducts();
+            closeProductModal();
+            markChanges();
+            showToast('Produit sauvegarde', 'success');
+        }
+
+        // Contact
+        function saveContact() {
+            contact = {
+                phone: document.getElementById('contact-phone').value,
+                mobile: document.getElementById('contact-mobile').value,
+                email: document.getElementById('contact-email').value,
+                address: document.getElementById('contact-address').value
+            };
+            markChanges();
+            showToast('Contact sauvegarde localement', 'success');
+        }
+
+        // Marges
+        function saveMarges() {
+            marges = {
+                or24k: { marge: parseInt(document.getElementById('marge-or24k').value) || 5 },
+                or18k: { marge: parseInt(document.getElementById('marge-or18k').value) || 5 },
+                or14k: { marge: parseInt(document.getElementById('marge-or14k').value) || 5 },
+                or9k: { marge: parseInt(document.getElementById('marge-or9k').value) || 8 },
+                pieces: { marge: parseInt(document.getElementById('marge-pieces').value) || 3 },
+                lingots: { marge: parseInt(document.getElementById('marge-lingots').value) || 2 },
+                argent925: { marge: parseInt(document.getElementById('marge-argent925').value) || 10 },
+                argent800: { marge: parseInt(document.getElementById('marge-argent800').value) || 12 }
+            };
+            markChanges();
+            showToast('Marges sauvegardees localement', 'success');
+        }
+
+        // Changes
+        function markChanges() {
+            hasChanges = true;
+            document.getElementById('status-bar').classList.add('has-changes');
+            document.getElementById('status-text').textContent = 'Modifications non publiees';
+            document.getElementById('status-text').classList.add('warning');
+            document.getElementById('status-actions').style.display = 'block';
+
+            // Save locally
+            localStorage.setItem(DATA_KEY, JSON.stringify({ products, contact, marges }));
+        }
+
+        // GitHub
+        async function testGitHub() {
+            const config = getConfig();
+            if (!config.token) {
+                showToast('Token GitHub non configure', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch(`https://api.github.com/repos/${config.owner}/${config.repo}`, {
+                    headers: {
+                        'Authorization': `token ${config.token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (response.ok) {
+                    showToast('Connexion GitHub reussie!', 'success');
+                } else {
+                    showToast('Erreur de connexion GitHub', 'error');
+                }
+            } catch (error) {
+                showToast('Erreur: ' + error.message, 'error');
+            }
+        }
+
+        async function publishChanges() {
+            const config = getConfig();
+            if (!config.token) {
+                showToast('Configurez GitHub dans l\'onglet Configuration', 'error');
+                document.querySelector('[data-tab="config"]').click();
+                return;
+            }
+
+            document.getElementById('status-text').textContent = 'Publication en cours...';
+
+            try {
+                // Publish products
+                await updateGitHubFile(config, 'data/produits.json', JSON.stringify({ produits: products }, null, 2), 'Mise a jour produits');
+
+                // Publish contact
+                await updateGitHubFile(config, 'data/contact.json', JSON.stringify(contact, null, 2), 'Mise a jour contact');
+
+                // Publish marges
+                await updateGitHubFile(config, 'data/marges.json', JSON.stringify(marges, null, 2), 'Mise a jour marges');
+
+                hasChanges = false;
+                document.getElementById('status-bar').classList.remove('has-changes');
+                document.getElementById('status-text').textContent = 'Publie avec succes!';
+                document.getElementById('status-text').classList.remove('warning');
+                document.getElementById('status-actions').style.display = 'none';
+                localStorage.removeItem(DATA_KEY);
+
+                showToast('Modifications publiees! Le site se met a jour...', 'success');
+            } catch (error) {
+                console.error('Erreur publication:', error);
+                document.getElementById('status-text').textContent = 'Erreur de publication';
+                showToast('Erreur: ' + error.message, 'error');
+            }
+        }
+
+        async function updateGitHubFile(config, path, content, message) {
+            const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}`;
+
+            // Get current file SHA
+            const getRes = await fetch(url, {
+                headers: {
+                    'Authorization': `token ${config.token}`,
+                    'Accept': 'application/vnd.github.v3+json'
+                }
+            });
+
+            let sha = null;
+            if (getRes.ok) {
+                const data = await getRes.json();
+                sha = data.sha;
+            }
+
+            // Update file
+            const body = {
+                message: message,
+                content: btoa(unescape(encodeURIComponent(content))),
+                branch: 'main'
+            };
+
+            if (sha) {
+                body.sha = sha;
+            }
+
+            const updateRes = await fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `token ${config.token}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            });
+
+            if (!updateRes.ok) {
+                const error = await updateRes.json();
+                throw new Error(error.message || 'Erreur GitHub');
+            }
+        }
+
+        // Toast
+        function showToast(message, type = 'success') {
+            const existing = document.querySelector('.toast');
+            if (existing) existing.remove();
+
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => toast.remove(), 3000);
+        }
+    </script>
 </body>
 </html>

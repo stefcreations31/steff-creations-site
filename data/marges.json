@@ -1,0 +1,10 @@
+{
+  "or24k": { "marge": 5 },
+  "or18k": { "marge": 5 },
+  "or14k": { "marge": 5 },
+  "or9k": { "marge": 8 },
+  "pieces": { "marge": 3 },
+  "lingots": { "marge": 2 },
+  "argent925": { "marge": 10 },
+  "argent800": { "marge": 12 }
+}

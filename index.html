@@ -4298,7 +4298,7 @@
 // Chargement dynamique des produits
 async function loadProducts() {
     try {
-        const response = await fetch('/_data/produits.json');
+        const response = await fetch('/data/produits.json');
         const data = await response.json();
         const container = document.getElementById('products-container');
 

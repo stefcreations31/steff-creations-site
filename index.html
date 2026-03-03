@@ -3256,7 +3256,7 @@
 
                 <div class="contact-detail">
                     <div class="contact-detail-label" data-translate="address">Adresse</div>
-                    <div class="contact-detail-value">
+                    <div class="contact-detail-value" id="contact-address">
                         Passage Grands Boulevards<br>
                         31000 Toulouse
                     </div>
@@ -3264,7 +3264,7 @@
 
                 <div class="contact-detail">
                     <div class="contact-detail-label" data-translate="phone">Telephone</div>
-                    <div class="contact-detail-value">
+                    <div class="contact-detail-value" id="contact-phones">
                         <a href="tel:0561229902">05 61 22 99 02</a><br>
                         <a href="tel:0612301718">06 12 30 17 18</a>
                     </div>
@@ -3272,7 +3272,7 @@
 
                 <div class="contact-detail">
                     <div class="contact-detail-label" data-translate="email">Email</div>
-                    <div class="contact-detail-value">
+                    <div class="contact-detail-value" id="contact-email">
                         <a href="mailto:stef.creations31@gmail.com">stef.creations31@gmail.com</a>
                     </div>
                 </div>
@@ -4347,8 +4347,44 @@ function getCategoryLabel(category) {
     return labels[category] || category;
 }
 
+// Charger les données de contact
+async function loadContact() {
+    try {
+        const response = await fetch('/data/contact.json?v=' + Date.now());
+        const data = await response.json();
+
+        // Mettre à jour l'adresse
+        const addressEl = document.getElementById('contact-address');
+        if (addressEl && data.address) {
+            addressEl.innerHTML = data.address.replace(', ', '<br>');
+        }
+
+        // Mettre à jour les téléphones
+        const phonesEl = document.getElementById('contact-phones');
+        if (phonesEl && (data.phone || data.mobile)) {
+            let phonesHtml = '';
+            if (data.phone) phonesHtml += `<a href="tel:${data.phone.replace(/\s/g, '')}">${data.phone}</a>`;
+            if (data.phone && data.mobile) phonesHtml += '<br>';
+            if (data.mobile) phonesHtml += `<a href="tel:${data.mobile.replace(/\s/g, '')}">${data.mobile}</a>`;
+            phonesEl.innerHTML = phonesHtml;
+        }
+
+        // Mettre à jour l'email
+        const emailEl = document.getElementById('contact-email');
+        if (emailEl && data.email) {
+            emailEl.innerHTML = `<a href="mailto:${data.email}">${data.email}</a>`;
+        }
+
+    } catch (error) {
+        console.error('Erreur chargement contact:', error);
+    }
+}
+
 // Charger les produits au démarrage
-document.addEventListener('DOMContentLoaded', loadProducts);
+document.addEventListener('DOMContentLoaded', () => {
+    loadProducts();
+    loadContact();
+});
 </script>
 </body>
 </html>

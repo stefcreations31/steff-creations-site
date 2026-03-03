@@ -683,10 +683,49 @@
         <main class="main">
             <!-- Section Produits -->
             <section class="section active" id="section-produits">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
                     <h2>Gestion des produits</h2>
                     <button class="btn btn-primary" onclick="openProductModal()">+ Ajouter un produit</button>
                 </div>
+
+                <!-- Filtres et recherche -->
+                <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                    <input type="text" id="search-products" placeholder="Rechercher un produit..." style="flex: 1; min-width: 200px; padding: 0.8rem; background: var(--noir-elevated); border: 1px solid #333; border-radius: 6px; color: var(--blanc);" oninput="filterProducts()">
+
+                    <select id="filter-category" style="padding: 0.8rem; background: var(--noir-elevated); border: 1px solid #333; border-radius: 6px; color: var(--blanc);" onchange="filterProducts()">
+                        <option value="all">Toutes les categories</option>
+                        <option value="bagues">Bagues</option>
+                        <option value="colliers">Colliers</option>
+                        <option value="chevalieres">Chevalieres</option>
+                        <option value="creations">Creations</option>
+                    </select>
+
+                    <select id="filter-visibility" style="padding: 0.8rem; background: var(--noir-elevated); border: 1px solid #333; border-radius: 6px; color: var(--blanc);" onchange="filterProducts()">
+                        <option value="all">Tous les statuts</option>
+                        <option value="visible">Visible</option>
+                        <option value="hidden">Cache</option>
+                    </select>
+                </div>
+
+                <!-- Compteurs -->
+                <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                    <div style="padding: 0.8rem 1.2rem; background: var(--noir-surface); border: 1px solid #222; border-radius: 6px;">
+                        <span style="color: var(--gris);">Total:</span> <span id="count-total" style="color: var(--or); font-weight: 600;">0</span>
+                    </div>
+                    <div style="padding: 0.8rem 1.2rem; background: var(--noir-surface); border: 1px solid #222; border-radius: 6px;">
+                        <span style="color: var(--gris);">Bagues:</span> <span id="count-bagues" style="color: var(--blanc); font-weight: 600;">0</span>
+                    </div>
+                    <div style="padding: 0.8rem 1.2rem; background: var(--noir-surface); border: 1px solid #222; border-radius: 6px;">
+                        <span style="color: var(--gris);">Colliers:</span> <span id="count-colliers" style="color: var(--blanc); font-weight: 600;">0</span>
+                    </div>
+                    <div style="padding: 0.8rem 1.2rem; background: var(--noir-surface); border: 1px solid #222; border-radius: 6px;">
+                        <span style="color: var(--gris);">Chevalieres:</span> <span id="count-chevalieres" style="color: var(--blanc); font-weight: 600;">0</span>
+                    </div>
+                    <div style="padding: 0.8rem 1.2rem; background: var(--noir-surface); border: 1px solid #222; border-radius: 6px;">
+                        <span style="color: var(--gris);">Creations:</span> <span id="count-creations" style="color: var(--blanc); font-weight: 600;">0</span>
+                    </div>
+                </div>
+
                 <div id="products-container" class="products-grid">
                     <div class="loading">
                         <div class="spinner"></div>
@@ -869,9 +908,25 @@
                 </div>
                 <div class="form-group">
                     <label>Image</label>
-                    <input type="text" id="product-image" placeholder="/images/nom-image.jpg">
+                    <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <input type="text" id="product-image" placeholder="/images/nom-image.jpg" style="flex: 1;">
+                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('image-upload').click()">Uploader</button>
+                        <input type="file" id="image-upload" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
+                    </div>
+                    <p style="font-size: 0.8rem; color: var(--gris); margin-bottom: 0.5rem;">
+                        Ou choisissez une image existante:
+                    </p>
+                    <div id="existing-images" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem; max-height: 150px; overflow-y: auto;">
+                        <!-- Images existantes seront affichees ici -->
+                    </div>
                     <div class="image-preview" id="image-preview">
                         <span class="image-preview-placeholder">Apercu de l'image</span>
+                    </div>
+                    <div id="upload-progress" style="display: none; margin-top: 0.5rem;">
+                        <div style="background: var(--noir-elevated); border-radius: 4px; height: 4px; overflow: hidden;">
+                            <div id="upload-progress-bar" style="background: var(--or); height: 100%; width: 0%; transition: width 0.3s;"></div>
+                        </div>
+                        <p id="upload-status" style="font-size: 0.8rem; color: var(--gris); margin-top: 0.3rem;">Upload en cours...</p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -1080,38 +1135,8 @@
 
         // ============ PRODUCTS ============
         function renderProducts() {
-            const container = document.getElementById('products-container');
-
-            if (products.length === 0) {
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <h3>Aucun produit</h3>
-                        <p>Cliquez sur "Ajouter un produit" pour commencer</p>
-                    </div>
-                `;
-                return;
-            }
-
-            container.innerHTML = products.map((product, index) => `
-                <div class="product-card">
-                    <div class="product-card-image">
-                        <img src="${product.image}" alt="${product.title}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><rect fill=%22%23222%22 width=%22200%22 height=%22200%22/><text fill=%22%23666%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22>Image</text></svg>'">
-                        <span class="visibility-badge ${product.visible ? 'visible' : 'hidden'}">
-                            ${product.visible ? 'Visible' : 'Cache'}
-                        </span>
-                    </div>
-                    <div class="product-card-body">
-                        <h3>${product.title}</h3>
-                        <p>${product.description || 'Pas de description'}</p>
-                        <div class="price">${product.price || 'Sur demande'}</div>
-                        <span class="badge">${product.badge}</span>
-                    </div>
-                    <div class="product-card-actions">
-                        <button class="btn btn-secondary" onclick="editProduct(${index})">Modifier</button>
-                        <button class="btn btn-danger" onclick="deleteProduct(${index})">Supprimer</button>
-                    </div>
-                </div>
-            `).join('');
+            updateProductCounts();
+            filterProducts();
         }
 
         function openProductModal(index = -1) {
@@ -1328,6 +1353,119 @@
             if (!updateRes.ok) {
                 const error = await updateRes.json();
                 throw new Error(error.message || 'Erreur GitHub');
+            }
+        }
+
+        // ============ FILTRES & RECHERCHE ============
+        function filterProducts() {
+            const search = document.getElementById('search-products').value.toLowerCase();
+            const category = document.getElementById('filter-category').value;
+            const visibility = document.getElementById('filter-visibility').value;
+
+            const filtered = products.filter(p => {
+                const matchSearch = !search || p.title.toLowerCase().includes(search) || (p.description && p.description.toLowerCase().includes(search));
+                const matchCategory = category === 'all' || p.category === category;
+                const matchVisibility = visibility === 'all' || (visibility === 'visible' && p.visible) || (visibility === 'hidden' && !p.visible);
+                return matchSearch && matchCategory && matchVisibility;
+            });
+
+            renderProductsFiltered(filtered);
+            updateProductCounts();
+        }
+
+        function renderProductsFiltered(filteredProducts) {
+            const container = document.getElementById('products-container');
+            if (filteredProducts.length === 0) {
+                container.innerHTML = `<div class="empty-state"><h3>Aucun produit trouve</h3></div>`;
+                return;
+            }
+            container.innerHTML = filteredProducts.map((product) => {
+                const index = products.indexOf(product);
+                return `
+                <div class="product-card" data-category="${product.category}">
+                    <div class="product-card-image">
+                        <img src="${product.image}" alt="${product.title}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><rect fill=%22%23222%22 width=%22200%22 height=%22200%22/><text fill=%22%23666%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22>Image</text></svg>'">
+                        <span class="visibility-badge ${product.visible ? 'visible' : 'hidden'}">
+                            ${product.visible ? 'Visible' : 'Cache'}
+                        </span>
+                    </div>
+                    <div class="product-card-body">
+                        <h3>${product.title}</h3>
+                        <p>${product.description || 'Pas de description'}</p>
+                        <div class="price">${product.price || 'Sur demande'}</div>
+                        <span class="badge">${product.badge}</span>
+                    </div>
+                    <div class="product-card-actions">
+                        <button class="btn btn-secondary" onclick="editProduct(${index})">Modifier</button>
+                        <button class="btn btn-danger" onclick="deleteProduct(${index})">Supprimer</button>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function updateProductCounts() {
+            document.getElementById('count-total').textContent = products.length;
+            document.getElementById('count-bagues').textContent = products.filter(p => p.category === 'bagues').length;
+            document.getElementById('count-colliers').textContent = products.filter(p => p.category === 'colliers').length;
+            document.getElementById('count-chevalieres').textContent = products.filter(p => p.category === 'chevalieres').length;
+            document.getElementById('count-creations').textContent = products.filter(p => p.category === 'creations').length;
+        }
+
+        // ============ UPLOAD IMAGE ============
+        async function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const config = getConfig();
+            if (!config.token) {
+                showToast('Configurez GitHub dans Configuration', 'error');
+                return;
+            }
+
+            const progressDiv = document.getElementById('upload-progress');
+            const progressBar = document.getElementById('upload-progress-bar');
+            const status = document.getElementById('upload-status');
+
+            progressDiv.style.display = 'block';
+            status.textContent = 'Upload en cours...';
+            progressBar.style.width = '30%';
+
+            try {
+                const reader = new FileReader();
+                reader.onload = async (e) => {
+                    const content = e.target.result.split(',')[1];
+                    const fileName = file.name.replace(/\s+/g, '_');
+                    const path = `images/${fileName}`;
+
+                    progressBar.style.width = '60%';
+                    const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}`;
+                    const response = await fetch(url, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${config.token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message: `Upload image ${fileName}`,
+                            content: content
+                        })
+                    });
+
+                    progressBar.style.width = '100%';
+                    if (response.ok) {
+                        document.getElementById('product-image').value = `/${path}`;
+                        updateImagePreview(`/${path}`);
+                        status.textContent = 'Upload reussi!';
+                        setTimeout(() => { progressDiv.style.display = 'none'; }, 2000);
+                        showToast('Image uploadee avec succes!', 'success');
+                    } else {
+                        throw new Error('Erreur upload');
+                    }
+                };
+                reader.readAsDataURL(file);
+            } catch (error) {
+                progressDiv.style.display = 'none';
+                showToast('Erreur upload: ' + error.message, 'error');
             }
         }
 

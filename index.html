@@ -2098,6 +2098,114 @@
         .hidden { display: none !important; }
 
         /* CONTACT */
+        /* ======================================== */
+        /* SECTION HISTOIRE */
+        /* ======================================== */
+        .histoire-section {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, var(--noir-profond) 0%, var(--noir) 50%, var(--noir-profond) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .histoire-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--or), transparent);
+        }
+        .histoire-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+            align-items: start;
+        }
+        .histoire-text {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .histoire-intro {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--or-clair);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        .histoire-text p {
+            font-size: 1.1rem;
+            color: var(--gris);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+        .histoire-photo {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(201, 162, 39, 0.15);
+        }
+        .histoire-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(30%) sepia(20%);
+            transition: all 0.5s ease;
+        }
+        .histoire-photo:hover img {
+            filter: grayscale(0%) sepia(0%);
+            transform: scale(1.05);
+        }
+        .histoire-photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: var(--blanc);
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            text-align: center;
+        }
+        .histoire-highlights {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .highlight-card {
+            background: var(--noir-surface);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(201, 162, 39, 0.1);
+            transition: all 0.3s ease;
+        }
+        .highlight-card:hover {
+            border-color: var(--or);
+            transform: translateX(10px);
+        }
+        .highlight-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .highlight-card h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--or);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .highlight-card p {
+            color: var(--gris);
+            font-size: 0.95rem;
+        }
+        @media (max-width: 968px) {
+            .histoire-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
         .contact-section {
             background: var(--noir);
             position: relative;
@@ -3244,6 +3352,60 @@
     </section>
 
     <!-- Contact -->
+    <!-- SECTION HISTOIRE -->
+    <section class="section histoire-section" id="histoire">
+        <div class="container">
+            <span class="section-eyebrow" data-translate="history">Notre Histoire</span>
+            <h2 class="section-title" data-translate="history_title">Une Affaire de Famille</h2>
+            <div class="histoire-content">
+                <div class="histoire-text">
+                    <p class="histoire-intro" id="histoire-intro">
+                        Depuis plusieurs générations, notre famille perpétue l'art de la joaillerie avec passion et savoir-faire.
+                        Notre histoire commence il y a des décennies, lorsque nos ancêtres ont posé les premières pierres de ce qui
+                        deviendrait une véritable institution toulousaine.
+                    </p>
+                    <p id="histoire-p1">
+                        Installés au cœur de Toulouse, dans le prestigieux Passage des Grands Boulevards, nous avons su préserver
+                        les techniques traditionnelles tout en embrassant la modernité. Chaque bijou qui sort de notre atelier
+                        porte en lui l'héritage de cette longue tradition familiale.
+                    </p>
+                    <p id="histoire-p2">
+                        Aujourd'hui, nous continuons d'honorer cet héritage en offrant à nos clients des créations uniques,
+                        alliant savoir-faire ancestral et design contemporain. Notre engagement reste le même : créer des bijoux
+                        d'exception qui traverseront les générations.
+                    </p>
+
+                    <div class="histoire-highlights">
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🏛️</div>
+                            <h3>Tradition</h3>
+                            <p>Plus de 50 ans d'expertise familiale</p>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">✨</div>
+                            <h3>Excellence</h3>
+                            <p>Savoir-faire artisanal d'exception</p>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">❤️</div>
+                            <h3>Passion</h3>
+                            <p>L'amour du métier transmis de génération en génération</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="histoire-photo reveal">
+                        <img id="histoire-photo" src="/images/histoire-placeholder.jpg" alt="Notre histoire familiale" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 600%22><rect fill=%22%23111%22 width=%22400%22 height=%22600%22/><text fill=%22%23C9A227%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Photo Histoire</text></svg>'">
+                        <div class="histoire-photo-caption" id="histoire-caption">
+                            Fondateur de la maison
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="section contact-section" id="contact">
         <div class="contact-container">
             <div class="contact-info reveal-left">
@@ -4380,10 +4542,37 @@ async function loadContact() {
     }
 }
 
+// Charger l'histoire
+async function loadHistoire() {
+    try {
+        const response = await fetch('/data/histoire.json?v=' + Date.now());
+        const data = await response.json();
+
+        if (document.getElementById('histoire-intro')) {
+            document.getElementById('histoire-intro').textContent = data.intro || '';
+        }
+        if (document.getElementById('histoire-p1')) {
+            document.getElementById('histoire-p1').textContent = data.paragraphe1 || '';
+        }
+        if (document.getElementById('histoire-p2')) {
+            document.getElementById('histoire-p2').textContent = data.paragraphe2 || '';
+        }
+        if (document.getElementById('histoire-photo')) {
+            document.getElementById('histoire-photo').src = data.photo || '/images/histoire-placeholder.jpg';
+        }
+        if (document.getElementById('histoire-caption')) {
+            document.getElementById('histoire-caption').textContent = data.photo_caption || '';
+        }
+    } catch (error) {
+        console.error('Erreur chargement histoire:', error);
+    }
+}
+
 // Charger les produits au démarrage
 document.addEventListener('DOMContentLoaded', () => {
     loadProducts();
     loadContact();
+    loadHistoire();
 });
 </script>
 </body>

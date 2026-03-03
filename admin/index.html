@@ -676,6 +676,7 @@
         <nav class="tabs">
             <div class="tab active" data-tab="produits">Produits</div>
             <div class="tab" data-tab="contact">Contact</div>
+            <div class="tab" data-tab="histoire">Histoire</div>
             <div class="tab" data-tab="marges">Marges Or</div>
             <div class="tab" data-tab="config">Configuration</div>
         </nav>
@@ -755,6 +756,42 @@
                         <input type="text" id="contact-address" placeholder="Adresse complete">
                     </div>
                     <button class="btn btn-primary" onclick="saveContact()">Sauvegarder</button>
+                </div>
+            </section>
+
+            <!-- Section Histoire -->
+            <section class="section" id="section-histoire">
+                <h2>Histoire de la Boutique</h2>
+                <p style="color: var(--gris); margin: 1rem 0;">Racontez l'histoire familiale de votre bijouterie</p>
+                <div class="config-card" style="max-width: 800px; margin-top: 1.5rem;">
+                    <div class="form-group">
+                        <label>Introduction (texte en italique or)</label>
+                        <textarea id="histoire-intro" rows="3" placeholder="Texte d'introduction..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Paragraphe 1</label>
+                        <textarea id="histoire-p1" rows="4" placeholder="Premier paragraphe..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Paragraphe 2</label>
+                        <textarea id="histoire-p2" rows="4" placeholder="Deuxieme paragraphe..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Photo (photo du fondateur ou de la boutique)</label>
+                        <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <input type="text" id="histoire-photo" placeholder="/images/histoire.jpg" style="flex: 1;">
+                            <button type="button" class="btn btn-secondary" onclick="document.getElementById('histoire-photo-upload').click()">Uploader Photo</button>
+                            <input type="file" id="histoire-photo-upload" accept="image/*" style="display: none;" onchange="handleHistoirePhotoUpload(event)">
+                        </div>
+                        <div class="image-preview" id="histoire-photo-preview" style="margin-top: 0.5rem;">
+                            <span class="image-preview-placeholder">Apercu de la photo</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Legende de la photo</label>
+                        <input type="text" id="histoire-caption" placeholder="Ex: Fondateur de la maison">
+                    </div>
+                    <button class="btn btn-primary" onclick="saveHistoire()">Sauvegarder</button>
                 </div>
             </section>
 
@@ -1033,6 +1070,7 @@
         let products = [];
         let contact = {};
         let marges = {};
+        let histoire = {};
         let hasChanges = false;
         let editingProductIndex = -1;
 
@@ -1126,6 +1164,17 @@
                 document.getElementById('marge-lingots').value = marges.lingots?.marge || 2;
                 document.getElementById('marge-argent925').value = marges.argent925?.marge || 10;
                 document.getElementById('marge-argent800').value = marges.argent800?.marge || 12;
+
+                const histoireRes = await fetch('/data/histoire.json');
+                histoire = await histoireRes.json();
+                document.getElementById('histoire-intro').value = histoire.intro || '';
+                document.getElementById('histoire-p1').value = histoire.paragraphe1 || '';
+                document.getElementById('histoire-p2').value = histoire.paragraphe2 || '';
+                document.getElementById('histoire-photo').value = histoire.photo || '';
+                document.getElementById('histoire-caption').value = histoire.photo_caption || '';
+                if (histoire.photo) {
+                    document.getElementById('histoire-photo-preview').innerHTML = `<img src="${histoire.photo}" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
+                }
 
             } catch (error) {
                 console.error('Erreur chargement:', error);
@@ -1298,6 +1347,7 @@
                 await updateGitHubFile(config, 'data/produits.json', JSON.stringify({ produits: products }, null, 2), 'Mise a jour produits');
                 await updateGitHubFile(config, 'data/contact.json', JSON.stringify(contact, null, 2), 'Mise a jour contact');
                 await updateGitHubFile(config, 'data/marges.json', JSON.stringify(marges, null, 2), 'Mise a jour marges');
+                await updateGitHubFile(config, 'data/histoire.json', JSON.stringify(histoire, null, 2), 'Mise a jour histoire');
 
                 hasChanges = false;
                 document.getElementById('status-bar').classList.remove('has-changes');
@@ -1409,6 +1459,65 @@
             document.getElementById('count-colliers').textContent = products.filter(p => p.category === 'colliers').length;
             document.getElementById('count-chevalieres').textContent = products.filter(p => p.category === 'chevalieres').length;
             document.getElementById('count-creations').textContent = products.filter(p => p.category === 'creations').length;
+        }
+
+        // ============ HISTOIRE ============
+        function saveHistoire() {
+            histoire = {
+                intro: document.getElementById('histoire-intro').value,
+                paragraphe1: document.getElementById('histoire-p1').value,
+                paragraphe2: document.getElementById('histoire-p2').value,
+                photo: document.getElementById('histoire-photo').value,
+                photo_caption: document.getElementById('histoire-caption').value
+            };
+            markChanges();
+            showToast('Histoire sauvegardee localement', 'success');
+        }
+
+        async function handleHistoirePhotoUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const config = getConfig();
+            if (!config.token) {
+                showToast('Configurez GitHub dans Configuration', 'error');
+                return;
+            }
+
+            showToast('Upload de la photo en cours...', 'success');
+
+            try {
+                const reader = new FileReader();
+                reader.onload = async (e) => {
+                    const content = e.target.result.split(',')[1];
+                    const fileName = 'histoire-' + file.name.replace(/\s+/g, '_');
+                    const path = `images/${fileName}`;
+
+                    const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}`;
+                    const response = await fetch(url, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${config.token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message: `Upload photo histoire ${fileName}`,
+                            content: content
+                        })
+                    });
+
+                    if (response.ok) {
+                        document.getElementById('histoire-photo').value = `/${path}`;
+                        document.getElementById('histoire-photo-preview').innerHTML = `<img src="/${path}" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
+                        showToast('Photo uploadee avec succes!', 'success');
+                    } else {
+                        throw new Error('Erreur upload');
+                    }
+                };
+                reader.readAsDataURL(file);
+            } catch (error) {
+                showToast('Erreur upload: ' + error.message, 'error');
+            }
         }
 
         // ============ UPLOAD IMAGE ============

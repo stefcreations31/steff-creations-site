@@ -99,16 +99,6 @@
       "badge": "Best-seller",
       "description": "Chevaliere classique en or 18 carats.",
       "visible": true
-    },
-    {
-      "id": "11",
-      "title": "Collier Chaine",
-      "image": "/IMG_2241.jpeg",
-      "category": "colliers",
-      "price": "1 200 EUR",
-      "badge": "Nouveau",
-      "description": "Chaine en or 18 carats, maille contemporaine.",
-      "visible": true
     }
   ]
 }

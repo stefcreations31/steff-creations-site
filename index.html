@@ -3511,7 +3511,7 @@
         // Charger les marges depuis le fichier JSON
         async function loadMarges() {
             try {
-                const response = await fetch('/_data/marges.json');
+                const response = await fetch('/data/marges.json?v=' + Date.now());
                 if (response.ok) {
                     MARGES = await response.json();
                     console.log('Marges chargees:', MARGES);

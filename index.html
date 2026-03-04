@@ -3396,7 +3396,7 @@
 
                 <div>
                     <div class="histoire-photo reveal">
-                        <img id="histoire-photo" src="/images/histoire-placeholder.jpg" alt="Notre histoire familiale" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 600%22><rect fill=%22%23111%22 width=%22400%22 height=%22600%22/><text fill=%22%23C9A227%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Photo Histoire</text></svg>'">
+                        <img id="histoire-photo" src="./images/histoire-placeholder.jpg" alt="Notre histoire familiale" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 600%22><rect fill=%22%23111%22 width=%22400%22 height=%22600%22/><text fill=%22%23C9A227%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Photo Histoire</text></svg>'">
                         <div class="histoire-photo-caption" id="histoire-caption">
                             Fondateur de la maison
                         </div>
@@ -3673,7 +3673,7 @@
         // Charger les marges depuis le fichier JSON
         async function loadMarges() {
             try {
-                const response = await fetch('/data/marges.json?v=' + Date.now());
+                const response = await fetch('./data/marges.json?v=' + Date.now());
                 if (response.ok) {
                     MARGES = await response.json();
                     console.log('Marges chargees:', MARGES);
@@ -4460,7 +4460,7 @@
 // Chargement dynamique des produits
 async function loadProducts() {
     try {
-        const response = await fetch('/data/produits.json?v=' + Date.now());
+        const response = await fetch('./data/produits.json?v=' + Date.now());
         const data = await response.json();
         const container = document.getElementById('products-container');
 
@@ -4474,7 +4474,7 @@ async function loadProducts() {
             .map(product => `
                 <div class="product-card reveal" data-category="${product.category}">
                     <div class="product-image" onclick="openLightbox('${product.image.replace('/', '')}')">
-                        <img src="${product.image}" alt="${product.title}" loading="lazy">
+                        <img src=".${product.image}" alt="${product.title}" loading="lazy">
                         <span class="product-badge">${product.badge}</span>
                         <div class="product-overlay">
                             <button class="product-overlay-btn">Voir en grand</button>
@@ -4512,7 +4512,7 @@ function getCategoryLabel(category) {
 // Charger les données de contact
 async function loadContact() {
     try {
-        const response = await fetch('/data/contact.json?v=' + Date.now());
+        const response = await fetch('./data/contact.json?v=' + Date.now());
         const data = await response.json();
 
         // Mettre à jour l'adresse
@@ -4545,7 +4545,7 @@ async function loadContact() {
 // Charger l'histoire
 async function loadHistoire() {
     try {
-        const response = await fetch('/data/histoire.json?v=' + Date.now());
+        const response = await fetch('./data/histoire.json?v=' + Date.now());
         const data = await response.json();
 
         if (document.getElementById('histoire-intro')) {
@@ -4558,7 +4558,8 @@ async function loadHistoire() {
             document.getElementById('histoire-p2').textContent = data.paragraphe2 || '';
         }
         if (document.getElementById('histoire-photo')) {
-            document.getElementById('histoire-photo').src = data.photo || '/images/histoire-placeholder.jpg';
+            const photoPath = data.photo ? (data.photo.startsWith('/') ? '.' + data.photo : data.photo) : './images/histoire-placeholder.jpg';
+            document.getElementById('histoire-photo').src = photoPath;
         }
         if (document.getElementById('histoire-caption')) {
             document.getElementById('histoire-caption').textContent = data.photo_caption || '';

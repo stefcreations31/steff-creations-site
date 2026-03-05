@@ -4473,7 +4473,7 @@ async function loadProducts() {
             .filter(p => p.visible)
             .map(product => `
                 <div class="product-card reveal" data-category="${product.category}">
-                    <div class="product-image" onclick="openLightbox('${product.image.replace('/', '')}')">
+                    <div class="product-image" onclick="openLightbox('.${product.image}')">
                         <img src=".${product.image}" alt="${product.title}" loading="lazy">
                         <span class="product-badge">${product.badge}</span>
                         <div class="product-overlay">

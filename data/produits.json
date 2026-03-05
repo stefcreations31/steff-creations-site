@@ -5,7 +5,7 @@
       "title": "Bague Emeraude Coeur",
       "image": "/IMG_2231.jpeg",
       "category": "bagues",
-      "price": "Sur demande",
+      "price": "4 540 EUR",
       "badge": "Piece Unique",
       "description": "Or jaune 18 carats, emeraude taille coeur, pave de diamants.",
       "visible": true
@@ -31,11 +31,21 @@
       "visible": true
     },
     {
+      "id": "4",
+      "title": "Bague Pavee Diamants",
+      "image": "/IMG_2234.jpeg",
+      "category": "bagues",
+      "price": "3 200 EUR",
+      "badge": "Exclusif",
+      "description": "Or blanc 18 carats, pave de diamants brillants.",
+      "visible": true
+    },
+    {
       "id": "5",
       "title": "Collier Solitaire",
       "image": "/IMG_2235.jpeg",
-      "category": "bagues",
-      "price": "Sur demande",
+      "category": "colliers",
+      "price": "2 800 EUR",
       "badge": "Elegant",
       "description": "Or jaune 18 carats avec diamant solitaire.",
       "visible": true
@@ -55,7 +65,7 @@
       "title": "Pendentif Or",
       "image": "/IMG_2237.jpeg",
       "category": "colliers",
-      "price": "Sur demande",
+      "price": "1 950 EUR",
       "badge": "Raffine",
       "description": "Pendentif en or 18 carats, finition polie.",
       "visible": true
@@ -65,7 +75,7 @@
       "title": "Bague Cocktail",
       "image": "/IMG_2238.jpeg",
       "category": "bagues",
-      "price": "Sur demande",
+      "price": "3 800 EUR",
       "badge": "Moderne",
       "description": "Bague cocktail or 18 carats avec pierres precieuses.",
       "visible": true
@@ -84,8 +94,8 @@
       "id": "10",
       "title": "Chevaliere Classique",
       "image": "/IMG_2240.jpeg",
-      "category": "colliers",
-      "price": "Sur demande",
+      "category": "chevalieres",
+      "price": "2 400 EUR",
       "badge": "Best-seller",
       "description": "Chevaliere classique en or 18 carats.",
       "visible": true
@@ -95,7 +105,7 @@
       "title": "Collier Chaine",
       "image": "/IMG_2241.jpeg",
       "category": "colliers",
-      "price": "Sur demande",
+      "price": "1 200 EUR",
       "badge": "Nouveau",
       "description": "Chaine en or 18 carats, maille contemporaine.",
       "visible": true

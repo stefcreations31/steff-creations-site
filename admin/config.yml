@@ -11,7 +11,7 @@ collections:
     files:
       - label: "Produits"
         name: "produits"
-        file: "_data/produits.json"
+        file: "data/produits.json"
         fields:
           - label: "Liste des produits"
             name: "produits"
@@ -29,7 +29,7 @@ collections:
 
       - label: "Informations de contact"
         name: "contact"
-        file: "_data/contact.json"
+        file: "data/contact.json"
         fields:
           - {label: "Telephone fixe", name: "phone", widget: "string"}
           - {label: "Telephone mobile", name: "mobile", widget: "string"}
@@ -38,7 +38,7 @@ collections:
 
       - label: "Marges Rachat d'Or"
         name: "marges"
-        file: "_data/marges.json"
+        file: "data/marges.json"
         fields:
           - label: "Or 24 carats (999)"
             name: "or24k"

@@ -2517,14 +2517,15 @@
                 padding: 0 1rem;
             }
             .category-btn {
-                padding: 0.8rem 1rem;
-                min-width: 80px;
+                padding: 1rem 1.2rem;
+                min-width: 90px;
+                min-height: 48px;
             }
             .category-icon {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
             .category-btn span:last-child {
-                font-size: 0.65rem;
+                font-size: 0.7rem;
             }
 
             /* Boutique - Products Grid mobile */
@@ -2702,9 +2703,9 @@
                 font-size: 0.75rem;
             }
             .result-display { padding: 2rem; }
-            .result-label { font-size: 0.6rem; }
-            .result-amount { font-size: 2.8rem; }
-            .result-note { font-size: 0.7rem; }
+            .result-label { font-size: 0.7rem; }
+            .result-amount { font-size: 3.5rem; }
+            .result-note { font-size: 0.75rem; }
 
             /* FAQ */
             .faq-container { padding: 0; }
@@ -2743,10 +2744,17 @@
             .footer-tagline { font-size: 0.85rem; margin-bottom: 2rem; }
             .footer-links {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 1.2rem;
                 margin-bottom: 2rem;
             }
-            .footer-links a { font-size: 0.85rem; }
+            .footer-links a {
+                font-size: 0.9rem;
+                padding: 0.5rem 0;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
             .footer-copy {
                 font-size: 0.65rem;
                 padding-top: 2rem;
@@ -3275,6 +3283,9 @@
                 <div class="result-display" id="resultBox">
                     <div class="result-label" data-translate="buyback_estimate">Estimation de Rachat</div>
                     <div class="result-amount" id="resultAmount">0 EUR</div>
+                    <div class="result-breakdown" id="resultBreakdown" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(201,162,39,0.2); font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.8;">
+                        <!-- Détail du calcul sera inséré ici par JavaScript -->
+                    </div>
                     <div class="result-note" data-translate="estimate_note">
                         Estimation indicative basee sur le cours actuel.<br>
                         Prix definitif confirme apres expertise en boutique.
@@ -3744,10 +3755,13 @@
 
         function calculate() {
             let amount = 0;
+            let detailHTML = '';
+
             if (currentType === 'bijou') {
                 const purity = parseFloat(document.getElementById('carat').value);
                 const weight = parseFloat(document.getElementById('weight').value);
                 if (!weight || weight <= 0) return alert('Veuillez entrer un poids valide');
+                if (weight > 10000) return alert('Poids maximum : 10 kg');
 
                 // Determiner la marge selon la purete
                 let marge = MARGES.or18k.marge;
@@ -3757,7 +3771,24 @@
                 else marge = MARGES.or9k.marge;
 
                 const prixOr = getPrixAvecMarge(GOLD_SPOT_PRICE, marge);
+                const prixSpot = GOLD_SPOT_PRICE;
+                const subtotal = weight * prixSpot * purity;
                 amount = weight * prixOr * purity;
+
+                // Détail du calcul (SANS révéler les marges)
+                detailHTML = `
+                    <div style="text-align: left; max-width: 400px; margin: 0 auto;">
+                        <div style="margin-bottom: 0.5rem;"><strong style="color: var(--or);">Détail du calcul :</strong></div>
+                        <div>Cours de référence : <strong>${prixSpot.toFixed(2)} EUR/g</strong></div>
+                        <div>Pureté : <strong>${(purity * 1000).toFixed(0)}/1000</strong> (${(purity * 100).toFixed(1)}%)</div>
+                        <div>Poids : <strong>${weight.toFixed(2)}g</strong></div>
+                        <div style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid rgba(201,162,39,0.2);">
+                            <div style="font-size: 0.9rem; color: var(--or-clair);">
+                                Prix de rachat appliqué : ${prixOr.toFixed(2)} EUR/g
+                            </div>
+                        </div>
+                    </div>
+                `;
             } else if (currentType === 'piece') {
                 const sel = document.getElementById('pieceType');
                 const opt = sel.options[sel.selectedIndex];
@@ -3784,6 +3815,7 @@
             document.getElementById('resultAmount').textContent = new Intl.NumberFormat('fr-FR', {
                 style: 'currency', currency: 'EUR', minimumFractionDigits: 0
             }).format(amount);
+            document.getElementById('resultBreakdown').innerHTML = detailHTML;
             document.getElementById('resultBox').classList.add('show');
         }
 

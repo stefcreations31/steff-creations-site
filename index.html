@@ -4490,7 +4490,9 @@ async function loadProducts() {
             `).join('');
 
         // Réinitialiser les animations reveal
-        initRevealAnimations();
+        if (typeof initRevealAnimations === 'function') {
+            initRevealAnimations();
+        }
 
     } catch (error) {
         console.error('Erreur chargement produits:', error);

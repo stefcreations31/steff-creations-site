@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Placeholder Generator</title>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Fond dégradé or/noir
+        const gradient = ctx.createLinearGradient(0, 0, 400, 400);
+        gradient.addColorStop(0, '#1a1a1a');
+        gradient.addColorStop(0.5, '#2a2a2a');
+        gradient.addColorStop(1, '#1a1a1a');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 400, 400);
+        
+        // Bordure dorée
+        ctx.strokeStyle = '#C9A227';
+        ctx.lineWidth = 3;
+        ctx.strokeRect(20, 20, 360, 360);
+        
+        // Logo diamant SVG simple
+        ctx.fillStyle = '#C9A227';
+        ctx.beginPath();
+        ctx.moveTo(200, 120);
+        ctx.lineTo(240, 160);
+        ctx.lineTo(220, 220);
+        ctx.lineTo(180, 220);
+        ctx.lineTo(160, 160);
+        ctx.closePath();
+        ctx.fill();
+        
+        // Texte
+        ctx.fillStyle = '#C9A227';
+        ctx.font = 'italic 18px Georgia';
+        ctx.textAlign = 'center';
+        ctx.fillText('Stef Créations', 200, 270);
+        ctx.font = '14px Arial';
+        ctx.fillStyle = '#888';
+        ctx.fillText('Photo à venir', 200, 300);
+    </script>
+</body>
+</html>

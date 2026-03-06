@@ -1,0 +1,114 @@
+{
+  "produits": [
+    {
+      "id": "1",
+      "title": "Bague Emeraude Coeur",
+      "image": "/IMG_2231.jpeg",
+      "category": "bagues",
+      "price": "4 540 EUR",
+      "badge": "Piece Unique",
+      "description": "Or jaune 18 carats, emeraude taille coeur, pave de diamants.",
+      "visible": true
+    },
+    {
+      "id": "2",
+      "title": "Creation Artisanale",
+      "image": "/IMG_2232.jpeg",
+      "category": "creations",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Piece unique realisee a la main dans notre atelier.",
+      "visible": true
+    },
+    {
+      "id": "3",
+      "title": "Bijou d'Exception",
+      "image": "/IMG_2233.jpeg",
+      "category": "creations",
+      "price": "Sur demande",
+      "badge": "Artisanal",
+      "description": "Or 18 carats travaille selon les techniques traditionnelles.",
+      "visible": true
+    },
+    {
+      "id": "4",
+      "title": "Bague Pavee Diamants",
+      "image": "/IMG_2234.jpeg",
+      "category": "bagues",
+      "price": "3 200 EUR",
+      "badge": "Exclusif",
+      "description": "Or blanc 18 carats, pave de diamants brillants.",
+      "visible": true
+    },
+    {
+      "id": "5",
+      "title": "Collier Solitaire",
+      "image": "/IMG_2235.jpeg",
+      "category": "colliers",
+      "price": "2 800 EUR",
+      "badge": "Elegant",
+      "description": "Or jaune 18 carats avec diamant solitaire.",
+      "visible": true
+    },
+    {
+      "id": "6",
+      "title": "Chevaliere Tete de Cheval",
+      "image": "/IMG_2236.jpeg",
+      "category": "chevalieres",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Chevaliere en or 18 carats sculptee a la main.",
+      "visible": true
+    },
+    {
+      "id": "7",
+      "title": "Pendentif Or",
+      "image": "/IMG_2237.jpeg",
+      "category": "colliers",
+      "price": "1 950 EUR",
+      "badge": "Raffine",
+      "description": "Pendentif en or 18 carats, finition polie.",
+      "visible": true
+    },
+    {
+      "id": "8",
+      "title": "Bague Cocktail",
+      "image": "/IMG_2238.jpeg",
+      "category": "bagues",
+      "price": "3 800 EUR",
+      "badge": "Moderne",
+      "description": "Bague cocktail or 18 carats avec pierres precieuses.",
+      "visible": true
+    },
+    {
+      "id": "9",
+      "title": "Creation Sur Mesure",
+      "image": "/IMG_2239.jpeg",
+      "category": "creations",
+      "price": "Sur demande",
+      "badge": "Signature",
+      "description": "Piece realisee sur mesure selon vos envies.",
+      "visible": true
+    },
+    {
+      "id": "10",
+      "title": "Chevaliere Classique",
+      "image": "/IMG_2240.jpeg",
+      "category": "chevalieres",
+      "price": "2 400 EUR",
+      "badge": "Best-seller",
+      "description": "Chevaliere classique en or 18 carats.",
+      "visible": true
+    },
+    {
+      "id": "11",
+      "title": "Collier Chaine",
+      "image": "/IMG_2241.jpeg",
+      "category": "colliers",
+      "price": "1 200 EUR",
+      "badge": "Nouveau",
+      "description": "Chaine en or 18 carats, maille contemporaine.",
+      "visible": true
+    }
+  ]
+}

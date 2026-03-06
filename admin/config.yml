@@ -21,7 +21,7 @@ collections:
               - {label: "ID", name: "id", widget: "string", hint: "Identifiant unique (ex: 1, 2, 3...)"}
               - {label: "Nom du produit", name: "title", widget: "string"}
               - {label: "Image", name: "image", widget: "image"}
-              - {label: "Categorie", name: "category", widget: "select", options: ["bagues", "colliers", "chevalieres", "creations"]}
+              - {label: "Categorie", name: "category", widget: "select", options: ["bagues", "colliers", "chevalieres", "bracelets", "boucles", "creations"]}
               - {label: "Prix", name: "price", widget: "string", default: "Sur demande"}
               - {label: "Badge", name: "badge", widget: "select", options: ["Piece Unique", "Exclusif", "Artisanal", "Elegant", "Precieux", "Raffine", "Moderne", "Best-seller", "Signature", "Nouveau"]}
               - {label: "Description", name: "description", widget: "text", required: false}

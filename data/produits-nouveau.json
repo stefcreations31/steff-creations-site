@@ -3,7 +3,7 @@
     {
       "id": "1",
       "title": "Solitaire Diamant Classique",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-bague.jpg",
       "category": "bagues",
       "price": "Sur devis",
       "badge": "Best-seller",
@@ -13,7 +13,7 @@
     {
       "id": "2",
       "title": "Alliance Or Blanc Moderne",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-alliance.jpg",
       "category": "bagues",
       "price": "Sur devis",
       "badge": "Nouveau",
@@ -23,7 +23,7 @@
     {
       "id": "3",
       "title": "Bague Trilogie Diamants",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-trilogie.jpg",
       "category": "bagues",
       "price": "Sur devis",
       "badge": "Exclusif",
@@ -33,7 +33,7 @@
     {
       "id": "4",
       "title": "Bague Émeraude Vintage",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-emeraude.jpg",
       "category": "bagues",
       "price": "Sur devis",
       "badge": "Piece Unique",
@@ -43,7 +43,7 @@
     {
       "id": "5",
       "title": "Bague Pavée Éternité",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-eternite.jpg",
       "category": "bagues",
       "price": "Sur devis",
       "badge": "Elegant",
@@ -53,7 +53,7 @@
     {
       "id": "6",
       "title": "Bague Jonc Or Jaune",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-jonc.jpg",
       "category": "bagues",
       "price": "Sur devis",
       "badge": "Moderne",
@@ -63,7 +63,7 @@
     {
       "id": "7",
       "title": "Bague Cocktail Pierres Précieuses",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-cocktail.jpg",
       "category": "bagues",
       "price": "Sur devis",
       "badge": "Signature",
@@ -73,7 +73,7 @@
     {
       "id": "8",
       "title": "Bague Toi et Moi",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-toi-moi.jpg",
       "category": "bagues",
       "price": "Sur devis",
       "badge": "Romantique",
@@ -83,7 +83,7 @@
     {
       "id": "9",
       "title": "Pendentif Solitaire Diamant",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-pendentif-solitaire.jpg",
       "category": "colliers",
       "price": "Sur devis",
       "badge": "Best-seller",
@@ -93,7 +93,7 @@
     {
       "id": "10",
       "title": "Collier Chaîne Maille Forçat",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-chaine.jpg",
       "category": "colliers",
       "price": "Sur devis",
       "badge": "Classique",
@@ -103,7 +103,7 @@
     {
       "id": "11",
       "title": "Collier Perles Akoya",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-perles.jpg",
       "category": "colliers",
       "price": "Sur devis",
       "badge": "Precieux",
@@ -113,7 +113,7 @@
     {
       "id": "12",
       "title": "Pendentif Cœur Pavé",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-coeur.jpg",
       "category": "colliers",
       "price": "Sur devis",
       "badge": "Romantique",
@@ -123,7 +123,7 @@
     {
       "id": "13",
       "title": "Collier Ras de Cou Diamants",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-ras-cou.jpg",
       "category": "colliers",
       "price": "Sur devis",
       "badge": "Exclusif",
@@ -133,7 +133,7 @@
     {
       "id": "14",
       "title": "Pendentif Croix Or",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-croix.jpg",
       "category": "colliers",
       "price": "Sur devis",
       "badge": "Spirituel",
@@ -143,7 +143,7 @@
     {
       "id": "15",
       "title": "Chevalière Homme Or Massif",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-chevaliere-homme.jpg",
       "category": "chevalieres",
       "price": "Sur devis",
       "badge": "Signature",
@@ -153,7 +153,7 @@
     {
       "id": "16",
       "title": "Chevalière Femme Armoiries",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-chevaliere-femme.jpg",
       "category": "chevalieres",
       "price": "Sur devis",
       "badge": "Heritage",
@@ -163,7 +163,7 @@
     {
       "id": "17",
       "title": "Chevalière Moderne Carrée",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-chevaliere-moderne.jpg",
       "category": "chevalieres",
       "price": "Sur devis",
       "badge": "Moderne",
@@ -173,7 +173,7 @@
     {
       "id": "18",
       "title": "Chevalière Gravée Personnalisable",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-chevaliere-gravure.jpg",
       "category": "chevalieres",
       "price": "Sur devis",
       "badge": "Sur Mesure",
@@ -183,7 +183,7 @@
     {
       "id": "19",
       "title": "Bracelet Rivière Diamants",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-riviere.jpg",
       "category": "bracelets",
       "price": "Sur devis",
       "badge": "Luxe",
@@ -193,7 +193,7 @@
     {
       "id": "20",
       "title": "Bracelet Jonc Or Rigide",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-jonc-bracelet.jpg",
       "category": "bracelets",
       "price": "Sur devis",
       "badge": "Moderne",
@@ -203,7 +203,7 @@
     {
       "id": "21",
       "title": "Bracelet Chaîne Maille Marine",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-maille-marine.jpg",
       "category": "bracelets",
       "price": "Sur devis",
       "badge": "Classique",
@@ -213,7 +213,7 @@
     {
       "id": "22",
       "title": "Bracelet Tennis",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-tennis.jpg",
       "category": "bracelets",
       "price": "Sur devis",
       "badge": "Élégant",
@@ -223,7 +223,7 @@
     {
       "id": "23",
       "title": "Puces Diamants Solitaire",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-puces.jpg",
       "category": "boucles",
       "price": "Sur devis",
       "badge": "Best-seller",
@@ -233,7 +233,7 @@
     {
       "id": "24",
       "title": "Créoles Or Classiques",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-creoles.jpg",
       "category": "boucles",
       "price": "Sur devis",
       "badge": "Intemporel",
@@ -243,7 +243,7 @@
     {
       "id": "25",
       "title": "Pendants Perles Baroques",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-perles-baroques.jpg",
       "category": "boucles",
       "price": "Sur devis",
       "badge": "Unique",
@@ -253,7 +253,7 @@
     {
       "id": "26",
       "title": "Dormeuses Pierres Fines",
-      "image": "/images/placeholder.svg",
+      "image": "/images/placeholder-dormeuses.jpg",
       "category": "boucles",
       "price": "Sur devis",
       "badge": "Coloré",

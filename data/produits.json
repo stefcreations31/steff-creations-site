@@ -1,264 +1,30 @@
 {
   "produits": [
-    {
-      "id": "1",
-      "title": "Solitaire Diamant Classique",
-      "image": "/images/placeholder.svg",
-      "category": "bagues",
-      "price": "Sur devis",
-      "badge": "Best-seller",
-      "description": "Bague de fiançailles solitaire en or blanc 18 carats, diamant taille brillant serti griffes. Symbole d'élégance intemporelle.",
-      "visible": true
-    },
-    {
-      "id": "2",
-      "title": "Alliance Or Blanc Moderne",
-      "image": "/images/placeholder.svg",
-      "category": "bagues",
-      "price": "Sur devis",
-      "badge": "Nouveau",
-      "description": "Alliance contemporaine en or blanc 18 carats, finition polie miroir. Confort intérieur bombé pour un port quotidien agréable.",
-      "visible": true
-    },
-    {
-      "id": "3",
-      "title": "Bague Trilogie Diamants",
-      "image": "/images/placeholder.svg",
-      "category": "bagues",
-      "price": "Sur devis",
-      "badge": "Exclusif",
-      "description": "Trilogie de diamants en or blanc 18 carats symbolisant le passé, présent et futur. Sertissage griffes traditionnel.",
-      "visible": true
-    },
-    {
-      "id": "4",
-      "title": "Bague Émeraude Vintage",
-      "image": "/images/placeholder.svg",
-      "category": "bagues",
-      "price": "Sur devis",
-      "badge": "Piece Unique",
-      "description": "Bague inspiration Art Déco, émeraude centrale entourée de diamants. Or jaune 18 carats, travail d'orfèvre artisanal.",
-      "visible": true
-    },
-    {
-      "id": "5",
-      "title": "Bague Pavée Éternité",
-      "image": "/images/placeholder.svg",
-      "category": "bagues",
-      "price": "Sur devis",
-      "badge": "Elegant",
-      "description": "Tour complet de diamants sur or blanc 18 carats. Symbole d'amour éternel, parfaite comme alliance ou bague anniversaire.",
-      "visible": true
-    },
-    {
-      "id": "6",
-      "title": "Bague Jonc Or Jaune",
-      "image": "/images/placeholder.svg",
-      "category": "bagues",
-      "price": "Sur devis",
-      "badge": "Moderne",
-      "description": "Jonc épuré en or jaune 18 carats massif. Design minimaliste et contemporain, port confortable au quotidien.",
-      "visible": true
-    },
-    {
-      "id": "7",
-      "title": "Bague Cocktail Pierres Précieuses",
-      "image": "/images/placeholder.svg",
-      "category": "bagues",
-      "price": "Sur devis",
-      "badge": "Signature",
-      "description": "Bague volume spectaculaire, mélange de pierres précieuses colorées et diamants. Pièce de caractère pour soirées d'exception.",
-      "visible": true
-    },
-    {
-      "id": "8",
-      "title": "Bague Toi et Moi",
-      "image": "/images/placeholder.svg",
-      "category": "bagues",
-      "price": "Sur devis",
-      "badge": "Romantique",
-      "description": "Design entrelacé symbolisant l'union de deux âmes. Deux diamants sertis sur or rose 18 carats, création délicate.",
-      "visible": true
-    },
-    {
-      "id": "9",
-      "title": "Pendentif Solitaire Diamant",
-      "image": "/images/placeholder.svg",
-      "category": "colliers",
-      "price": "Sur devis",
-      "badge": "Best-seller",
-      "description": "Pendentif intemporel, diamant solitaire serti quatre griffes sur chaîne or blanc 18 carats. Élégance discrète et raffinée.",
-      "visible": true
-    },
-    {
-      "id": "10",
-      "title": "Collier Chaîne Maille Forçat",
-      "image": "/images/placeholder.svg",
-      "category": "colliers",
-      "price": "Sur devis",
-      "badge": "Classique",
-      "description": "Chaîne maille forçat en or jaune 18 carats massif. Maille traditionnelle résistante, fermoir mousqueton sécurisé.",
-      "visible": true
-    },
-    {
-      "id": "11",
-      "title": "Collier Perles Akoya",
-      "image": "/images/placeholder.svg",
-      "category": "colliers",
-      "price": "Sur devis",
-      "badge": "Precieux",
-      "description": "Rang de perles de culture Akoya du Japon, lustre exceptionnel. Fermoir or blanc 18 carats, classique intemporel.",
-      "visible": true
-    },
-    {
-      "id": "12",
-      "title": "Pendentif Cœur Pavé",
-      "image": "/images/placeholder.svg",
-      "category": "colliers",
-      "price": "Sur devis",
-      "badge": "Romantique",
-      "description": "Cœur pavé de diamants sur or rose 18 carats. Cadeau parfait pour déclarer son amour, finesse et brillance.",
-      "visible": true
-    },
-    {
-      "id": "13",
-      "title": "Collier Ras de Cou Diamants",
-      "image": "/images/placeholder.svg",
-      "category": "colliers",
-      "price": "Sur devis",
-      "badge": "Exclusif",
-      "description": "Rivière de diamants en ligne, serti clos moderne sur or blanc 18 carats. Port ajusté au cou, effet spectaculaire.",
-      "visible": true
-    },
-    {
-      "id": "14",
-      "title": "Pendentif Croix Or",
-      "image": "/images/placeholder.svg",
-      "category": "colliers",
-      "price": "Sur devis",
-      "badge": "Spirituel",
-      "description": "Croix en or jaune 18 carats, finition polie ou martelée au choix. Symbole de foi, transmission entre générations.",
-      "visible": true
-    },
-    {
-      "id": "15",
-      "title": "Chevalière Homme Or Massif",
-      "image": "/images/placeholder.svg",
-      "category": "chevalieres",
-      "price": "Sur devis",
-      "badge": "Signature",
-      "description": "Chevalière massive en or jaune 18 carats, plateau large gravable. Symbole de tradition et d'élégance masculine.",
-      "visible": true
-    },
-    {
-      "id": "16",
-      "title": "Chevalière Femme Armoiries",
-      "image": "/images/placeholder.svg",
-      "category": "chevalieres",
-      "price": "Sur devis",
-      "badge": "Heritage",
-      "description": "Chevalière fine pour femme, gravure d'armoiries sur or rose 18 carats. Transmission familiale, héritage précieux.",
-      "visible": true
-    },
-    {
-      "id": "17",
-      "title": "Chevalière Moderne Carrée",
-      "image": "/images/placeholder.svg",
-      "category": "chevalieres",
-      "price": "Sur devis",
-      "badge": "Moderne",
-      "description": "Design contemporain carré en or blanc 18 carats. Finition mate brossée, style urbain et épuré.",
-      "visible": true
-    },
-    {
-      "id": "18",
-      "title": "Chevalière Gravée Personnalisable",
-      "image": "/images/placeholder.svg",
-      "category": "chevalieres",
-      "price": "Sur devis",
-      "badge": "Sur Mesure",
-      "description": "Chevalière personnalisable avec gravure initiales ou blason. Or jaune 18 carats, création unique selon vos souhaits.",
-      "visible": true
-    },
-    {
-      "id": "19",
-      "title": "Bracelet Rivière Diamants",
-      "image": "/images/placeholder.svg",
-      "category": "bracelets",
-      "price": "Sur devis",
-      "badge": "Luxe",
-      "description": "Ligne continue de diamants sertis griffes sur or blanc 18 carats. Brillance exceptionnelle, fermoir sécurisé double cliquet.",
-      "visible": true
-    },
-    {
-      "id": "20",
-      "title": "Bracelet Jonc Or Rigide",
-      "image": "/images/placeholder.svg",
-      "category": "bracelets",
-      "price": "Sur devis",
-      "badge": "Moderne",
-      "description": "Jonc rigide en or jaune 18 carats massif, finition polie brillante. Design minimaliste intemporel, confort optimal.",
-      "visible": true
-    },
-    {
-      "id": "21",
-      "title": "Bracelet Chaîne Maille Marine",
-      "image": "/images/placeholder.svg",
-      "category": "bracelets",
-      "price": "Sur devis",
-      "badge": "Classique",
-      "description": "Maille marine traditionnelle en or blanc 18 carats. Robustesse et élégance, fermoir mousqueton avec sécurité.",
-      "visible": true
-    },
-    {
-      "id": "22",
-      "title": "Bracelet Tennis",
-      "image": "/images/placeholder.svg",
-      "category": "bracelets",
-      "price": "Sur devis",
-      "badge": "Élégant",
-      "description": "Bracelet tennis avec ligne ininterrompue de diamants. Serti clos moderne sur or blanc 18 carats, brillance maximale.",
-      "visible": true
-    },
-    {
-      "id": "23",
-      "title": "Puces Diamants Solitaire",
-      "image": "/images/placeholder.svg",
-      "category": "boucles",
-      "price": "Sur devis",
-      "badge": "Best-seller",
-      "description": "Puces d'oreilles classiques, diamants solitaires sertis quatre griffes. Or blanc 18 carats, poussettes sécurisées.",
-      "visible": true
-    },
-    {
-      "id": "24",
-      "title": "Créoles Or Classiques",
-      "image": "/images/placeholder.svg",
-      "category": "boucles",
-      "price": "Sur devis",
-      "badge": "Intemporel",
-      "description": "Créoles traditionnelles en or jaune 18 carats, diamètre moyen. Fermoir clip sécurisé, confort de port optimal.",
-      "visible": true
-    },
-    {
-      "id": "25",
-      "title": "Pendants Perles Baroques",
-      "image": "/images/placeholder.svg",
-      "category": "boucles",
-      "price": "Sur devis",
-      "badge": "Unique",
-      "description": "Perles baroques naturelles suspendues à crochets or blanc 18 carats. Forme organique unique, élégance bohème.",
-      "visible": true
-    },
-    {
-      "id": "26",
-      "title": "Dormeuses Pierres Fines",
-      "image": "/images/placeholder.svg",
-      "category": "boucles",
-      "price": "Sur devis",
-      "badge": "Coloré",
-      "description": "Dormeuses serties de pierres fines colorées (saphirs, émeraudes, rubis). Or jaune 18 carats, fermoir à cliquet.",
-      "visible": true
-    }
+    {"id":"1","title":"Solitaire Diamant Classique","image":"https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80","category":"bagues","price":"Sur devis","badge":"Best-seller","description":"Bague de fiançailles solitaire en or blanc 18 carats, diamant taille brillant serti griffes.","visible":true},
+    {"id":"2","title":"Alliance Or Blanc Moderne","image":"https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80","category":"bagues","price":"Sur devis","badge":"Nouveau","description":"Alliance contemporaine en or blanc 18 carats, finition polie miroir.","visible":true},
+    {"id":"3","title":"Bague Trilogie Diamants","image":"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80","category":"bagues","price":"Sur devis","badge":"Exclusif","description":"Trilogie de diamants symbolisant passé, présent et futur.","visible":true},
+    {"id":"4","title":"Bague Émeraude Vintage","image":"https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=800&q=80","category":"bagues","price":"Sur devis","badge":"Piece Unique","description":"Inspiration Art Déco, émeraude centrale entourée de diamants.","visible":true},
+    {"id":"5","title":"Bague Pavée Éternité","image":"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80","category":"bagues","price":"Sur devis","badge":"Elegant","description":"Tour complet de diamants, symbole d'amour éternel.","visible":true},
+    {"id":"6","title":"Bague Jonc Or Jaune","image":"https://images.unsplash.com/photo-1556229162-2e4e03b48443?w=800&q=80","category":"bagues","price":"Sur devis","badge":"Moderne","description":"Jonc épuré en or jaune 18 carats massif, design minimaliste.","visible":true},
+    {"id":"7","title":"Bague Cocktail","image":"https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80","category":"bagues","price":"Sur devis","badge":"Signature","description":"Bague volume spectaculaire avec pierres précieuses colorées.","visible":true},
+    {"id":"8","title":"Bague Toi et Moi","image":"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80","category":"bagues","price":"Sur devis","badge":"Romantique","description":"Design entrelacé symbolisant l'union de deux âmes.","visible":true},
+    {"id":"9","title":"Pendentif Solitaire Diamant","image":"https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=800&q=80","category":"colliers","price":"Sur devis","badge":"Best-seller","description":"Pendentif intemporel, diamant solitaire sur chaîne or blanc.","visible":true},
+    {"id":"10","title":"Collier Chaîne Or","image":"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80","category":"colliers","price":"Sur devis","badge":"Classique","description":"Chaîne maille forçat en or jaune 18 carats massif.","visible":true},
+    {"id":"11","title":"Collier Perles","image":"https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&q=80","category":"colliers","price":"Sur devis","badge":"Precieux","description":"Rang de perles de culture Akoya, lustre exceptionnel.","visible":true},
+    {"id":"12","title":"Pendentif Cœur","image":"https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=800&q=80","category":"colliers","price":"Sur devis","badge":"Romantique","description":"Cœur pavé de diamants sur or rose 18 carats.","visible":true},
+    {"id":"13","title":"Ras de Cou Diamants","image":"https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80","category":"colliers","price":"Sur devis","badge":"Exclusif","description":"Rivière de diamants, serti clos moderne.","visible":true},
+    {"id":"14","title":"Pendentif Croix","image":"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80","category":"colliers","price":"Sur devis","badge":"Spirituel","description":"Croix en or jaune, symbole de foi.","visible":true},
+    {"id":"15","title":"Chevalière Homme","image":"https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=800&q=80","category":"chevalieres","price":"Sur devis","badge":"Signature","description":"Chevalière massive or jaune, plateau gravable.","visible":true},
+    {"id":"16","title":"Chevalière Femme","image":"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80","category":"chevalieres","price":"Sur devis","badge":"Heritage","description":"Chevalière fine, gravure armoiries.","visible":true},
+    {"id":"17","title":"Chevalière Moderne","image":"https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80","category":"chevalieres","price":"Sur devis","badge":"Moderne","description":"Design carré, finition mate brossée.","visible":true},
+    {"id":"18","title":"Chevalière Gravée","image":"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80","category":"chevalieres","price":"Sur devis","badge":"Sur Mesure","description":"Personnalisable avec initiales ou blason.","visible":true},
+    {"id":"19","title":"Bracelet Rivière","image":"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80","category":"bracelets","price":"Sur devis","badge":"Luxe","description":"Ligne continue de diamants sertis griffes.","visible":true},
+    {"id":"20","title":"Bracelet Jonc","image":"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80","category":"bracelets","price":"Sur devis","badge":"Moderne","description":"Jonc rigide or jaune massif.","visible":true},
+    {"id":"21","title":"Bracelet Maille","image":"https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=800&q=80","category":"bracelets","price":"Sur devis","badge":"Classique","description":"Maille marine traditionnelle.","visible":true},
+    {"id":"22","title":"Bracelet Tennis","image":"https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80","category":"bracelets","price":"Sur devis","badge":"Élégant","description":"Ligne ininterrompue de diamants.","visible":true},
+    {"id":"23","title":"Puces Diamants","image":"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80","category":"boucles","price":"Sur devis","badge":"Best-seller","description":"Puces classiques, diamants solitaires.","visible":true},
+    {"id":"24","title":"Créoles Or","image":"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80","category":"boucles","price":"Sur devis","badge":"Intemporel","description":"Créoles or jaune, fermoir clip.","visible":true},
+    {"id":"25","title":"Pendants Perles","image":"https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&q=80","category":"boucles","price":"Sur devis","badge":"Unique","description":"Perles baroques naturelles.","visible":true},
+    {"id":"26","title":"Dormeuses Pierres","image":"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80","category":"boucles","price":"Sur devis","badge":"Coloré","description":"Pierres fines colorées.","visible":true}
   ]
 }

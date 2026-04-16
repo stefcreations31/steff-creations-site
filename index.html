@@ -3619,7 +3619,24 @@
                 if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+        // Fonction pour initialiser les animations reveal (appelée après chargement dynamique)
+        function initRevealAnimations() {
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+                // Ne pas ré-observer les éléments déjà actifs
+                if (!el.classList.contains('active')) {
+                    observer.observe(el);
+                }
+            });
+        }
+
+        // Initialiser les animations au chargement (après que le DOM soit prêt)
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initRevealAnimations);
+        } else {
+            // Le DOM est déjà chargé, exécuter immédiatement
+            initRevealAnimations();
+        }
 
         // Lightbox
         function openLightbox(src) {
@@ -4410,13 +4427,15 @@
         // BOUTIQUE FILTER SYSTEM
         // ========================================
         const categoryButtons = document.querySelectorAll('.category-btn');
-        const productCards = document.querySelectorAll('.product-card[data-category]');
 
         function filterProducts(category) {
             // Update active button
             categoryButtons.forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.filter === category);
             });
+
+            // Récupérer les produits dynamiquement (important pour les produits chargés après)
+            const productCards = document.querySelectorAll('.product-card[data-category]');
 
             // Filter products with animation
             productCards.forEach((product, index) => {
@@ -4505,9 +4524,12 @@ async function loadProducts() {
                 </div>
             `).join('');
 
-        // Réinitialiser les animations reveal
+        // Réinitialiser les animations reveal après que le DOM soit mis à jour
         if (typeof initRevealAnimations === 'function') {
-            initRevealAnimations();
+            // Utiliser requestAnimationFrame pour s'assurer que les éléments sont dans le DOM
+            requestAnimationFrame(() => {
+                initRevealAnimations();
+            });
         }
 
     } catch (error) {

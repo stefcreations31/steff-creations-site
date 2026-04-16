@@ -65,35 +65,15 @@
         ::-webkit-scrollbar-track { background: var(--noir); }
         ::-webkit-scrollbar-thumb { background: var(--or); border-radius: 4px; }
 
-        /* CURSEUR PERSONNALISE */
+        /* CURSEUR PERSONNALISE - DESACTIVE POUR PERFORMANCES */
         .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--or);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 99999;
-            transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-            transform: translate(-50%, -50%);
+            display: none !important;
         }
         .cursor-dot {
-            width: 5px;
-            height: 5px;
-            background: var(--or);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 99999;
-            transform: translate(-50%, -50%);
+            display: none !important;
         }
         .cursor.hover {
-            transform: translate(-50%, -50%) scale(2);
-            background: rgba(201, 162, 39, 0.1);
-            border-color: var(--or-clair);
-        }
-        @media (max-width: 768px) {
-            .cursor, .cursor-dot { display: none; }
+            display: none !important;
         }
 
         /* EFFET SHIMMER/BRILLANCE */
@@ -291,7 +271,7 @@
             inset: 0;
             border: 1px solid var(--or);
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.2s ease;
             z-index: 2;
             pointer-events: none;
         }
@@ -300,7 +280,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.3s ease;
         }
         .atelier-video-wrapper:hover video {
             transform: scale(1.05);
@@ -318,7 +298,7 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.2s ease;
             z-index: 3;
         }
         .video-play-btn::before {
@@ -493,7 +473,7 @@
             stroke: var(--or);
             stroke-width: 1.5;
             filter: drop-shadow(0 0 8px rgba(201, 162, 39, 0.4));
-            transition: all 0.4s ease;
+            transition: all 0.2s ease;
         }
         .nav-logo:hover .nav-logo-diamond svg {
             transform: rotate(15deg) scale(1.1);
@@ -553,7 +533,7 @@
             text-decoration: none;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            transition: all 0.4s ease;
+            transition: all 0.2s ease;
         }
         .nav-cta:hover {
             background: var(--or-clair);
@@ -829,7 +809,7 @@
             gap: 2rem;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.2s ease;
         }
         .mobile-menu.active { opacity: 1; visibility: visible; }
         .mobile-menu a {
@@ -997,7 +977,7 @@
             text-transform: uppercase;
             position: relative;
             overflow: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.2s ease;
         }
         .btn-primary::before {
             content: '';
@@ -1005,7 +985,7 @@
             inset: 0;
             background: linear-gradient(135deg, var(--or-clair) 0%, var(--or-pale) 100%);
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.2s ease;
         }
         .btn-primary:hover {
             transform: translateY(-3px);
@@ -1024,7 +1004,7 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             border: 1px solid var(--gris-fonce);
-            transition: all 0.4s ease;
+            transition: all 0.2s ease;
         }
         .btn-secondary:hover {
             border-color: var(--or);
@@ -1124,7 +1104,7 @@
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--or), transparent);
             transform: scaleX(0);
-            transition: transform 0.6s ease;
+            transition: transform 0.3s ease;
         }
         .service-card::after {
             content: '';
@@ -1157,7 +1137,7 @@
             stroke: var(--or);
             stroke-width: 1;
             fill: none;
-            transition: all 0.4s ease;
+            transition: all 0.2s ease;
         }
         .service-card:hover .service-icon svg {
             transform: scale(1.1);
@@ -1208,7 +1188,7 @@
             border: 1px solid var(--or-subtle);
             color: var(--gris);
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.2s ease;
             min-width: 120px;
         }
 
@@ -1251,7 +1231,7 @@
             background: var(--noir-surface);
             border: 1px solid transparent;
             overflow: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.2s ease;
             opacity: 1;
             transform: translateY(0);
         }
@@ -1281,7 +1261,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.3s ease;
         }
 
         .product-card:hover .product-image img {
@@ -1307,7 +1287,7 @@
             inset: 0;
             background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.2s ease;
             display: flex;
             align-items: flex-end;
             justify-content: center;
@@ -1508,7 +1488,7 @@
             text-transform: uppercase;
             padding: 1rem 2rem;
             border: 1px solid var(--or);
-            transition: all 0.4s ease;
+            transition: all 0.2s ease;
         }
         .video-cta:hover {
             background: var(--or);
@@ -1597,7 +1577,7 @@
             border: 1px solid var(--or-subtle);
             border-radius: 4px;
             position: relative;
-            transition: all 0.4s ease;
+            transition: all 0.2s ease;
             overflow: hidden;
         }
         .testimonial-card::before {
@@ -2038,7 +2018,7 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.2s ease;
         }
         .btn-calculate:hover {
             transform: translateY(-2px);
@@ -2247,7 +2227,7 @@
             padding: 1.5rem 2rem;
             background: var(--noir-surface);
             border-left: 2px solid var(--or);
-            transition: all 0.4s ease;
+            transition: all 0.2s ease;
         }
         .contact-detail:hover {
             transform: translateX(10px);
@@ -2312,7 +2292,7 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.2s ease;
         }
         .btn-submit:hover {
             transform: translateY(-2px);
@@ -3558,7 +3538,7 @@
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('preloader').classList.add('loaded');
-            }, 2500);
+            }, 1000);
         });
 
         // Compteurs animes
@@ -3649,7 +3629,11 @@
         }
         function closeLightbox() {
             document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = '';
+            document.body.style.overflow = 'auto';
+            // Reset image source pour eviter le voile noir si image cassee
+            setTimeout(() => {
+                document.getElementById('lightbox-img').src = '';
+            }, 300);
         }
 
         // FAQ
@@ -4505,8 +4489,8 @@ async function loadProducts() {
             .filter(p => p.visible)
             .map(product => `
                 <div class="product-card reveal" data-category="${product.category}">
-                    <div class="product-image" onclick="openLightbox('.${product.image}')">
-                        <img src=".${product.image}" alt="${product.title}" loading="lazy">
+                    <div class="product-image" onclick="openLightbox('${product.image}')">
+                        <img src="${product.image}" alt="${product.title}" loading="lazy">
                         <span class="product-badge">${product.badge}</span>
                         <div class="product-overlay">
                             <button class="product-overlay-btn">Voir en grand</button>

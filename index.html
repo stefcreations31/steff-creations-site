@@ -344,41 +344,67 @@
         }
         .video-play-btn.playing { opacity: 0; pointer-events: none; }
 
-        /* BADGES DE CONFIANCE */
+        /* BADGES DE CONFIANCE - DESIGN RAFFINÉ */
         .trust-badges {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-lg);
-            flex-wrap: wrap;
-            margin-top: var(--space-lg);
-            padding-top: var(--space-lg);
-            border-top: 1px solid var(--or-subtle);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            max-width: 600px;
+            margin: var(--space-xl) auto 0;
+            background: linear-gradient(135deg, var(--or-subtle), transparent);
+            padding: 1px;
+            position: relative;
+        }
+        .trust-badges::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(135deg, var(--or) 0%, transparent 50%);
+            opacity: 0.1;
+            pointer-events: none;
         }
         .trust-badge {
+            background: var(--noir-surface);
+            padding: var(--space-md);
             display: flex;
-            flex-direction: column;
             align-items: center;
             gap: var(--space-sm);
-            text-align: center;
+            position: relative;
+            transition: background 0.3s ease;
+        }
+        .trust-badge:hover {
+            background: var(--noir-elevated);
+        }
+        .trust-badge::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 24px;
+            background: var(--or);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .trust-badge:hover::before {
+            opacity: 1;
         }
         .trust-badge-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--or) 0%, var(--or-clair) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: var(--text-2xl);
-            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.3);
+            display: none;
         }
         .trust-badge-text {
-            font-family: 'Jost', sans-serif;
-            font-size: var(--text-xs);
-            font-weight: 500;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: var(--text-sm);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--gris);
+            letter-spacing: 0.02em;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+        .trust-badge:hover .trust-badge-text {
             color: var(--blanc);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
         }
 
         /* PRODUCT CARD AMELIORE */

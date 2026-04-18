@@ -3510,7 +3510,7 @@
 
                 <div>
                     <div class="histoire-photo reveal">
-                        <img id="histoire-photo" src="./images/histoire-placeholder.jpg" alt="Notre histoire familiale" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 600%22><rect fill=%22%23111%22 width=%22400%22 height=%22600%22/><text fill=%22%23C9A227%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Photo Histoire</text></svg>'">
+                        <img id="histoire-photo" src="./images/placeholder.svg" alt="Notre histoire familiale" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 600%22><rect fill=%22%23111%22 width=%22400%22 height=%22600%22/><text fill=%22%23C9A227%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Photo Histoire</text></svg>'">
                         <div class="histoire-photo-caption" id="histoire-caption">
                             Fondateur de la maison
                         </div>
@@ -4721,7 +4721,7 @@ async function loadHistoire() {
             document.getElementById('histoire-p2').textContent = data.paragraphe2 || '';
         }
         if (document.getElementById('histoire-photo')) {
-            const photoPath = data.photo ? (data.photo.startsWith('/') ? '.' + data.photo : data.photo) : './images/histoire-placeholder.jpg';
+            const photoPath = data.photo ? (data.photo.startsWith('/') ? '.' + data.photo : data.photo) : './images/placeholder.svg';
             document.getElementById('histoire-photo').src = photoPath;
         }
         if (document.getElementById('histoire-caption')) {

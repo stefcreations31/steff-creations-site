@@ -344,69 +344,6 @@
         }
         .video-play-btn.playing { opacity: 0; pointer-events: none; }
 
-        /* BADGES DE CONFIANCE - DESIGN RAFFINÉ */
-        .trust-badges {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1px;
-            max-width: 600px;
-            margin: var(--space-xl) auto 0;
-            background: linear-gradient(135deg, var(--or-subtle), transparent);
-            padding: 1px;
-            position: relative;
-        }
-        .trust-badges::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            background: linear-gradient(135deg, var(--or) 0%, transparent 50%);
-            opacity: 0.1;
-            pointer-events: none;
-        }
-        .trust-badge {
-            background: var(--noir-surface);
-            padding: var(--space-md);
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            position: relative;
-            transition: background 0.3s ease;
-        }
-        .trust-badge:hover {
-            background: var(--noir-elevated);
-        }
-        .trust-badge::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 2px;
-            height: 24px;
-            background: var(--or);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .trust-badge:hover::before {
-            opacity: 1;
-        }
-        .trust-badge-icon {
-            display: none;
-        }
-        .trust-badge-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: var(--text-sm);
-            font-weight: 400;
-            font-style: italic;
-            color: var(--gris);
-            letter-spacing: 0.02em;
-            line-height: 1.6;
-            transition: color 0.3s ease;
-        }
-        .trust-badge:hover .trust-badge-text {
-            color: var(--blanc);
-        }
-
         /* PRODUCT CARD AMELIORE */
         .product-card .product-image::before {
             content: '';
@@ -716,11 +653,6 @@
         }
         [dir="rtl"] .atelier-videos {
             direction: rtl;
-        }
-
-        /* Trust Badges RTL */
-        [dir="rtl"] .trust-badges {
-            flex-direction: row-reverse;
         }
 
         /* Estimation/Calculator RTL */
@@ -1462,6 +1394,30 @@
             font-size: 1rem;
             color: var(--or);
             font-weight: 500;
+        }
+
+        /* Bouton Voir toute la collection */
+        .btn-collection {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 1px solid var(--or);
+            color: var(--or);
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-collection:hover {
+            background: var(--or);
+            color: var(--noir);
+        }
+        .view-more-container {
+            text-align: center;
+            margin-top: 3rem;
+            padding-bottom: 2rem;
         }
 
         /* RTL Support */
@@ -2499,6 +2455,10 @@
             background: var(--or);
             padding: 1rem 0;
             overflow: hidden;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .marquee-content {
             display: flex;
@@ -2630,10 +2590,10 @@
                 font-size: 0.7rem;
             }
 
-            /* Boutique - Products Grid mobile */
+            /* Boutique - Products Grid mobile - 2 colonnes */
             .products-grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-md);
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-sm);
                 padding: 0 var(--space-sm);
             }
             .product-card:hover {
@@ -2755,15 +2715,6 @@
                 margin-left: 4px;
             }
 
-            /* Trust badges */
-            .trust-badges {
-                gap: 1.5rem;
-                margin-top: 2rem;
-                padding-top: 2rem;
-            }
-            .trust-badge-icon { width: 50px; height: 50px; font-size: 1.2rem; }
-            .trust-badge-text { font-size: 0.6rem; }
-
             /* Estimation */
             .estimation-header h2 { font-size: clamp(1.8rem, 7vw, 2.8rem); }
             .estimation-header p { font-size: 1rem; line-height: 1.8; }
@@ -2877,7 +2828,7 @@
             .section { padding: 4rem 4%; }
             .hero { padding: 0 1.2rem; }
             .hero-title { font-size: clamp(2.2rem, 13vw, 4rem); }
-            .products-grid { max-width: 100%; }
+            .products-grid { max-width: 100%; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
             .product-image { aspect-ratio: 1; }
             .product-info { padding: 1rem 1.2rem 1.3rem; }
             .product-name { font-size: 1rem; }
@@ -3057,6 +3008,14 @@
                 <span class="category-icon">&#9633;</span>
                 <span>Chevalieres</span>
             </button>
+            <button class="category-btn" data-filter="bracelets" data-translate="filter_bracelets">
+                <span class="category-icon">&#9676;</span>
+                <span>Bracelets</span>
+            </button>
+            <button class="category-btn" data-filter="boucles" data-translate="filter_earrings">
+                <span class="category-icon">&#10040;</span>
+                <span>Boucles d'Oreilles</span>
+            </button>
             <button class="category-btn" data-filter="creations" data-translate="filter_creations">
                 <span class="category-icon">&#10023;</span>
                 <span>Creations</span>
@@ -3193,25 +3152,6 @@
             </div>
         </div>
 
-        <!-- Trust Badges -->
-        <div class="trust-badges">
-            <div class="trust-badge">
-                <div class="trust-badge-icon">&#127942;</div>
-                <span class="trust-badge-text" data-translate="trust_certified">Bijoutier Certifie</span>
-            </div>
-            <div class="trust-badge">
-                <div class="trust-badge-icon">&#128176;</div>
-                <span class="trust-badge-text" data-translate="trust_payment">Paiement Immediat</span>
-            </div>
-            <div class="trust-badge">
-                <div class="trust-badge-icon">&#128274;</div>
-                <span class="trust-badge-text" data-translate="trust_secure">Transaction Securisee</span>
-            </div>
-            <div class="trust-badge">
-                <div class="trust-badge-icon">&#11088;</div>
-                <span class="trust-badge-text" data-translate="trust_google">5 Etoiles Google</span>
-            </div>
-        </div>
     </section>
 
     <!-- Temoignages -->
@@ -3984,12 +3924,16 @@
                 filter_rings: "Bagues",
                 filter_necklaces: "Colliers",
                 filter_signets: "Chevalieres",
+                filter_bracelets: "Bracelets",
+                filter_earrings: "Boucles d'Oreilles",
                 filter_creations: "Creations",
 
                 // Categories
                 cat_ring: "Bague Or 18k",
                 cat_signet: "Chevaliere Or 18k",
                 cat_necklace: "Collier Or",
+                cat_bracelet: "Bracelet Or",
+                cat_earrings: "Boucles d'Oreilles Or",
                 cat_jewelry: "Joaillerie",
 
                 // Badges
@@ -4169,12 +4113,16 @@
                 filter_rings: "Rings",
                 filter_necklaces: "Necklaces",
                 filter_signets: "Signet Rings",
+                filter_bracelets: "Bracelets",
+                filter_earrings: "Earrings",
                 filter_creations: "Creations",
 
                 // Categories
                 cat_ring: "18k Gold Ring",
                 cat_signet: "18k Gold Signet Ring",
                 cat_necklace: "Gold Necklace",
+                cat_bracelet: "Gold Bracelet",
+                cat_earrings: "Gold Earrings",
                 cat_jewelry: "Fine Jewelry",
 
                 // Badges
@@ -4354,12 +4302,16 @@
                 filter_rings: "טבעות",
                 filter_necklaces: "שרשראות",
                 filter_signets: "טבעות חותם",
+                filter_bracelets: "צמידים",
+                filter_earrings: "עגילים",
                 filter_creations: "יצירות",
 
                 // Categories
                 cat_ring: "טבעת זהב 18k",
                 cat_signet: "טבעת חותם זהב 18k",
                 cat_necklace: "שרשרת זהב",
+                cat_bracelet: "צמיד זהב",
+                cat_earrings: "עגילי זהב",
                 cat_jewelry: "תכשיטים יוקרתיים",
 
                 // Badges
@@ -4626,13 +4578,28 @@ async function loadProducts() {
             return;
         }
 
-        container.innerHTML = data.produits
-            .filter(p => p.visible)
+        // Filtrer les produits visibles et trier (Best-seller en premier)
+        const visibleProducts = data.produits
+            .filter(p => p.visible !== false)
+            .sort((a, b) => {
+                const aIsBest = a.badge && a.badge.toLowerCase().includes('best');
+                const bIsBest = b.badge && b.badge.toLowerCase().includes('best');
+                if (aIsBest && !bIsBest) return -1;
+                if (!aIsBest && bIsBest) return 1;
+                return 0;
+            });
+
+        // Limiter à 6 produits sur la page d'accueil
+        const maxProducts = 6;
+        const displayProducts = visibleProducts.slice(0, maxProducts);
+        const hasMore = visibleProducts.length > maxProducts;
+
+        container.innerHTML = displayProducts
             .map(product => `
-                <div class="product-card reveal" data-category="${product.category}">
-                    <div class="product-image" onclick="openLightbox('${product.image}')">
-                        <img src="${product.image}" alt="${product.title}" loading="lazy">
-                        <span class="product-badge">${product.badge}</span>
+                <div class="product-card reveal" data-id="${product.id}" data-category="${product.category}">
+                    <div class="product-image" onclick="openLightbox('${product.image}', '${product.id}')">
+                        <img src="${product.image}" alt="${product.title}" loading="lazy" onerror="this.src='./images/placeholder.svg'; this.onerror=null;">
+                        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
                         <div class="product-overlay">
                             <button class="product-overlay-btn">Voir en grand</button>
                         </div>
@@ -4646,13 +4613,27 @@ async function loadProducts() {
                 </div>
             `).join('');
 
-        // Réinitialiser les animations reveal après que le DOM soit mis à jour
+        // Ajouter bouton "Voir toute la collection" si plus de produits
+        if (hasMore) {
+            const existingBtn = document.querySelector('.view-more-container');
+            if (!existingBtn) {
+                container.insertAdjacentHTML('afterend', `
+                    <div class="view-more-container" style="text-align: center; margin-top: 3rem;">
+                        <a href="boutique.html" class="btn-collection">Voir toute la collection</a>
+                    </div>
+                `);
+            }
+        }
+
+        // Réinitialiser les animations reveal
         if (typeof initRevealAnimations === 'function') {
-            // Utiliser requestAnimationFrame pour s'assurer que les éléments sont dans le DOM
             requestAnimationFrame(() => {
                 initRevealAnimations();
             });
         }
+
+        // Stocker tous les produits pour le filtrage
+        window.allProducts = visibleProducts;
 
     } catch (error) {
         console.error('Erreur chargement produits:', error);
@@ -4666,6 +4647,8 @@ function getCategoryLabel(category) {
         'bagues': 'Bague Or 18k',
         'colliers': 'Collier Or',
         'chevalieres': 'Chevaliere Or 18k',
+        'bracelets': 'Bracelet Or',
+        'boucles': 'Boucles d\'Oreilles Or',
         'creations': 'Joaillerie'
     };
     return labels[category] || category;

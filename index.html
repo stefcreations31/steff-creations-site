@@ -316,7 +316,7 @@
         .video-play-btn {
             position: absolute;
             top: 50%;
-            right: 1rem; left: auto;
+            left: 50%;
             transform: translate(-50%, -50%);
             width: 70px;
             height: 70px;
@@ -360,7 +360,7 @@
             position: absolute;
             inset: -1px;
             background: linear-gradient(135deg, var(--or) 0%, transparent 50%);
-            opacity: 0.1;
+            opacity: 0.2;
             pointer-events: none;
         }
         .trust-badge {
@@ -511,7 +511,7 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .nav.scrolled {
-            background: linear-gradient(180deg, rgba(15, 15, 15, 0.85) 0%, rgba(10, 10, 10, 0.7) 100%);
+            background: transparent;
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--or-subtle);
         }
@@ -901,11 +901,11 @@
         .hero-diamond {
             position: absolute;
             top: 50%;
-            right: 1rem; left: auto;
+            left: 50%;
             transform: translate(-50%, -50%);
             width: 600px;
             height: 600px;
-            opacity: 0.06;
+            opacity: 0.15;
             z-index: 0;
             animation: diamondPulse 8s ease-in-out infinite;
         }
@@ -917,8 +917,8 @@
             stroke-width: 0.5;
         }
         @keyframes diamondPulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.06; }
-            50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.1; }
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.15; }
+            50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.2; }
         }
         .hero-particles {
             position: absolute;
@@ -1090,7 +1090,7 @@
             gap: 0.8rem;
             z-index: 10;
         }
-        .hero-scroll-text { display: none; /* masqué */
+        .hero-scroll-text { display: block; margin-bottom: 2rem;
             font-family: 'Jost', sans-serif;
             font-size: 0.65rem;
             color: var(--gris-fonce);
@@ -1270,7 +1270,7 @@
             content: '';
             position: absolute;
             bottom: 0;
-            right: 1rem; left: auto;
+            left: 50%;
             width: 0;
             height: 2px;
             background: var(--or);
@@ -1693,7 +1693,7 @@
             content: '"';
             position: absolute;
             top: 1.5rem;
-            right: 1rem; left: auto;
+            left: 50%;
             transform: none;
             font-family: 'Cormorant Garamond', serif;
             font-size: 5rem;
@@ -1705,7 +1705,7 @@
             content: '';
             position: absolute;
             bottom: 0;
-            right: 1rem; left: auto;
+            left: 50%;
             transform: none;
             width: 60px;
             height: 2px;

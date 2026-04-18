@@ -1699,22 +1699,45 @@
 
                 const repoData = await repoRes.json();
 
-                if (!repoData.permissions || !repoData.permissions.push) {
+                // Verifier les permissions - mais ne pas bloquer si permissions non disponibles
+                if (repoData.permissions) {
+                    console.log('Permissions:', repoData.permissions);
+                    if (!repoData.permissions.push) {
+                        if (statusDiv) {
+                            statusDiv.style.background = 'rgba(243, 156, 18, 0.2)';
+                            statusDiv.style.borderLeft = '4px solid #f39c12';
+                            statusDiv.innerHTML = '⚠️ <strong>Pas de permission ecriture</strong><br>Recreez le token avec la case <strong>"repo"</strong> cochee.';
+                        }
+                        showToast('Token sans permission ecriture', 'error');
+                        return;
+                    }
+                } else {
+                    console.log('Permissions non disponibles dans la reponse, on continue...');
+                }
+
+                // Test reel d'ecriture - essayer de modifier un fichier
+                if (statusDiv) statusDiv.innerHTML = '⏳ Test d\'ecriture en cours...';
+
+                try {
+                    const testContent = 'Test: ' + new Date().toISOString();
+                    await updateGitHubFile(config, '.test-write', testContent, 'Test ecriture admin');
+
+                    if (statusDiv) {
+                        statusDiv.style.background = 'rgba(39, 174, 96, 0.2)';
+                        statusDiv.style.borderLeft = '4px solid #27AE60';
+                        statusDiv.innerHTML = '✅ <strong>Connexion OK + Ecriture OK!</strong><br>Repo: ' + repoData.full_name + '<br>Tout fonctionne parfaitement.';
+                    }
+                    showToast('Connexion et ecriture OK!', 'success');
+                } catch (writeError) {
+                    console.error('Erreur test ecriture:', writeError);
                     if (statusDiv) {
                         statusDiv.style.background = 'rgba(243, 156, 18, 0.2)';
                         statusDiv.style.borderLeft = '4px solid #f39c12';
-                        statusDiv.innerHTML = '⚠️ <strong>Pas de permission ecriture</strong><br>Recreez le token avec la case <strong>"repo"</strong> cochee.';
+                        statusDiv.innerHTML = '⚠️ <strong>Lecture OK mais ecriture KO</strong><br>Erreur: ' + writeError.message + '<br><br>Creez un nouveau token avec <strong>"repo"</strong> coche.';
                     }
-                    showToast('Token sans permission ecriture', 'error');
+                    showToast('Ecriture impossible: ' + writeError.message, 'error');
                     return;
                 }
-
-                if (statusDiv) {
-                    statusDiv.style.background = 'rgba(39, 174, 96, 0.2)';
-                    statusDiv.style.borderLeft = '4px solid #27AE60';
-                    statusDiv.innerHTML = '✅ <strong>Connexion reussie!</strong><br>Repo: ' + repoData.full_name + '<br>Permissions: Lecture + Ecriture OK';
-                }
-                showToast('Connexion GitHub validee!', 'success');
 
             } catch (error) {
                 if (statusDiv) {

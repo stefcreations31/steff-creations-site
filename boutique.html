@@ -204,6 +204,7 @@
 
         .lang-btn {
             background: none;
+            color: white;
             border: 1px solid transparent;
             cursor: pointer;
             padding: 0.4rem;
@@ -789,8 +790,8 @@
                 position: fixed;
                 top: auto;
                 bottom: 1rem;
-                left: 50%;
-                transform: translateX(-50%);
+                right: 1rem; left: auto;
+                transform: none;
                 background: rgba(10, 10, 10, 1);
                 padding: 0.5rem 1rem;
                 border-radius: 30px;
@@ -948,7 +949,7 @@
         @media (max-width: 768px) {
             [dir="rtl"] .lang-selector {
                 margin-right: 0;
-                left: 50%;
+                right: 1rem; left: auto;
                 right: auto;
             }
         }

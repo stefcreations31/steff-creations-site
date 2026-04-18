@@ -126,7 +126,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(180deg, rgba(15, 15, 15, 0.85) 0%, rgba(10, 10, 10, 0.7) 100%);
+            background: transparent;
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--or-subtle);
             z-index: 1000;
@@ -790,9 +790,9 @@
                 position: fixed;
                 top: auto;
                 bottom: 1rem;
-                right: 1rem; left: auto;
+                left: 50%;
                 transform: none;
-                background: linear-gradient(180deg, rgba(15, 15, 15, 0.85) 0%, rgba(10, 10, 10, 0.7) 100%);
+                background: transparent;
                 padding: 0.5rem 1rem;
                 border-radius: 30px;
                 border: 1px solid var(--or-subtle);
@@ -949,7 +949,7 @@
         @media (max-width: 768px) {
             [dir="rtl"] .lang-selector {
                 margin-right: 0;
-                right: 1rem; left: auto;
+                left: 50%;
                 right: auto;
             }
         }

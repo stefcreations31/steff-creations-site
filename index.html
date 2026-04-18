@@ -316,7 +316,7 @@
         .video-play-btn {
             position: absolute;
             top: 50%;
-            left: 50%;
+            right: 1rem; left: auto;
             transform: translate(-50%, -50%);
             width: 70px;
             height: 70px;
@@ -605,6 +605,7 @@
         }
         .lang-btn {
             background: none;
+            color: white;
             border: 1px solid transparent;
             cursor: pointer;
             padding: 0.3rem;
@@ -900,7 +901,7 @@
         .hero-diamond {
             position: absolute;
             top: 50%;
-            left: 50%;
+            right: 1rem; left: auto;
             transform: translate(-50%, -50%);
             width: 600px;
             height: 600px;
@@ -1269,11 +1270,11 @@
             content: '';
             position: absolute;
             bottom: 0;
-            left: 50%;
+            right: 1rem; left: auto;
             width: 0;
             height: 2px;
             background: var(--or);
-            transform: translateX(-50%);
+            transform: none;
             transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -1692,8 +1693,8 @@
             content: '"';
             position: absolute;
             top: 1.5rem;
-            left: 50%;
-            transform: translateX(-50%);
+            right: 1rem; left: auto;
+            transform: none;
             font-family: 'Cormorant Garamond', serif;
             font-size: 5rem;
             color: var(--or);
@@ -1704,8 +1705,8 @@
             content: '';
             position: absolute;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            right: 1rem; left: auto;
+            transform: none;
             width: 60px;
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--or), transparent);
@@ -2520,7 +2521,7 @@
         .marquee-item::after { content: '\u25C6'; font-size: 0.6rem; }
         @keyframes marqueeScroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            100% { transform: none; }
         }
 
         /* ANIMATIONS */

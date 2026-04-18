@@ -239,16 +239,6 @@
       "badge": "Intemporel",
       "description": "Créoles or jaune, fermoir clip.",
       "visible": true
-    },
-    {
-      "id": "25",
-      "title": "Pendants Perles",
-      "image": "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&q=80",
-      "category": "boucles",
-      "price": "Sur devis",
-      "badge": "Unique",
-      "description": "Perles baroques naturelles.",
-      "visible": true
     }
   ]
 }

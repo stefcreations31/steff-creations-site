@@ -1,3 +1,14 @@
 {
-  "produits": []
+  "produits": [
+    {
+      "id": "1776553302021",
+      "title": "Bague Emeraude Coeur",
+      "image": "/images/IMG_2235.jpeg",
+      "category": "bagues",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "bnkjghkjh",
+      "visible": true
+    }
+  ]
 }

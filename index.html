@@ -344,6 +344,69 @@
         }
         .video-play-btn.playing { opacity: 0; pointer-events: none; }
 
+        /* BADGES DE CONFIANCE - DESIGN RAFFINÉ */
+        .trust-badges {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            max-width: 600px;
+            margin: var(--space-xl) auto 0;
+            background: linear-gradient(135deg, var(--or-subtle), transparent);
+            padding: 1px;
+            position: relative;
+        }
+        .trust-badges::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(135deg, var(--or) 0%, transparent 50%);
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        .trust-badge {
+            background: var(--noir-surface);
+            padding: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            position: relative;
+            transition: background 0.3s ease;
+        }
+        .trust-badge:hover {
+            background: var(--noir-elevated);
+        }
+        .trust-badge::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 24px;
+            background: var(--or);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .trust-badge:hover::before {
+            opacity: 1;
+        }
+        .trust-badge-icon {
+            display: none;
+        }
+        .trust-badge-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: var(--text-sm);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--gris);
+            letter-spacing: 0.02em;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+        .trust-badge:hover .trust-badge-text {
+            color: var(--blanc);
+        }
+
         /* PRODUCT CARD AMELIORE */
         .product-card .product-image::before {
             content: '';
@@ -448,7 +511,7 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .nav.scrolled {
-            background: rgba(10, 10, 10, 0.95);
+            background: transparent;
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--or-subtle);
         }
@@ -542,6 +605,7 @@
         }
         .lang-btn {
             background: none;
+            color: white;
             border: 1px solid transparent;
             cursor: pointer;
             padding: 0.3rem;
@@ -836,7 +900,7 @@
             transform: translate(-50%, -50%);
             width: 600px;
             height: 600px;
-            opacity: 0.06;
+            opacity: 0.15;
             z-index: 0;
             animation: diamondPulse 8s ease-in-out infinite;
         }
@@ -848,8 +912,8 @@
             stroke-width: 0.5;
         }
         @keyframes diamondPulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.06; }
-            50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.1; }
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.15; }
+            50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.2; }
         }
         .hero-particles {
             position: absolute;
@@ -1021,7 +1085,7 @@
             gap: 0.8rem;
             z-index: 10;
         }
-        .hero-scroll-text {
+        .hero-scroll-text { display: block; margin-bottom: 2rem;
             font-family: 'Jost', sans-serif;
             font-size: 0.65rem;
             color: var(--gris-fonce);
@@ -1205,7 +1269,7 @@
             width: 0;
             height: 2px;
             background: var(--or);
-            transform: translateX(-50%);
+            transform: none;
             transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -1649,7 +1713,7 @@
             position: absolute;
             top: 1.5rem;
             left: 50%;
-            transform: translateX(-50%);
+            transform: none;
             font-family: 'Cormorant Garamond', serif;
             font-size: 5rem;
             color: var(--or);
@@ -1661,7 +1725,7 @@
             position: absolute;
             bottom: 0;
             left: 50%;
-            transform: translateX(-50%);
+            transform: none;
             width: 60px;
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--or), transparent);
@@ -2480,7 +2544,7 @@
         .marquee-item::after { content: '\u25C6'; font-size: 0.6rem; }
         @keyframes marqueeScroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            100% { transform: none; }
         }
 
         /* ANIMATIONS */
@@ -3449,7 +3513,7 @@
 
                 <div>
                     <div class="histoire-photo reveal">
-                        <img id="histoire-photo" src="./images/histoire-placeholder.jpg" alt="Notre histoire familiale" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 600%22><rect fill=%22%23111%22 width=%22400%22 height=%22600%22/><text fill=%22%23C9A227%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Photo Histoire</text></svg>'">
+                        <img id="histoire-photo" src="./images/placeholder.svg" alt="Notre histoire familiale" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 600%22><rect fill=%22%23111%22 width=%22400%22 height=%22600%22/><text fill=%22%23C9A227%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Photo Histoire</text></svg>'">
                         <div class="histoire-photo-caption" id="histoire-caption">
                             Fondateur de la maison
                         </div>
@@ -4703,7 +4767,7 @@ async function loadHistoire() {
             document.getElementById('histoire-p2').textContent = data.paragraphe2 || '';
         }
         if (document.getElementById('histoire-photo')) {
-            const photoPath = data.photo ? (data.photo.startsWith('/') ? '.' + data.photo : data.photo) : './images/histoire-placeholder.jpg';
+            const photoPath = data.photo ? (data.photo.startsWith('/') ? '.' + data.photo : data.photo) : './images/placeholder.svg';
             document.getElementById('histoire-photo').src = photoPath;
         }
         if (document.getElementById('histoire-caption')) {

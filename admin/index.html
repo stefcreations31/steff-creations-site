@@ -1814,19 +1814,33 @@
         async function updateGitHubFile(config, path, content, message) {
             const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}`;
 
-            const getRes = await fetch(url, {
-                headers: {
-                    'Authorization': `token ${config.token}`,
-                    'Accept': 'application/vnd.github.v3+json'
-                }
-            });
+            console.log('Mise a jour fichier:', path);
 
+            // Etape 1: Recuperer le SHA actuel du fichier
             let sha = null;
-            if (getRes.ok) {
-                const data = await getRes.json();
-                sha = data.sha;
+            try {
+                const getRes = await fetch(url, {
+                    headers: {
+                        'Authorization': `token ${config.token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (getRes.ok) {
+                    const data = await getRes.json();
+                    sha = data.sha;
+                    console.log('SHA trouve:', sha);
+                } else if (getRes.status === 404) {
+                    console.log('Fichier nouveau (pas de SHA)');
+                } else {
+                    const errData = await getRes.json();
+                    console.error('Erreur GET:', getRes.status, errData);
+                }
+            } catch (e) {
+                console.error('Erreur recuperation SHA:', e);
             }
 
+            // Etape 2: Creer/Mettre a jour le fichier
             const body = {
                 message: message,
                 content: btoa(unescape(encodeURIComponent(content))),
@@ -1836,6 +1850,8 @@
             if (sha) {
                 body.sha = sha;
             }
+
+            console.log('Envoi PUT vers:', url);
 
             const updateRes = await fetch(url, {
                 method: 'PUT',
@@ -1849,11 +1865,24 @@
 
             if (!updateRes.ok) {
                 const error = await updateRes.json();
-                if (updateRes.status === 403 || error.message.includes('not accessible')) {
-                    throw new Error('Permission refusee. Votre token n\'a pas les droits d\'ecriture. Allez sur GitHub > Settings > Developer settings > Personal access tokens > Creez un nouveau token avec le scope "repo" coche.');
+                console.error('Erreur PUT:', updateRes.status, error);
+
+                if (updateRes.status === 401) {
+                    throw new Error('Token expire ou invalide. Creez un nouveau token.');
+                } else if (updateRes.status === 403) {
+                    throw new Error('Permission refusee. Recreez un token avec "repo" coche.');
+                } else if (updateRes.status === 404) {
+                    throw new Error('Repo non trouve. Verifiez owner/repo dans Reglages.');
+                } else if (updateRes.status === 409) {
+                    throw new Error('Conflit: le fichier a ete modifie. Rechargez la page.');
+                } else if (updateRes.status === 422) {
+                    throw new Error('Erreur validation: ' + (error.message || 'SHA invalide'));
+                } else {
+                    throw new Error('Erreur ' + updateRes.status + ': ' + (error.message || 'Erreur inconnue'));
                 }
-                throw new Error(error.message || 'Erreur GitHub');
             }
+
+            console.log('Fichier mis a jour avec succes:', path);
         }
 
         // ============ FILTRES & RECHERCHE ============

@@ -1,16 +1,6 @@
 {
   "produits": [
     {
-      "id": "1776553302021",
-      "title": "Bague Emeraude Coeur",
-      "image": "/images/IMG_2235.jpeg",
-      "category": "bagues",
-      "price": "Sur demande",
-      "badge": "Piece Unique",
-      "description": "bnkjghkjh",
-      "visible": true
-    },
-    {
       "id": "1776624935658",
       "title": "Bague pièces",
       "image": "/images/IMG_4241.jpeg",
@@ -65,6 +55,16 @@
       "title": "Bague",
       "image": "/images/IMG_4869.jpeg",
       "category": "chevalieres",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "",
+      "visible": true
+    },
+    {
+      "id": "1776625772241",
+      "title": "Bague",
+      "image": "/images/IMG_4885.jpeg",
+      "category": "creations",
       "price": "Sur demande",
       "badge": "Piece Unique",
       "description": "",

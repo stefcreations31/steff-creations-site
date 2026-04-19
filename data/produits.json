@@ -189,6 +189,16 @@
       "badge": "Piece Unique",
       "description": "",
       "visible": true
+    },
+    {
+      "id": "1776629416363",
+      "title": "Bague pièce",
+      "image": "/images/76409525533__ACCEA46B-59BC-4B49-A63E-B56F14AC6F63.jpeg",
+      "category": "bagues",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "",
+      "visible": true
     }
   ]
 }

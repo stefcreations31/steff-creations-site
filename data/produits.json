@@ -129,6 +129,16 @@
       "badge": "Piece Unique",
       "description": "Bague, diamant, saphir. Or 18 carats.",
       "visible": true
+    },
+    {
+      "id": "1776627005672",
+      "title": "Bracelet pièces",
+      "image": "/images/IMG_4731.jpeg",
+      "category": "creations",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Création bracelet pièces or 18 carats",
+      "visible": true
     }
   ]
 }

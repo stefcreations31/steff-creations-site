@@ -99,6 +99,16 @@
       "badge": "Piece Unique",
       "description": "Bracelet pièces 20 francs ",
       "visible": true
+    },
+    {
+      "id": "1776626532071",
+      "title": "Alliance diamant",
+      "image": "/images/IMG_4601.jpeg",
+      "category": "bagues",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Alliance diamant or gris 18k\n",
+      "visible": true
     }
   ]
 }

@@ -109,6 +109,16 @@
       "badge": "Piece Unique",
       "description": "Alliance diamant or gris 18k\n",
       "visible": true
+    },
+    {
+      "id": "1776626738700",
+      "title": "Jonc croix de vie",
+      "image": "/images/IMG_3987.jpeg",
+      "category": "bagues",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Jonc croix de vie or 18 carat",
+      "visible": true
     }
   ]
 }

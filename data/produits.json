@@ -59,6 +59,16 @@
       "badge": "Piece Unique",
       "description": "",
       "visible": true
+    },
+    {
+      "id": "1776625601702",
+      "title": "Bague",
+      "image": "/images/IMG_4869.jpeg",
+      "category": "chevalieres",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "",
+      "visible": true
     }
   ]
 }

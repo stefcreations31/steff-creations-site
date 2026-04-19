@@ -89,6 +89,16 @@
       "badge": "Piece Unique",
       "description": "Bague fleurs diamants or 18 k",
       "visible": true
+    },
+    {
+      "id": "1776626294187",
+      "title": "Bracelet pièces",
+      "image": "/images/170A47F0-5682-4B1D-A6FC-AA01E168F54D.png",
+      "category": "bracelets",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Bracelet pièces 20 francs ",
+      "visible": true
     }
   ]
 }

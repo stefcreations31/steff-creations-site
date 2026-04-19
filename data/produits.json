@@ -29,6 +29,16 @@
       "badge": "Piece Unique",
       "description": "Bracelet cœur diamant or 18k",
       "visible": true
+    },
+    {
+      "id": "1776625196276",
+      "title": "Pendentif croix Diamant",
+      "image": "/images/429099A2-D770-4955-8A17-66F3136685E2.png",
+      "category": "creations",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Croix or gris 18 k avec diamants ",
+      "visible": true
     }
   ]
 }

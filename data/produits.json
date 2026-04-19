@@ -149,6 +149,16 @@
       "badge": "Piece Unique",
       "description": "Chevalière universitaire. Or 18 carats \nPossibilité couleur de pierre bleu,blanc, vert, rouge \n",
       "visible": true
+    },
+    {
+      "id": "1776627402009",
+      "title": "Bracelet",
+      "image": "/images/CE816D17-E62A-4278-9D35-A2DCFCE1D2D6.jpeg",
+      "category": "creations",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "",
+      "visible": true
     }
   ]
 }

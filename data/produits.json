@@ -39,6 +39,16 @@
       "badge": "Piece Unique",
       "description": "Croix or gris 18 k avec diamants ",
       "visible": true
+    },
+    {
+      "id": "1776625301048",
+      "title": "Bague Diamant",
+      "image": "/images/IMG_3036.jpeg",
+      "category": "creations",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "",
+      "visible": true
     }
   ]
 }

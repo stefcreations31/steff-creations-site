@@ -49,6 +49,16 @@
       "badge": "Piece Unique",
       "description": "",
       "visible": true
+    },
+    {
+      "id": "1776625445786",
+      "title": "Jonc avec pièce",
+      "image": "/images/IMG_4404.jpeg",
+      "category": "bracelets",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "",
+      "visible": true
     }
   ]
 }

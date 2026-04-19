@@ -159,6 +159,16 @@
       "badge": "Piece Unique",
       "description": "",
       "visible": true
+    },
+    {
+      "id": "1776627604375",
+      "title": "Bague",
+      "image": "/images/IMG_2560.jpeg",
+      "category": "bagues",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Bague or 18 carats",
+      "visible": true
     }
   ]
 }

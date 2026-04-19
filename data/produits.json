@@ -69,6 +69,16 @@
       "badge": "Piece Unique",
       "description": "",
       "visible": true
+    },
+    {
+      "id": "1776625912621",
+      "title": "Bracelets",
+      "image": "/images/C99DF585-94E5-4612-B52C-0FCA6F3EE295.png",
+      "category": "bracelets",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Bracelet Américain 14 mm or 18k\nBracelet pièce 20 francs ",
+      "visible": true
     }
   ]
 }

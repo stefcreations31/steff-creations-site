@@ -19,6 +19,16 @@
       "badge": "Piece Unique",
       "description": "Bague pièce ",
       "visible": true
+    },
+    {
+      "id": "1776625076262",
+      "title": "Bracelet Diamant",
+      "image": "/images/IMG_4825.jpeg",
+      "category": "bracelets",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Bracelet cœur diamant or 18k",
+      "visible": true
     }
   ]
 }

@@ -119,6 +119,16 @@
       "badge": "Piece Unique",
       "description": "Jonc croix de vie or 18 carat",
       "visible": true
+    },
+    {
+      "id": "1776626842401",
+      "title": "Bague, diamant, saphir",
+      "image": "/images/IMG_4611.jpeg",
+      "category": "bagues",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Bague, diamant, saphir. Or 18 carats.",
+      "visible": true
     }
   ]
 }

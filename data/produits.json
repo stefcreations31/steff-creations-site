@@ -169,6 +169,16 @@
       "badge": "Piece Unique",
       "description": "Bague or 18 carats",
       "visible": true
+    },
+    {
+      "id": "1776627784496",
+      "title": "Croix clous",
+      "image": "/images/D2AD0032-3EFA-4FE7-8946-3DF319D55255.jpeg",
+      "category": "creations",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Croix clous or 18 k",
+      "visible": true
     }
   ]
 }

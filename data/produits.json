@@ -179,6 +179,16 @@
       "badge": "Piece Unique",
       "description": "Croix clous or 18 k",
       "visible": true
+    },
+    {
+      "id": "1776629145600",
+      "title": "Pendant",
+      "image": "/images/IMG_3732.png",
+      "category": "colliers",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "",
+      "visible": true
     }
   ]
 }

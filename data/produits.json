@@ -139,6 +139,16 @@
       "badge": "Piece Unique",
       "description": "Création bracelet pièces or 18 carats",
       "visible": true
+    },
+    {
+      "id": "1776627202596",
+      "title": "Chevalière universitaire",
+      "image": "/images/9D5AA2ED-F9E2-4698-8D47-405A8170DA59.jpeg",
+      "category": "bagues",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Chevalière universitaire. Or 18 carats \nPossibilité couleur de pierre bleu,blanc, vert, rouge \n",
+      "visible": true
     }
   ]
 }

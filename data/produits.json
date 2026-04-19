@@ -79,6 +79,16 @@
       "badge": "Piece Unique",
       "description": "Bracelet Américain 14 mm or 18k\nBracelet pièce 20 francs ",
       "visible": true
+    },
+    {
+      "id": "1776626067267",
+      "title": "Bague fleur Diamant",
+      "image": "/images/IMG_4605.jpeg",
+      "category": "creations",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Bague fleurs diamants or 18 k",
+      "visible": true
     }
   ]
 }

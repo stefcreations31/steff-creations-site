@@ -219,6 +219,16 @@
       "badge": "Piece Unique",
       "description": "Collier palmier chute or 18k",
       "visible": true
+    },
+    {
+      "id": "1776672694331",
+      "title": "Bague diamant",
+      "image": "/images/B7446176-DCD5-4DDD-B63C-9069928F81B9.png",
+      "category": "bagues",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Bague pavé diamant",
+      "visible": true
     }
   ]
 }

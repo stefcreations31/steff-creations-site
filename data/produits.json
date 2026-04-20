@@ -199,6 +199,16 @@
       "badge": "Piece Unique",
       "description": "",
       "visible": true
+    },
+    {
+      "id": "1776672040264",
+      "title": "Collier perles",
+      "image": "/images/45A84B12-6D71-4170-B19C-602CC63DEAB3.png",
+      "category": "colliers",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Collier perles ",
+      "visible": true
     }
   ]
 }

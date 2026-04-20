@@ -209,6 +209,16 @@
       "badge": "Piece Unique",
       "description": "Collier perles ",
       "visible": true
+    },
+    {
+      "id": "1776672172108",
+      "title": "Collier palmier",
+      "image": "/images/785505D4-33A5-46FA-BA40-ADE0706EE615.png",
+      "category": "colliers",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Collier palmier chute or 18k",
+      "visible": true
     }
   ]
 }

@@ -229,6 +229,16 @@
       "badge": "Piece Unique",
       "description": "Bague pavé diamant",
       "visible": true
+    },
+    {
+      "id": "1776892360673",
+      "title": "Marquise Diamants",
+      "image": "/images/29693751-A675-452F-9E67-CA4CA3BD7436.png",
+      "category": "bagues",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Marquise Diamants or gris 18 k",
+      "visible": true
     }
   ]
 }

@@ -239,6 +239,16 @@
       "badge": "Piece Unique",
       "description": "Marquise Diamants or gris 18 k",
       "visible": true
+    },
+    {
+      "id": "1776892695231",
+      "title": "Parure",
+      "image": "/images/IMG_4400.jpeg",
+      "category": "bagues",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Ensemble colliers Bague bracelet ",
+      "visible": true
     }
   ]
 }

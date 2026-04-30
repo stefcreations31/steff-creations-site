@@ -249,6 +249,16 @@
       "badge": "Piece Unique",
       "description": "Ensemble colliers Bague bracelet ",
       "visible": true
+    },
+    {
+      "id": "1777569283447",
+      "title": "Chaine",
+      "image": "/images/3166A6E7-C2B0-4928-9FBC-E2EB0BB6745B.png",
+      "category": "colliers",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Collier pièce ",
+      "visible": true
     }
   ]
 }

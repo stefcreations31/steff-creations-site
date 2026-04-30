@@ -259,6 +259,16 @@
       "badge": "Piece Unique",
       "description": "Collier pièce ",
       "visible": true
+    },
+    {
+      "id": "1777569405852",
+      "title": "Graine de café",
+      "image": "/images/275DA216-189F-4A78-8DCE-822DBCF80D5D.png",
+      "category": "colliers",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Chaîne et gourmette tricolore6 mm. Or 18 carats.",
+      "visible": true
     }
   ]
 }

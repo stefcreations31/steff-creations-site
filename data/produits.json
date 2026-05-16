@@ -299,6 +299,16 @@
       "badge": "Piece Unique",
       "description": "Bracelet marteau",
       "visible": true
+    },
+    {
+      "id": "1778924386346",
+      "title": "Chevalière",
+      "image": "/images/7D73B165-20FD-49C6-AB7A-61C40A412351.png",
+      "category": "bagues",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "",
+      "visible": true
     }
   ]
 }

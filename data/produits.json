@@ -289,6 +289,16 @@
       "badge": "Piece Unique",
       "description": "",
       "visible": true
+    },
+    {
+      "id": "1778924200113",
+      "title": "Bracelet",
+      "image": "/images/IMG_5045.jpeg",
+      "category": "bracelets",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Bracelet marteau",
+      "visible": true
     }
   ]
 }

@@ -269,6 +269,16 @@
       "badge": "Piece Unique",
       "description": "Chaîne et gourmette tricolore6 mm. Or 18 carats.",
       "visible": true
+    },
+    {
+      "id": "1778923824938",
+      "title": "Bague",
+      "image": "/images/IMG_5034.jpeg",
+      "category": "bagues",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "Bague diamants ",
+      "visible": true
     }
   ]
 }

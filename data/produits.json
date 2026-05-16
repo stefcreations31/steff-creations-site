@@ -279,6 +279,16 @@
       "badge": "Piece Unique",
       "description": "Bague diamants ",
       "visible": true
+    },
+    {
+      "id": "1778924102668",
+      "title": "Bague",
+      "image": "/images/3922FB7B-8FE5-4DA8-A4A2-12280CEDA92D.png",
+      "category": "bagues",
+      "price": "Sur demande",
+      "badge": "Piece Unique",
+      "description": "",
+      "visible": true
     }
   ]
 }

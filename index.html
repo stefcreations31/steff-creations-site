@@ -5661,11 +5661,8 @@
             localStorage.setItem('stef-lang', lang);
         }
 
-        // Load saved language
-        const savedLang = localStorage.getItem('stef-lang');
-        if (savedLang && translations[savedLang]) {
-            setLanguage(savedLang);
-        }
+        // Toujours demarrer en francais (ne pas charger la langue sauvegardee)
+        // Le francais est deja la langue par defaut (currentLang = 'fr')
 
         // ========================================
         // BOUTIQUE FILTER SYSTEM

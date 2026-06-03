@@ -4954,15 +4954,24 @@
                 amount = weight * prixOr * purity;
 
                 // Détail du calcul (SANS révéler les marges)
+                // Cours ajusté à la pureté (ce que le client comprend)
+                const coursAjuste = prixSpot * purity;
+                const prixRachatAjuste = prixOr * purity;
+
+                // Nom de la pureté pour l'affichage
+                const nomPurete = purity === 0.999 ? "Or 24 carats" :
+                                  purity === 0.750 ? "Or 18 carats" :
+                                  purity === 0.585 ? "Or 14 carats" : "Or 9 carats";
+
                 detailHTML = `
                     <div style="text-align: left; max-width: 400px; margin: 0 auto;">
                         <div style="margin-bottom: 0.5rem;"><strong style="color: var(--or);">Détail du calcul :</strong></div>
-                        <div>Cours de référence : <strong>${prixSpot.toFixed(2)} EUR/g</strong></div>
-                        <div>Pureté : <strong>${(purity * 1000).toFixed(0)}/1000</strong> (${(purity * 100).toFixed(1)}%)</div>
+                        <div>Type : <strong>${nomPurete}</strong> (${(purity * 1000).toFixed(0)}‰)</div>
+                        <div>Cours ${nomPurete} : <strong>${coursAjuste.toFixed(2)} EUR/g</strong></div>
                         <div>Poids : <strong>${weight.toFixed(2)}g</strong></div>
                         <div style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid rgba(201,162,39,0.2);">
                             <div style="font-size: 0.9rem; color: var(--or-clair);">
-                                Prix de rachat appliqué : ${prixOr.toFixed(2)} EUR/g
+                                Prix de rachat : ${prixRachatAjuste.toFixed(2)} EUR/g
                             </div>
                         </div>
                     </div>

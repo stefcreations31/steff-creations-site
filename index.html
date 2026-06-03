@@ -2207,15 +2207,15 @@
             box-shadow: 0 0 20px rgba(201, 162, 39, 0.4);
         }
 
-        /* Container principal avec layout asymetrique */
+        /* Container principal - cartes de meme taille */
         .estimation-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 var(--container-padding);
             display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
-            gap: 3rem;
-            align-items: start;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: stretch;
             position: relative;
             z-index: 2;
         }
@@ -2223,6 +2223,9 @@
         /* Colonne des prix */
         .estimation-content {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .estimation-content h3 {
@@ -2256,6 +2259,9 @@
                 0 30px 80px rgba(0, 0, 0, 0.5),
                 0 0 1px rgba(201, 162, 39, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Cadre decoratif coins */
@@ -2318,6 +2324,10 @@
 
         .price-card-body {
             padding: 1.5rem 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .price-row {
@@ -2451,6 +2461,9 @@
                 0 40px 100px rgba(0, 0, 0, 0.6),
                 0 0 1px rgba(201, 162, 39, 0.4),
                 inset 0 1px 0 rgba(255, 255, 255, 0.02);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         /* Effet lumineux coin superieur */
@@ -3396,50 +3409,68 @@
             .estimation-header p { font-size: 1rem; line-height: 1.8; }
             /* Section Estimation - Mobile */
             .estimation-section { padding: 4rem 0 5rem; }
-            .estimation-header { margin-bottom: 3rem; }
+            .estimation-header { margin-bottom: 2.5rem; }
             .estimation-header .section-eyebrow { font-size: 0.6rem; padding: 0.5rem 1rem; }
             .estimation-header h2 { font-size: 1.8rem; }
-            .estimation-header p { font-size: 1rem; }
-            .estimation-container { gap: 2rem; padding: 0; }
-            .estimation-content h3 { font-size: 0.9rem; margin-bottom: 1.2rem; }
+            .estimation-header p { font-size: 1rem; margin-bottom: 1.5rem; }
+            .estimation-container { gap: 2.5rem; padding: 0 1rem; }
+            .estimation-content { height: auto; }
+            .estimation-content h3 { font-size: 0.85rem; margin-bottom: 1rem; }
             .estimation-content h3::before { width: 16px; }
 
             .price-card, .calculator {
-                padding: 0;
                 border-radius: 0;
+                height: auto;
+            }
+            .price-card {
+                padding: 0;
             }
             .price-card-header {
                 padding: 1.2rem 1.5rem;
-                flex-direction: column;
-                gap: 0.8rem;
-                align-items: flex-start;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
             }
-            .price-card-body { padding: 1rem 1.5rem; }
+            .price-card-body {
+                padding: 1.2rem 1.5rem;
+                flex: none;
+            }
             .price-card-title { font-size: 0.7rem; }
-            .price-row { padding: 0.9rem 0; }
+            .price-row { padding: 1rem 0; }
             .price-row:hover { padding-left: 0.5rem; }
-            .price-label { font-size: 0.8rem; }
+            .price-row::before { display: none; }
+            .price-label { font-size: 0.82rem; }
             .price-label::before { display: none; }
-            .price-value { font-size: 1.1rem; }
-            .price-card-footer { padding: 1rem 1.5rem; flex-direction: column; gap: 0.8rem; align-items: flex-start; }
+            .price-value { font-size: 1.15rem; }
+            .price-card-footer {
+                padding: 1rem 1.5rem;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
             .last-update { font-size: 0.65rem; }
+            .refresh-btn { padding: 0.5rem 1rem; }
 
-            .calculator { padding: 1.8rem 1.5rem; }
-            .calculator::after { left: 1rem; right: 1rem; }
-            .calculator-title { font-size: 0.85rem; margin-bottom: 2rem; padding-bottom: 1.2rem; }
+            .calculator {
+                padding: 2rem 1.5rem;
+            }
+            .calculator::after { left: 1.5rem; right: 1.5rem; }
+            .calculator-title { font-size: 0.85rem; margin-bottom: 1.8rem; padding-bottom: 1.2rem; }
 
-            .type-selector { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
-            .type-option { padding: 1rem 0.5rem; }
-            .type-icon svg { width: 22px; height: 22px; }
-            .type-label { font-size: 0.55rem; }
+            .form-group { margin-bottom: 1.5rem; }
+            .type-selector { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+            .type-option { padding: 1.2rem 0.8rem; }
+            .type-icon svg { width: 24px; height: 24px; }
+            .type-label { font-size: 0.6rem; letter-spacing: 0.1em; }
 
-            .form-label { font-size: 0.65rem; }
-            .form-select, .form-input { padding: 1rem 1.2rem; font-size: 0.85rem; }
-            .btn-calculate { padding: 1.2rem 1.5rem; font-size: 0.7rem; }
+            .form-label { font-size: 0.65rem; margin-bottom: 0.8rem; }
+            .form-select, .form-input { padding: 1.1rem 1.2rem; font-size: 0.9rem; }
+            .btn-calculate { padding: 1.3rem 1.5rem; font-size: 0.72rem; margin-top: 0.5rem; }
 
-            .result-display { padding: 2rem 1.5rem; }
-            .result-amount { font-size: 2.2rem; }
-            .result-note { font-size: 0.68rem; padding: 0.8rem; }
+            .result-display { padding: 2rem 1.5rem; margin-top: 1.5rem; }
+            .result-amount { font-size: 2.4rem; }
+            .result-breakdown { font-size: 0.8rem; }
+            .result-note { font-size: 0.7rem; padding: 0.8rem; margin-top: 1.2rem; }
             .price-row { padding: 0.8rem 0; }
             .price-label { font-size: 0.85rem; }
             .price-value { font-size: 1.1rem; }
@@ -3550,14 +3581,39 @@
             .product-price { font-size: 1.3rem; }
             .service-card { padding: 2rem 1.5rem; }
             .testimonial-card { padding: 2rem 1.5rem; }
+            /* Estimation - Petits ecrans */
+            .estimation-section { padding: 3rem 0 4rem; }
+            .estimation-container { gap: 2rem; padding: 0 0.8rem; }
+            .estimation-header h2 { font-size: 1.5rem; }
+            .estimation-header p { font-size: 0.9rem; }
+
             .price-card { padding: 0; }
-            .price-card-body { padding: 0.8rem 1.2rem; }
+            .price-card-body { padding: 1rem 1.2rem; }
             .price-card-header { padding: 1rem 1.2rem; }
-            .price-card-footer { padding: 0.8rem 1.2rem; }
+            .price-card-footer {
+                padding: 1rem 1.2rem;
+                flex-direction: column;
+                gap: 0.8rem;
+                align-items: stretch;
+            }
+            .refresh-btn { width: 100%; text-align: center; }
+            .price-row { padding: 0.9rem 0; }
+            .price-label { font-size: 0.78rem; }
+            .price-value { font-size: 1.05rem; }
+
             .calculator { padding: 1.5rem 1.2rem; }
-            .horaires-card { padding: 1.5rem; }
-            .type-selector { grid-template-columns: repeat(2, 1fr); }
+            .calculator-title { font-size: 0.8rem; margin-bottom: 1.5rem; }
+            .type-selector { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+            .type-option { padding: 1rem 0.5rem; }
+            .type-icon svg { width: 22px; height: 22px; }
+            .type-label { font-size: 0.55rem; }
+            .form-select, .form-input { padding: 1rem; font-size: 0.85rem; }
+            .btn-calculate { padding: 1.2rem; font-size: 0.68rem; }
+            .result-display { padding: 1.8rem 1.2rem; }
             .result-amount { font-size: 2rem; }
+            .result-note { font-size: 0.65rem; }
+
+            .horaires-card { padding: 1.5rem; }
             .contact-detail { padding: 1rem 1.2rem; }
         }
 

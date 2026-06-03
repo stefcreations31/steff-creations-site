@@ -3359,441 +3359,487 @@
         .reveal-right.active { opacity: 1; transform: translateX(0); }
 
         /* RESPONSIVE */
+        /* ==============================================
+           RESPONSIVE DESIGN - REFONTE COMPLETE
+           Breakpoints: 1400px > 1024px > 768px > 480px
+           ============================================== */
+
         @media (max-width: 1400px) {
-            :root {
-                --container-padding: 3rem;
-            }
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            :root { --container-padding: 3rem; }
+            .products-grid { grid-template-columns: repeat(3, 1fr); }
         }
 
         @media (max-width: 1024px) {
-            .services-grid { grid-template-columns: 1fr; max-width: 500px; }
-            .estimation-container, .contact-container { grid-template-columns: 1fr; gap: 2.5rem; }
-            .estimation-content, .calculator { max-width: 550px; margin: 0 auto; width: 100%; }
-            .products-grid { grid-template-columns: repeat(2, 1fr); }
+            :root { --container-padding: 2rem; }
+
+            /* Grilles */
+            .services-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
             .testimonials-grid { flex-direction: column; align-items: center; }
             .testimonial-card { max-width: 500px; width: 100%; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-md); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
             .stat-item:nth-child(2)::after { display: none; }
-            .atelier-container { grid-template-columns: 1fr; gap: var(--space-lg); }
+
+            /* Estimation */
+            .estimation-container, .contact-container { grid-template-columns: 1fr; gap: 2rem; }
+            .estimation-content, .calculator { max-width: 100%; margin: 0 auto; width: 100%; }
+
+            /* Atelier */
+            .atelier-container { grid-template-columns: 1fr; gap: 3rem; }
             .atelier-content { padding-right: 0; text-align: center; }
             .atelier-features { justify-content: center; }
             .atelier-videos { max-width: 500px; margin: 0 auto; }
         }
+        /* ==============================================
+           MOBILE - 768px (Tablettes et téléphones)
+           ============================================== */
         @media (max-width: 768px) {
             html { font-size: 15px; }
             :root {
-                --space-xl: 4rem;
-                --space-2xl: 5rem;
-                --container-padding: 1.5rem;
+                --space-xl: 3.5rem;
+                --space-2xl: 4.5rem;
+                --container-padding: 1.25rem;
             }
 
-            /* Navigation */
-            .nav { height: 70px; padding: 0 var(--container-padding); }
-            .nav-links { display: none; }
+            /* ===== NAVIGATION ===== */
+            .nav {
+                height: 65px;
+                padding: 0 1.25rem;
+            }
+            .nav-links, .nav-cta { display: none; }
             .hamburger { display: flex; }
             .mobile-menu { display: flex; }
-            .nav-cta { display: none; }
-            .nav-logo-main { font-size: 1.1rem; letter-spacing: 0.15em; }
-            .nav-logo-sub { font-size: 0.6rem; }
-            .nav-logo-diamond { width: 28px; height: 28px; }
+            .nav-logo-main { font-size: 1rem; letter-spacing: 0.12em; }
+            .nav-logo-sub { font-size: 0.55rem; }
+            .nav-logo-diamond { width: 26px; height: 26px; }
 
-            /* Hero */
-            .hero { min-height: 100svh; padding: 0 1.5rem; padding-bottom: 3rem; }
-            .hero-content { padding-bottom: 2rem; }
+            /* ===== HERO ===== */
+            .hero {
+                min-height: 100svh;
+                min-height: -webkit-fill-available;
+                padding: 0 1.25rem 2rem;
+            }
+            .hero-content { padding-bottom: 1.5rem; }
             .hero-scroll { display: none; }
-            .hero-eyebrow { margin-bottom: 1.5rem; }
-            .hero-eyebrow-text { font-size: 0.6rem; letter-spacing: 0.3em; }
-            .hero-eyebrow-line { width: 25px; }
-            .hero-title { font-size: clamp(2.5rem, 14vw, 4.5rem); letter-spacing: 0.08em; margin-bottom: 0.3rem; }
-            .hero-subtitle { font-size: 1rem; letter-spacing: 0.15em; margin-bottom: 2rem; }
-            .hero-description { font-size: 0.95rem; line-height: 1.8; margin-bottom: 2.5rem; }
-            .hero-actions { flex-direction: column; width: 100%; gap: 1rem; padding: 0 0.5rem; }
+            .hero-eyebrow { margin-bottom: 1rem; }
+            .hero-eyebrow-text { font-size: 0.55rem; letter-spacing: 0.25em; }
+            .hero-eyebrow-line { width: 20px; }
+            .hero-title {
+                font-size: clamp(2.2rem, 11vw, 3.5rem);
+                letter-spacing: 0.06em;
+                margin-bottom: 0.2rem;
+            }
+            .hero-subtitle {
+                font-size: 0.9rem;
+                letter-spacing: 0.12em;
+                margin-bottom: 1.5rem;
+            }
+            .hero-description {
+                font-size: 0.9rem;
+                line-height: 1.7;
+                margin-bottom: 2rem;
+                padding: 0 0.5rem;
+            }
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.8rem;
+                padding: 0;
+            }
             .btn-primary, .btn-secondary {
                 width: 100%;
                 text-align: center;
-                padding: 1.2rem 2rem;
-                font-size: 0.8rem;
-                letter-spacing: 0.15em;
-            }
-
-            /* Sections */
-            .section { padding: var(--space-xl) var(--container-padding); }
-            .section-header { margin-bottom: var(--space-lg); }
-            .section-eyebrow { font-size: var(--text-xs); letter-spacing: 0.3em; margin-bottom: var(--space-sm); }
-            .section-title { font-size: var(--text-3xl); letter-spacing: 0.08em; }
-            .section-divider { margin-top: var(--space-md); }
-            .section-divider-line { width: 40px; }
-            .section-divider-diamond { width: 6px; height: 6px; }
-
-            /* Boutique - Category Navigation mobile */
-            .category-nav {
-                gap: 0.5rem;
-                padding: 0 1rem;
-            }
-            .category-btn {
-                padding: 1rem 1.2rem;
-                min-width: 90px;
-                min-height: 48px;
-            }
-            .category-icon {
-                font-size: 1.3rem;
-            }
-            .category-btn span:last-child {
-                font-size: 0.7rem;
-            }
-
-            /* Boutique - Products Grid mobile - 2 colonnes */
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: var(--space-sm);
-                padding: 0 var(--space-sm);
-            }
-            .product-card:hover {
-                transform: none;
-            }
-            .product-overlay {
-                display: none;
-            }
-            .product-info {
-                padding: 1rem;
-            }
-            .product-category {
-                font-size: 0.6rem;
-            }
-            .product-name {
-                font-size: 1rem;
-            }
-            .product-description {
+                padding: 1rem 1.5rem;
                 font-size: 0.75rem;
-            }
-            .product-price {
-                font-size: 0.95rem;
-            }
-
-            /* Services */
-            .services-grid {
-                gap: 1.5rem;
-            }
-            .service-card {
-                padding: 2.5rem 2rem;
-                border-radius: 4px;
-            }
-            .service-icon {
-                width: 70px;
-                height: 70px;
-                margin-bottom: 1.5rem;
-            }
-            .service-icon svg { width: 45px; height: 45px; }
-            .service-title {
-                font-size: 1.2rem;
-                margin-bottom: 1rem;
-                letter-spacing: 0.08em;
-            }
-            .service-description {
-                font-size: 0.9rem;
-                line-height: 1.8;
-            }
-
-            /* Marquee */
-            .marquee-item {
-                font-size: 0.75rem;
-                padding: 0 2rem;
-                letter-spacing: 0.15em;
-            }
-
-            /* Testimonials */
-            .testimonials-grid {
-                gap: 1.5rem;
-                padding: 0;
-            }
-            .testimonial-card {
-                padding: 2.5rem 2rem;
-                border-radius: 4px;
-                max-width: 100%;
-            }
-            .testimonial-stars {
-                font-size: 1rem;
-                margin-bottom: 1.5rem;
-                letter-spacing: 0.3em;
-            }
-            .testimonial-text {
-                font-size: 1.05rem;
-                line-height: 1.9;
-                margin-bottom: 1.5rem;
-            }
-            .testimonial-author {
-                font-size: 0.85rem;
                 letter-spacing: 0.12em;
             }
-            .testimonial-role {
-                font-size: 0.7rem;
-            }
 
-            /* Stats */
-            .stats-section { padding: 4rem 5%; }
+            /* ===== SECTIONS GENERALES ===== */
+            .section {
+                padding: 3.5rem 1.25rem;
+            }
+            .section-header { margin-bottom: 2.5rem; }
+            .section-eyebrow {
+                font-size: 0.6rem;
+                letter-spacing: 0.25em;
+                margin-bottom: 0.8rem;
+            }
+            .section-title {
+                font-size: 1.6rem;
+                letter-spacing: 0.06em;
+            }
+            .section-divider { margin-top: 1.5rem; }
+            .section-divider-line { width: 35px; }
+            .section-divider-diamond { width: 5px; height: 5px; }
+
+            /* ===== STATS ===== */
+            .stats-section { padding: 3rem 1.25rem; }
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: var(--space-md) var(--space-sm);
+                gap: 1.5rem 1rem;
             }
             .stat-item::after { display: none; }
-            .stat-number { font-size: var(--text-4xl); }
-            .stat-label { font-size: var(--text-xs); letter-spacing: 0.15em; }
+            .stat-number { font-size: 2rem; }
+            .stat-label { font-size: 0.6rem; letter-spacing: 0.12em; }
 
-            /* Atelier */
-            .atelier-section { padding: var(--space-xl) var(--container-padding); }
-            .atelier-container { gap: var(--space-lg); }
-            .atelier-content { text-align: center; }
-            .atelier-content h2 { font-size: var(--text-3xl); }
-            .atelier-content p { font-size: var(--text-base); }
-            .atelier-features {
-                grid-template-columns: 1fr;
-                gap: var(--space-sm);
-                max-width: 280px;
-                margin: var(--space-md) auto 0;
+            /* ===== BOUTIQUE ===== */
+            .category-nav {
+                gap: 0.4rem;
+                padding: 0 0.5rem;
+                margin-bottom: 2rem;
             }
-            .atelier-feature { justify-content: flex-start; }
-            .atelier-feature-icon { width: 45px; height: 45px; font-size: 1.1rem; }
-            .atelier-feature-text { font-size: 0.8rem; }
-            .atelier-videos {
-                gap: 1rem;
-                max-width: 100%;
+            .category-btn {
+                padding: 0.8rem 1rem;
+                min-width: 80px;
+                min-height: 44px;
             }
-            .atelier-video-wrapper { aspect-ratio: 9/16; }
-            .video-play-btn { width: 55px; height: 55px; }
-            .video-play-btn::before {
-                border-left-width: 14px;
-                border-top-width: 9px;
-                border-bottom-width: 9px;
-                margin-left: 4px;
-            }
+            .category-icon { font-size: 1.1rem; margin-bottom: 0.3rem; }
+            .category-btn span:last-child { font-size: 0.6rem; }
 
-            /* Estimation */
-            .estimation-header h2 { font-size: clamp(1.8rem, 7vw, 2.8rem); }
-            .estimation-header p { font-size: 1rem; line-height: 1.8; }
-            /* Section Estimation - Mobile */
-            .estimation-section { padding: 4rem 0 5rem; }
-            .estimation-header { margin-bottom: 2.5rem; }
-            .estimation-header .section-eyebrow { font-size: 0.6rem; padding: 0.5rem 1rem; }
-            .estimation-header h2 { font-size: 1.8rem; }
-            .estimation-header p { font-size: 1rem; margin-bottom: 1.5rem; }
-            .estimation-container { gap: 2.5rem; padding: 0 1rem; }
-            .estimation-content { height: auto; }
-
-            .price-card, .calculator {
-                border-radius: 0;
-                height: auto;
-            }
-            .price-card {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
                 padding: 0;
             }
-            .price-card-header {
-                padding: 1.2rem 1.5rem;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-            }
-            .price-card-body {
-                padding: 1.2rem 1.5rem;
-                flex: none;
-            }
-            .price-card-title { font-size: 0.7rem; }
-            .price-row { padding: 1rem 0; }
-            .price-row:hover { padding-left: 0.5rem; }
-            .price-row::before { display: none; }
-            .price-label { font-size: 0.82rem; }
-            .price-label::before { display: none; }
-            .price-value { font-size: 1.15rem; }
-            .price-card-footer {
-                padding: 1rem 1.5rem;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-            }
-            .last-update { font-size: 0.65rem; }
-            .refresh-btn { padding: 0.5rem 1rem; }
+            .product-card:hover { transform: none; }
+            .product-overlay { display: none; }
+            .product-info { padding: 0.8rem; }
+            .product-category { font-size: 0.5rem; margin-bottom: 0.3rem; }
+            .product-name { font-size: 0.85rem; margin-bottom: 0.2rem; }
+            .product-description { display: none; }
+            .product-price { font-size: 0.9rem; margin-top: 0.4rem; }
+            .product-badge { font-size: 0.5rem; padding: 0.25rem 0.5rem; top: 0.5rem; right: 0.5rem; }
 
-            .calculator {
+            /* ===== SERVICES ===== */
+            .services-grid { gap: 1.2rem; }
+            .service-card {
                 padding: 2rem 1.5rem;
-            }
-            .calculator::after { left: 1.5rem; right: 1.5rem; }
-            .calculator-title { font-size: 0.85rem; margin-bottom: 1.8rem; padding-bottom: 1.2rem; }
-
-            .form-group { margin-bottom: 1.5rem; }
-            .type-selector { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
-            .type-option { padding: 1.2rem 0.8rem; }
-            .type-icon svg { width: 30px; height: 30px; }
-            .type-label { font-size: 0.6rem; letter-spacing: 0.1em; }
-
-            .form-label { font-size: 0.65rem; margin-bottom: 0.8rem; }
-            .form-select, .form-input { padding: 1.1rem 1.2rem; font-size: 0.9rem; }
-            .btn-calculate { padding: 1.3rem 1.5rem; font-size: 0.72rem; margin-top: 0.5rem; }
-
-            .result-display { padding: 2rem 1.5rem; margin-top: 1.5rem; }
-            .result-amount { font-size: 2.4rem; }
-            .result-breakdown { font-size: 0.8rem; }
-            .result-note { font-size: 0.7rem; padding: 0.8rem; margin-top: 1.2rem; }
-            .price-row { padding: 0.8rem 0; }
-            .price-label { font-size: 0.85rem; }
-            .price-value { font-size: 1.1rem; }
-            .horaires-card {
-                padding: 2rem;
                 border-radius: 4px;
-                margin-top: 1.5rem;
             }
-            .horaires-title { font-size: 0.85rem; }
-            .horaires-row { font-size: 0.85rem; padding: 0.5rem 0; }
-            .calculator-title {
-                font-size: 1rem;
-                margin-bottom: 2rem;
-                padding-bottom: 1.2rem;
+            .service-icon { width: 60px; height: 60px; margin-bottom: 1.2rem; }
+            .service-icon svg { width: 35px; height: 35px; }
+            .service-title { font-size: 1.1rem; margin-bottom: 0.8rem; }
+            .service-description { font-size: 0.85rem; line-height: 1.7; }
+
+            /* ===== MARQUEE ===== */
+            .marquee-item {
+                font-size: 0.65rem;
+                padding: 0 1.5rem;
+                letter-spacing: 0.12em;
             }
-            .form-group { margin-bottom: 1.5rem; }
-            .form-label { font-size: 0.65rem; margin-bottom: 0.8rem; }
-            .type-selector { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
-            .type-option { padding: 1rem 0.5rem; }
-            .type-icon { font-size: 1.3rem; }
-            .type-label { font-size: 0.55rem; }
-            .form-select, .form-input {
+
+            /* ===== TESTIMONIALS ===== */
+            .testimonials-grid { gap: 1.2rem; padding: 0; }
+            .testimonial-card {
+                padding: 2rem 1.5rem;
+                border-radius: 4px;
+                max-width: 100%;
+            }
+            .testimonial-stars { font-size: 0.9rem; margin-bottom: 1.2rem; }
+            .testimonial-text { font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.2rem; }
+            .testimonial-author { font-size: 0.8rem; }
+            .testimonial-role { font-size: 0.65rem; }
+
+            /* ===== ATELIER ===== */
+            .atelier-section { padding: 3.5rem 1.25rem; }
+            .atelier-container { gap: 2.5rem; }
+            .atelier-content { text-align: center; }
+            .atelier-content h2 { font-size: 1.6rem; }
+            .atelier-content p { font-size: 0.9rem; line-height: 1.7; }
+            .atelier-features {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+                max-width: 250px;
+                margin: 1.5rem auto 0;
+            }
+            .atelier-feature { justify-content: flex-start; }
+            .atelier-feature-icon { width: 40px; height: 40px; font-size: 1rem; }
+            .atelier-feature-text { font-size: 0.75rem; }
+            .atelier-videos { gap: 0.8rem; max-width: 100%; }
+            .atelier-video-wrapper { aspect-ratio: 9/16; }
+            .video-play-btn { width: 50px; height: 50px; }
+            .video-play-btn::before {
+                border-left-width: 12px;
+                border-top-width: 8px;
+                border-bottom-width: 8px;
+                margin-left: 3px;
+            }
+
+            /* ===== ESTIMATION / CALCULATEUR ===== */
+            .estimation-section { padding: 3.5rem 0; }
+            .estimation-header { margin-bottom: 2rem; padding: 0 1.25rem; }
+            .estimation-header .section-eyebrow { font-size: 0.55rem; padding: 0.4rem 0.8rem; }
+            .estimation-header h2 { font-size: 1.5rem; margin-bottom: 0.8rem; }
+            .estimation-header p { font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; }
+            .estimation-container {
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+            .estimation-content { height: auto; }
+
+            /* Price Card */
+            .price-card {
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            .price-card-header {
                 padding: 1rem 1.2rem;
-                font-size: 0.9rem;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
             }
-            .btn-calculate {
-                padding: 1.2rem 2rem;
+            .price-card-title { font-size: 0.6rem; }
+            .price-card-body { padding: 1rem 1.2rem; }
+            .price-row {
+                padding: 0.7rem 0;
+                flex-wrap: nowrap;
+            }
+            .price-row:hover { padding-left: 0; }
+            .price-row::before { display: none; }
+            .price-label {
                 font-size: 0.75rem;
+                flex: 1;
+                min-width: 0;
             }
-            .result-display { padding: 2rem; }
-            .result-label { font-size: 0.7rem; }
-            .result-amount { font-size: 3.5rem; }
-            .result-note { font-size: 0.75rem; }
+            .price-label::before { display: none; }
+            .price-value {
+                font-size: 1rem;
+                white-space: nowrap;
+            }
+            .price-card-footer {
+                padding: 0.8rem 1.2rem;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .last-update { font-size: 0.55rem; }
+            .refresh-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.55rem;
+            }
 
-            /* FAQ */
+            /* Calculator */
+            .calculator {
+                padding: 1.5rem 1.2rem;
+                border-radius: 8px;
+            }
+            .calculator::after { left: 1.2rem; right: 1.2rem; }
+            .calculator-title {
+                font-size: 0.75rem;
+                margin-bottom: 1.5rem;
+                padding-bottom: 1rem;
+            }
+            .form-group { margin-bottom: 1.2rem; }
+            .form-label { font-size: 0.6rem; margin-bottom: 0.5rem; }
+
+            .type-selector {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 0.5rem;
+            }
+            .type-option { padding: 0.8rem 0.4rem; }
+            .type-icon svg { width: 24px; height: 24px; }
+            .type-label { font-size: 0.5rem; letter-spacing: 0.05em; margin-top: 0.4rem; }
+
+            .input-wrapper::before,
+            .input-wrapper::after { display: none; }
+            .form-select, .form-input {
+                padding: 0.9rem 1rem;
+                font-size: 0.85rem;
+                border-radius: 6px;
+            }
+            .form-select { padding-right: 2.5rem; background-position: right 1rem center; }
+            .weight-input-wrapper .form-input { padding-left: 2.2rem; }
+            .weight-input-wrapper::before { width: 14px; height: 14px; left: 0.8rem; }
+            .weight-unit { font-size: 0.7rem; right: 0.8rem; }
+
+            .btn-calculate {
+                padding: 1rem;
+                font-size: 0.65rem;
+                margin-top: 0.3rem;
+                border-radius: 6px;
+            }
+
+            .result-display {
+                padding: 1.5rem 1.2rem;
+                margin-top: 1.2rem;
+                border-radius: 6px;
+            }
+            .result-label { font-size: 0.6rem; }
+            .result-amount { font-size: 2rem; }
+            .result-breakdown { font-size: 0.75rem; }
+            .result-note {
+                font-size: 0.6rem;
+                padding: 0.6rem;
+                margin-top: 1rem;
+            }
+
+            /* Horaires */
+            .horaires-card {
+                padding: 1.5rem 1.2rem;
+                border-radius: 8px;
+                margin-top: 1.2rem;
+            }
+            .horaires-title { font-size: 0.7rem; margin-bottom: 1rem; }
+            .horaires-row {
+                font-size: 0.75rem;
+                padding: 0.4rem 0;
+            }
+
+            /* ===== FAQ ===== */
             .faq-container { padding: 0; }
-            .faq-question { padding: 1.2rem 0; }
-            .faq-question span { font-size: 0.95rem; }
-            .faq-answer p { font-size: 0.9rem; line-height: 1.8; }
+            .faq-question { padding: 1rem 0; }
+            .faq-question span { font-size: 0.9rem; }
+            .faq-answer p { font-size: 0.85rem; line-height: 1.7; }
 
-            /* Contact */
-            .contact-container { gap: 3rem; }
-            .contact-info h2 { font-size: clamp(1.8rem, 7vw, 2.5rem); margin-bottom: 1rem; }
-            .contact-info > p { font-size: 0.95rem; margin-bottom: 2rem; }
+            /* ===== CONTACT ===== */
+            .contact-container { gap: 2.5rem; }
+            .contact-info h2 { font-size: 1.5rem; margin-bottom: 0.8rem; }
+            .contact-info > p { font-size: 0.9rem; margin-bottom: 1.5rem; }
             .contact-detail {
-                padding: 1.2rem 1.5rem;
-                margin-bottom: 1.2rem;
+                padding: 1rem 1.2rem;
+                margin-bottom: 1rem;
+                border-radius: 6px;
             }
-            .contact-detail-label { font-size: 0.6rem; }
-            .contact-detail-value { font-size: 1rem; }
+            .contact-detail-label { font-size: 0.55rem; }
+            .contact-detail-value { font-size: 0.95rem; }
             .rating-badge {
-                padding: 1.2rem 1.5rem;
+                padding: 1rem 1.2rem;
                 flex-direction: column;
                 text-align: center;
-                gap: 0.8rem;
+                gap: 0.6rem;
+                border-radius: 6px;
             }
-            .rating-stars { font-size: 1.2rem; }
-            .rating-text { font-size: 0.8rem; }
-            .contact-form h3 { font-size: 1.2rem; margin-bottom: 1.5rem; }
-            .contact-form textarea { min-height: 120px; }
-            .btn-submit { padding: 1.2rem 2rem; font-size: 0.75rem; }
+            .rating-stars { font-size: 1.1rem; }
+            .rating-text { font-size: 0.75rem; }
+            .contact-form h3 { font-size: 1.1rem; margin-bottom: 1.2rem; }
+            .contact-form textarea { min-height: 100px; }
+            .btn-submit {
+                padding: 1rem 1.5rem;
+                font-size: 0.7rem;
+                border-radius: 6px;
+            }
 
-            /* Map */
-            .map-container { height: 300px; margin-top: 3rem; }
+            /* ===== MAP ===== */
+            .map-container { height: 250px; margin-top: 2rem; }
 
-            /* Footer */
-            .footer { padding: 4rem 5% 2rem; }
-            .footer-logo { font-size: 1.6rem; letter-spacing: 0.25em; }
-            .footer-tagline { font-size: 0.85rem; margin-bottom: 2rem; }
+            /* ===== FOOTER ===== */
+            .footer { padding: 3rem 1.25rem 1.5rem; }
+            .footer-logo { font-size: 1.4rem; letter-spacing: 0.2em; }
+            .footer-tagline { font-size: 0.8rem; margin-bottom: 1.5rem; }
             .footer-links {
                 flex-direction: column;
-                gap: 1.2rem;
-                margin-bottom: 2rem;
+                gap: 1rem;
+                margin-bottom: 1.5rem;
             }
             .footer-links a {
-                font-size: 0.9rem;
-                padding: 0.5rem 0;
+                font-size: 0.85rem;
+                padding: 0.4rem 0;
                 min-height: 44px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
-            .footer-copy {
-                font-size: 0.65rem;
-                padding-top: 2rem;
-            }
+            .footer-copy { font-size: 0.6rem; padding-top: 1.5rem; }
 
-            /* WhatsApp */
+            /* ===== WHATSAPP ===== */
             .whatsapp-btn {
-                width: 55px;
-                height: 55px;
-                bottom: 1.5rem;
-                right: 1.5rem;
+                width: 52px;
+                height: 52px;
+                bottom: 1.2rem;
+                right: 1.2rem;
             }
-            .whatsapp-btn svg { width: 28px; height: 28px; }
+            .whatsapp-btn svg { width: 26px; height: 26px; }
         }
 
+        /* ==============================================
+           MOBILE SMALL - 480px (Petits téléphones)
+           ============================================== */
         @media (max-width: 480px) {
             html { font-size: 14px; }
-            .section { padding: 4rem 4%; }
-            .hero { padding: 0 1.2rem; }
-            .hero-title { font-size: clamp(2.2rem, 13vw, 4rem); }
-            .products-grid { max-width: 100%; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
-            .product-image { aspect-ratio: 1; }
-            .product-info { padding: 1rem 1.2rem 1.3rem; }
-            .product-name { font-size: 1rem; }
-            .product-description { font-size: 0.8rem; -webkit-line-clamp: 2; }
-            .product-price { font-size: 1.3rem; }
-            .service-card { padding: 2rem 1.5rem; }
-            .testimonial-card { padding: 2rem 1.5rem; }
-            /* Estimation - Petits ecrans */
-            .estimation-section { padding: 3rem 0 4rem; }
-            .estimation-container { gap: 2rem; padding: 0 0.8rem; }
-            .estimation-header h2 { font-size: 1.5rem; }
-            .estimation-header p { font-size: 0.9rem; }
+            :root { --container-padding: 1rem; }
 
-            .price-card { padding: 0; }
-            .price-card-body { padding: 1rem 1.2rem; }
-            .price-card-header { padding: 1rem 1.2rem; }
+            .section { padding: 3rem 1rem; }
+            .hero { padding: 0 1rem 1.5rem; }
+            .hero-title { font-size: clamp(1.8rem, 10vw, 2.5rem); }
+            .hero-subtitle { font-size: 0.8rem; margin-bottom: 1.2rem; }
+            .hero-description { font-size: 0.85rem; margin-bottom: 1.5rem; }
+            .btn-primary, .btn-secondary { padding: 0.9rem 1.2rem; font-size: 0.7rem; }
+
+            .stats-grid { gap: 1.2rem 0.8rem; }
+            .stat-number { font-size: 1.7rem; }
+            .stat-label { font-size: 0.55rem; }
+
+            .products-grid { gap: 0.6rem; }
+            .product-info { padding: 0.6rem; }
+            .product-name { font-size: 0.8rem; }
+            .product-price { font-size: 0.85rem; }
+
+            .service-card { padding: 1.5rem 1.2rem; }
+            .testimonial-card { padding: 1.5rem 1.2rem; }
+
+            .estimation-section { padding: 2.5rem 0; }
+            .estimation-container { gap: 1.2rem; padding: 0 0.8rem; }
+            .estimation-header { padding: 0 0.8rem; }
+            .estimation-header h2 { font-size: 1.3rem; }
+
+            .price-card-header, .price-card-body, .price-card-footer { padding: 0.8rem 1rem; }
             .price-card-footer {
-                padding: 1rem 1.2rem;
                 flex-direction: column;
-                gap: 0.8rem;
+                gap: 0.6rem;
                 align-items: stretch;
             }
             .refresh-btn { width: 100%; text-align: center; }
-            .price-row { padding: 0.9rem 0; }
-            .price-label { font-size: 0.78rem; }
-            .price-value { font-size: 1.05rem; }
+            .price-label { font-size: 0.7rem; }
+            .price-value { font-size: 0.95rem; }
 
-            .calculator { padding: 1.5rem 1.2rem; }
-            .calculator-title { font-size: 0.8rem; margin-bottom: 1.5rem; }
-            .type-selector { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
-            .type-option { padding: 1rem 0.5rem; }
-            .type-icon svg { width: 22px; height: 22px; }
-            .type-label { font-size: 0.55rem; }
-            .form-select, .form-input { padding: 0.9rem 1rem; font-size: 0.85rem; }
-            .form-label { font-size: 0.65rem; margin-bottom: 0.4rem; }
-            .input-wrapper::before, .input-wrapper::after { width: 5px; height: 5px; }
-            .weight-input-wrapper .form-input { padding-left: 2.4rem; }
-            .weight-input-wrapper::before { width: 15px; height: 15px; left: 0.8rem; }
-            .weight-unit { font-size: 0.75rem; right: 0.8rem; }
-            .btn-calculate { padding: 1.2rem; font-size: 0.68rem; }
-            .result-display { padding: 1.8rem 1.2rem; }
-            .result-amount { font-size: 2rem; }
-            .result-note { font-size: 0.65rem; }
+            .calculator { padding: 1.2rem 1rem; }
+            .calculator-title { font-size: 0.7rem; margin-bottom: 1.2rem; }
+            .type-selector { gap: 0.4rem; }
+            .type-option { padding: 0.7rem 0.3rem; }
+            .type-icon svg { width: 20px; height: 20px; }
+            .type-label { font-size: 0.45rem; }
+            .form-select, .form-input { padding: 0.8rem; font-size: 0.8rem; }
+            .btn-calculate { padding: 0.9rem; font-size: 0.6rem; }
+            .result-display { padding: 1.2rem 1rem; }
+            .result-amount { font-size: 1.8rem; }
+            .result-note { font-size: 0.55rem; }
 
-            .horaires-card { padding: 1.5rem; }
-            .contact-detail { padding: 1rem 1.2rem; }
+            .horaires-card { padding: 1.2rem 1rem; }
+            .horaires-title { font-size: 0.65rem; }
+            .horaires-row { font-size: 0.7rem; }
+
+            .contact-detail { padding: 0.8rem 1rem; }
+            .contact-form textarea { min-height: 80px; }
+
+            .footer { padding: 2.5rem 1rem 1.2rem; }
+            .footer-logo { font-size: 1.2rem; }
+
+            .whatsapp-btn { width: 48px; height: 48px; bottom: 1rem; right: 1rem; }
+            .whatsapp-btn svg { width: 24px; height: 24px; }
         }
 
+        /* ==============================================
+           MOBILE TINY - 380px (Très petits écrans)
+           ============================================== */
         @media (max-width: 380px) {
-            .hero-title { font-size: 2rem; }
-            .section-title { font-size: 1.5rem; }
-            .product-badge { font-size: 0.5rem; padding: 0.3rem 0.6rem; }
-            .type-selector { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
-            .type-option { padding: 0.8rem 0.3rem; }
-            .type-icon { font-size: 1.1rem; }
+            .hero-title { font-size: 1.6rem; }
+            .hero-subtitle { font-size: 0.75rem; }
+            .section-title { font-size: 1.3rem; }
+
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 1rem 0.5rem; }
+            .stat-number { font-size: 1.5rem; }
+
+            .category-nav { flex-wrap: wrap; justify-content: center; }
+            .category-btn { min-width: 70px; padding: 0.6rem 0.8rem; }
+
+            .type-selector { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
+            .type-option { padding: 0.6rem 0.3rem; }
+            .type-icon svg { width: 22px; height: 22px; }
             .type-label { font-size: 0.5rem; }
+
+            .price-row { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+            .price-value { align-self: flex-end; }
         }
     </style>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>

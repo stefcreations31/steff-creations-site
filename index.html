@@ -4109,8 +4109,9 @@
         }
 
         // Gold prices avec marges configurables
-        let GOLD_SPOT_PRICE = 88;
-        let SILVER_SPOT_PRICE = 1.0;
+        // Valeurs par defaut realistes (mises a jour regulierement)
+        let GOLD_SPOT_PRICE = 123;  // ~3827 EUR/once / 31.1g
+        let SILVER_SPOT_PRICE = 1.05;  // ~32 EUR/once / 31.1g
         let currentType = 'bijou';
 
         // Marges par defaut (seront chargees depuis le fichier JSON)
@@ -4145,17 +4146,24 @@
 
         async function fetchPrices() {
             try {
-                const [metals, forex] = await Promise.all([
-                    fetch('https://api.metals.live/v1/spot').then(r => r.json()),
-                    fetch('https://api.frankfurter.app/latest?from=USD&to=EUR').then(r => r.json())
+                // API Swissquote pour les cours en temps reel (EUR)
+                const [goldData, silverData] = await Promise.all([
+                    fetch('https://forex-data-feed.swissquote.com/public-quotes/bboquotes/instrument/XAU/EUR').then(r => r.json()),
+                    fetch('https://forex-data-feed.swissquote.com/public-quotes/bboquotes/instrument/XAG/EUR').then(r => r.json())
                 ]);
-                const eur = forex.rates.EUR;
-                const gold = metals.find(m => m.metal === 'gold');
-                const silver = metals.find(m => m.metal === 'silver');
-                if (gold) GOLD_SPOT_PRICE = (gold.price * eur) / 31.1035;
-                if (silver) SILVER_SPOT_PRICE = (silver.price * eur) / 31.1035;
+
+                // Prix en EUR par once troy, conversion en grammes
+                if (goldData && goldData[0] && goldData[0].spreadProfilePrices) {
+                    const goldPrice = goldData[0].spreadProfilePrices[0].bid;
+                    GOLD_SPOT_PRICE = goldPrice / 31.1035;
+                }
+                if (silverData && silverData[0] && silverData[0].spreadProfilePrices) {
+                    const silverPrice = silverData[0].spreadProfilePrices[0].bid;
+                    SILVER_SPOT_PRICE = silverPrice / 31.1035;
+                }
+                console.log('Cours charges - Or: ' + GOLD_SPOT_PRICE.toFixed(2) + ' EUR/g, Argent: ' + SILVER_SPOT_PRICE.toFixed(2) + ' EUR/g');
             } catch (e) {
-                console.log('Using default prices');
+                console.log('Erreur API, utilisation des prix par defaut', e);
             }
             updatePriceDisplay();
         }

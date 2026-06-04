@@ -1812,43 +1812,129 @@
             pointer-events: none;
         }
 
-        /* Logo diamant SC */
+        /* Logo diamant SC - Style Luxe */
         .boutique-logo {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            perspective: 500px;
         }
         .boutique-logo-diamond {
             position: relative;
-            width: 70px;
-            height: 70px;
+            width: 90px;
+            height: 100px;
             margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: diamondFloat 4s ease-in-out infinite;
+            animation: logoFloat 5s ease-in-out infinite;
         }
+
+        /* Cadre diamant extérieur */
+        .boutique-logo-diamond::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 85px;
+            background: transparent;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            border: 2px solid var(--or);
+            box-shadow:
+                0 0 20px rgba(201, 162, 39, 0.4),
+                inset 0 0 30px rgba(201, 162, 39, 0.1);
+        }
+
+        /* Lignes décoratives du diamant */
         .boutique-logo-diamond svg {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 85px;
             fill: none;
             stroke: var(--or);
+            stroke-width: 1.5;
+            filter: drop-shadow(0 0 8px rgba(201, 162, 39, 0.6));
+        }
+        .boutique-logo-diamond svg .diamond-outline {
+            stroke-width: 2;
+            filter: drop-shadow(0 0 15px rgba(201, 162, 39, 0.8));
+        }
+        .boutique-logo-diamond svg .diamond-inner {
             stroke-width: 1;
-            filter: drop-shadow(0 0 10px rgba(201, 162, 39, 0.5)) drop-shadow(0 0 20px rgba(201, 162, 39, 0.3));
+            opacity: 0.6;
         }
+        .boutique-logo-diamond svg .diamond-shine {
+            stroke: rgba(255, 255, 255, 0.8);
+            stroke-width: 1;
+            opacity: 0.5;
+        }
+
+        /* Lettres SC */
         .boutique-logo-text {
-            position: relative;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--or);
-            letter-spacing: 0.15em;
-            text-shadow: 0 0 15px rgba(201, 162, 39, 0.6), 0 2px 10px rgba(0, 0, 0, 0.5);
-            z-index: 1;
-            margin-top: 5px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            background: linear-gradient(180deg,
+                #fff 0%,
+                var(--or-clair) 20%,
+                var(--or) 50%,
+                var(--or-clair) 80%,
+                #fff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 20px rgba(201, 162, 39, 0.5));
+            z-index: 2;
         }
-        @keyframes diamondFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+
+        /* Ligne horizontale derrière les lettres */
+        .boutique-logo-diamond::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 1.5px;
+            background: linear-gradient(90deg,
+                transparent,
+                var(--or) 20%,
+                rgba(255, 255, 255, 0.8) 50%,
+                var(--or) 80%,
+                transparent);
+            z-index: 1;
+            box-shadow: 0 0 10px rgba(201, 162, 39, 0.6);
+        }
+
+        /* Effet de brillance animé */
+        .boutique-logo-shine {
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow:
+                0 0 10px #fff,
+                0 0 20px var(--or-clair),
+                0 0 30px var(--or);
+            animation: shineSparkle 3s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0) rotateX(0deg); }
+            50% { transform: translateY(-8px) rotateX(5deg); }
+        }
+        @keyframes shineSparkle {
+            0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+            50% { opacity: 0.5; transform: translateX(-50%) scale(0.6); }
         }
 
         /* Titre de section boutique amélioré */
@@ -4037,15 +4123,30 @@
                 margin-bottom: 2rem;
             }
             .boutique-logo {
-                margin-bottom: 1rem;
+                margin-bottom: 1.2rem;
             }
             .boutique-logo-diamond {
-                width: 55px;
-                height: 55px;
+                width: 75px;
+                height: 85px;
+            }
+            .boutique-logo-diamond::before {
+                width: 58px;
+                height: 70px;
+            }
+            .boutique-logo-diamond svg {
+                width: 58px;
+                height: 70px;
+            }
+            .boutique-logo-diamond::after {
+                width: 40px;
             }
             .boutique-logo-text {
-                font-size: 0.9rem;
-                margin-top: 3px;
+                font-size: 1.15rem;
+            }
+            .boutique-logo-shine {
+                width: 5px;
+                height: 5px;
+                top: 3px;
             }
             .boutique-section .section-eyebrow {
                 font-size: 0.7rem;
@@ -4825,15 +4926,20 @@
         <div class="section-header reveal">
             <div class="boutique-logo">
                 <div class="boutique-logo-diamond">
-                    <svg viewBox="0 0 60 60">
-                        <polygon points="30,3 54,20 30,57 6,20" fill="none" stroke-linejoin="round"/>
-                        <line x1="6" y1="20" x2="54" y2="20"/>
-                        <line x1="30" y1="3" x2="18" y2="20"/>
-                        <line x1="30" y1="3" x2="42" y2="20"/>
-                        <line x1="18" y1="20" x2="30" y2="57"/>
-                        <line x1="42" y1="20" x2="30" y2="57"/>
+                    <svg viewBox="0 0 70 85">
+                        <!-- Contour principal hexagonal -->
+                        <polygon class="diamond-outline" points="35,2 68,21 68,64 35,83 2,64 2,21"/>
+                        <!-- Lignes intérieures -->
+                        <line class="diamond-inner" x1="35" y1="2" x2="35" y2="83"/>
+                        <line class="diamond-inner" x1="2" y1="21" x2="68" y2="64"/>
+                        <line class="diamond-inner" x1="68" y1="21" x2="2" y2="64"/>
+                        <line class="diamond-inner" x1="2" y1="42.5" x2="68" y2="42.5"/>
+                        <!-- Reflets -->
+                        <line class="diamond-shine" x1="10" y1="15" x2="25" y2="25"/>
+                        <line class="diamond-shine" x1="12" y1="25" x2="20" y2="30"/>
                     </svg>
                     <span class="boutique-logo-text">SC</span>
+                    <span class="boutique-logo-shine"></span>
                 </div>
             </div>
             <span class="section-eyebrow" data-translate="collection">Collection</span>

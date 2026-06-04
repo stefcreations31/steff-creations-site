@@ -3586,14 +3586,38 @@
             .section-divider-diamond { width: 5px; height: 5px; }
 
             /* ===== STATS ===== */
-            .stats-section { padding: 3rem 1.25rem; }
+            .stats-section {
+                padding: 2.5rem 1rem;
+                background: linear-gradient(180deg, rgba(5, 5, 5, 1) 0%, rgba(15, 12, 5, 1) 50%, rgba(5, 5, 5, 1) 100%);
+            }
+            .stats-section::before,
+            .stats-section::after {
+                height: 1px;
+                background: linear-gradient(90deg, transparent 5%, rgba(201, 162, 39, 0.4) 50%, transparent 95%);
+            }
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem 1rem;
+                gap: 1.5rem 0.5rem;
+            }
+            .stat-item {
+                padding: 1rem 0.5rem;
+                background: rgba(201, 162, 39, 0.03);
+                border-radius: 8px;
+                border: 1px solid rgba(201, 162, 39, 0.1);
             }
             .stat-item::after { display: none; }
-            .stat-number { font-size: 2rem; }
-            .stat-label { font-size: 0.6rem; letter-spacing: 0.12em; }
+            .stat-number {
+                font-size: 1.8rem;
+                background: linear-gradient(180deg, var(--or) 0%, #d4b441 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            .stat-label {
+                font-size: 0.55rem;
+                letter-spacing: 0.1em;
+                margin-top: 0.3rem;
+            }
 
             /* ===== BOUTIQUE ===== */
             .category-nav {
@@ -3650,15 +3674,36 @@
             }
 
             /* ===== SERVICES ===== */
-            .services-grid { gap: 1.2rem; }
+            .services-grid { gap: 1rem; }
             .service-card {
-                padding: 2rem 1.5rem;
-                border-radius: 4px;
+                padding: 1.8rem 1.3rem;
+                border-radius: 10px;
+                background: linear-gradient(160deg, rgba(17, 17, 17, 0.95) 0%, rgba(12, 12, 12, 0.98) 100%);
+                border: 1px solid rgba(201, 162, 39, 0.15);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             }
-            .service-icon { width: 60px; height: 60px; margin-bottom: 1.2rem; }
-            .service-icon svg { width: 35px; height: 35px; }
-            .service-title { font-size: 1.1rem; margin-bottom: 0.8rem; }
-            .service-description { font-size: 0.85rem; line-height: 1.7; }
+            .service-card:active {
+                border-color: rgba(201, 162, 39, 0.4);
+                transform: scale(0.99);
+            }
+            .service-icon {
+                width: 55px;
+                height: 55px;
+                margin-bottom: 1rem;
+                background: linear-gradient(135deg, rgba(201, 162, 39, 0.15) 0%, rgba(201, 162, 39, 0.05) 100%);
+                border: 1px solid rgba(201, 162, 39, 0.25);
+            }
+            .service-icon svg { width: 30px; height: 30px; }
+            .service-title {
+                font-size: 1rem;
+                margin-bottom: 0.6rem;
+                color: var(--or);
+            }
+            .service-description {
+                font-size: 0.8rem;
+                line-height: 1.6;
+                color: rgba(255, 255, 255, 0.7);
+            }
 
             /* ===== MARQUEE ===== */
             .marquee-item {
@@ -3668,16 +3713,45 @@
             }
 
             /* ===== TESTIMONIALS ===== */
-            .testimonials-grid { gap: 1.2rem; padding: 0; }
+            .testimonials-grid { gap: 1rem; padding: 0; }
             .testimonial-card {
-                padding: 2rem 1.5rem;
-                border-radius: 4px;
+                padding: 1.5rem 1.3rem;
+                border-radius: 10px;
                 max-width: 100%;
+                background: linear-gradient(160deg, rgba(17, 17, 17, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
+                border: 1px solid rgba(201, 162, 39, 0.12);
+                position: relative;
             }
-            .testimonial-stars { font-size: 0.9rem; margin-bottom: 1.2rem; }
-            .testimonial-text { font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.2rem; }
-            .testimonial-author { font-size: 0.8rem; }
-            .testimonial-role { font-size: 0.65rem; }
+            .testimonial-card::before {
+                content: '"';
+                position: absolute;
+                top: 0.8rem;
+                left: 1rem;
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 3rem;
+                color: rgba(201, 162, 39, 0.15);
+                line-height: 1;
+            }
+            .testimonial-stars {
+                font-size: 0.8rem;
+                margin-bottom: 1rem;
+                color: var(--or);
+            }
+            .testimonial-text {
+                font-size: 0.9rem;
+                line-height: 1.7;
+                margin-bottom: 1rem;
+                font-style: italic;
+                color: rgba(255, 255, 255, 0.85);
+            }
+            .testimonial-author {
+                font-size: 0.75rem;
+                color: var(--or);
+            }
+            .testimonial-role {
+                font-size: 0.6rem;
+                color: rgba(255, 255, 255, 0.5);
+            }
 
             /* ===== ATELIER ===== */
             .atelier-section { padding: 3.5rem 1.25rem; }
@@ -3832,31 +3906,91 @@
             .faq-answer p { font-size: 0.85rem; line-height: 1.7; }
 
             /* ===== CONTACT ===== */
-            .contact-container { gap: 2.5rem; }
-            .contact-info h2 { font-size: 1.5rem; margin-bottom: 0.8rem; }
-            .contact-info > p { font-size: 0.9rem; margin-bottom: 1.5rem; }
+            .contact-section {
+                background: linear-gradient(180deg, var(--noir) 0%, rgba(8, 8, 8, 1) 100%);
+            }
+            .contact-container { gap: 2rem; }
+            .contact-info h2 {
+                font-size: 1.4rem;
+                margin-bottom: 0.6rem;
+                color: var(--or);
+            }
+            .contact-info > p {
+                font-size: 0.85rem;
+                margin-bottom: 1.2rem;
+                color: rgba(255, 255, 255, 0.7);
+            }
             .contact-detail {
                 padding: 1rem 1.2rem;
-                margin-bottom: 1rem;
-                border-radius: 6px;
+                margin-bottom: 0.8rem;
+                border-radius: 8px;
+                background: rgba(201, 162, 39, 0.05);
+                border: 1px solid rgba(201, 162, 39, 0.15);
+                display: flex;
+                flex-direction: column;
+                transition: all 0.3s ease;
             }
-            .contact-detail-label { font-size: 0.55rem; }
-            .contact-detail-value { font-size: 0.95rem; }
+            .contact-detail:active {
+                background: rgba(201, 162, 39, 0.1);
+                border-color: var(--or);
+            }
+            .contact-detail-icon {
+                color: var(--or);
+                margin-bottom: 0.3rem;
+            }
+            .contact-detail-label {
+                font-size: 0.5rem;
+                color: rgba(255, 255, 255, 0.5);
+                margin-bottom: 0.2rem;
+            }
+            .contact-detail-value {
+                font-size: 0.9rem;
+                color: var(--blanc);
+            }
             .rating-badge {
-                padding: 1rem 1.2rem;
+                padding: 1.2rem;
                 flex-direction: column;
                 text-align: center;
-                gap: 0.6rem;
-                border-radius: 6px;
+                gap: 0.5rem;
+                border-radius: 10px;
+                background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(201, 162, 39, 0.05) 100%);
+                border: 1px solid rgba(201, 162, 39, 0.25);
             }
-            .rating-stars { font-size: 1.1rem; }
-            .rating-text { font-size: 0.75rem; }
-            .contact-form h3 { font-size: 1.1rem; margin-bottom: 1.2rem; }
-            .contact-form textarea { min-height: 100px; }
+            .rating-stars { font-size: 1rem; color: var(--or); }
+            .rating-text { font-size: 0.7rem; }
+            .contact-form {
+                background: rgba(10, 10, 10, 0.8);
+                padding: 1.5rem;
+                border-radius: 10px;
+                border: 1px solid rgba(201, 162, 39, 0.1);
+            }
+            .contact-form h3 {
+                font-size: 1rem;
+                margin-bottom: 1rem;
+                color: var(--or);
+            }
+            .contact-form .form-input {
+                background: rgba(0, 0, 0, 0.5);
+                border: 1px solid rgba(201, 162, 39, 0.15);
+                border-radius: 6px;
+                padding: 0.9rem 1rem;
+                font-size: 0.85rem;
+                margin-bottom: 0.8rem;
+            }
+            .contact-form .form-input:focus {
+                border-color: var(--or);
+                box-shadow: 0 0 0 2px rgba(201, 162, 39, 0.1);
+            }
+            .contact-form textarea { min-height: 90px; }
             .btn-submit {
                 padding: 1rem 1.5rem;
-                font-size: 0.7rem;
+                font-size: 0.68rem;
                 border-radius: 6px;
+                background: linear-gradient(135deg, var(--or) 0%, #d4b441 100%);
+                box-shadow: 0 6px 20px rgba(201, 162, 39, 0.3);
+            }
+            .btn-submit:active {
+                transform: scale(0.98);
             }
 
             /* ===== MAP ===== */

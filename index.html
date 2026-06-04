@@ -3896,6 +3896,172 @@
             100% { transform: translateX(-50%); }
         }
 
+        /* POP-UP MARKETING RACHAT D'OR */
+        .promo-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        .promo-popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .promo-popup {
+            background: linear-gradient(160deg, rgba(20, 18, 14, 0.98) 0%, rgba(10, 8, 5, 1) 100%);
+            border: 2px solid var(--or);
+            border-radius: 16px;
+            max-width: 420px;
+            width: 100%;
+            padding: 2.5rem 2rem;
+            position: relative;
+            box-shadow:
+                0 0 60px rgba(201, 162, 39, 0.3),
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transform: scale(0.8) translateY(30px);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: center;
+        }
+        .promo-popup-overlay.active .promo-popup {
+            transform: scale(1) translateY(0);
+        }
+        .promo-popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 32px;
+            height: 32px;
+            background: transparent;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 50%;
+            color: var(--gris);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .promo-popup-close:hover {
+            border-color: var(--or);
+            color: var(--or);
+            transform: rotate(90deg);
+        }
+        .promo-popup-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--or) 0%, #d4a636 100%);
+            color: var(--noir);
+            font-family: 'Jost', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
+        }
+        .promo-popup-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            animation: goldPulse 2s ease-in-out infinite;
+        }
+        @keyframes goldPulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(201, 162, 39, 0.5)); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 20px rgba(201, 162, 39, 0.8)); }
+        }
+        .promo-popup-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--or);
+            letter-spacing: 0.08em;
+            margin-bottom: 0.8rem;
+            text-shadow: 0 0 20px rgba(201, 162, 39, 0.4);
+        }
+        .promo-popup-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--blanc);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        .promo-popup-bonus {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.15) 0%, rgba(201, 162, 39, 0.05) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 10px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .promo-popup-bonus-label {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--or);
+            margin-bottom: 0.5rem;
+        }
+        .promo-popup-bonus-value {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--or);
+            text-shadow: 0 0 15px rgba(201, 162, 39, 0.5);
+        }
+        .promo-popup-bonus-desc {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.8rem;
+            color: var(--gris);
+            margin-top: 0.5rem;
+        }
+        .promo-popup-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--or) 0%, #d4a636 100%);
+            color: var(--noir);
+            font-family: 'Jost', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(201, 162, 39, 0.4);
+            transition: all 0.3s ease;
+        }
+        .promo-popup-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(201, 162, 39, 0.5);
+        }
+        .promo-popup-skip {
+            display: block;
+            margin-top: 1rem;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.75rem;
+            color: var(--gris);
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .promo-popup-skip:hover {
+            color: var(--or);
+        }
+
         /* ANIMATIONS */
         .reveal {
             opacity: 0;
@@ -5710,6 +5876,24 @@
         </p>
     </footer>
 
+    <!-- Pop-up Marketing Rachat d'Or -->
+    <div class="promo-popup-overlay" id="promoPopup">
+        <div class="promo-popup">
+            <button class="promo-popup-close" onclick="closePromoPopup()">&times;</button>
+            <span class="promo-popup-badge">Offre Exclusive</span>
+            <span class="promo-popup-icon">💎</span>
+            <h3 class="promo-popup-title">Vendez votre Or</h3>
+            <p class="promo-popup-subtitle">Profitez des meilleurs prix du marché<br>pour votre or et vos bijoux</p>
+            <div class="promo-popup-bonus">
+                <div class="promo-popup-bonus-label">Bonus Fidélité</div>
+                <div class="promo-popup-bonus-value">+5%</div>
+                <div class="promo-popup-bonus-desc">sur votre prochain achat en boutique</div>
+            </div>
+            <a href="#estimation" class="promo-popup-cta" onclick="closePromoPopup()">Estimer mon Or</a>
+            <button class="promo-popup-skip" onclick="closePromoPopup()">Non merci, plus tard</button>
+        </div>
+    </div>
+
     <!-- WhatsApp Button -->
     <a href="https://wa.me/33612301716" class="whatsapp-btn" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24">
@@ -5763,7 +5947,38 @@
                     const preloader = document.getElementById('preloader');
                     if (preloader) preloader.style.display = 'none';
                 }, 1500);
+
+                // Afficher le pop-up promo après le preloader (8 secondes après chargement)
+                setTimeout(() => {
+                    showPromoPopup();
+                }, 5000);
             }, 4000);
+        });
+
+        // Pop-up Marketing Rachat d'Or
+        function showPromoPopup() {
+            // Vérifier si déjà vu dans cette session
+            if (sessionStorage.getItem('promoPopupShown')) return;
+
+            const popup = document.getElementById('promoPopup');
+            if (popup) {
+                popup.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                sessionStorage.setItem('promoPopupShown', 'true');
+            }
+        }
+
+        function closePromoPopup() {
+            const popup = document.getElementById('promoPopup');
+            if (popup) {
+                popup.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Fermer avec Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closePromoPopup();
         });
 
         // Compteurs animes

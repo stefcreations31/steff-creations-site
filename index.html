@@ -5744,8 +5744,18 @@
             });
         }
 
+        // Forcer le retour en haut de page au chargement
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+
         // Preloader - Animation luxueuse (4 secondes)
         window.addEventListener('load', () => {
+            // Scroll en haut au chargement complet
+            window.scrollTo(0, 0);
             setTimeout(() => {
                 document.getElementById('preloader').classList.add('loaded');
                 // Supprimer completement apres l'animation de sortie

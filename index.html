@@ -480,118 +480,303 @@
             left: 150%;
         }
 
-        /* PRELOADER */
+        /* ========================================
+           PRELOADER LUXUEUX - INTRO CINEMATIQUE
+           ======================================== */
         .preloader {
             position: fixed;
             inset: 0;
-            background:
-                radial-gradient(ellipse at center, rgba(201, 162, 39, 0.05) 0%, transparent 50%),
-                var(--noir-profond);
+            background: var(--noir-profond);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             z-index: 99999;
-            transition: opacity 1s ease, visibility 1s;
+            overflow: hidden;
         }
+
+        /* Fond avec effet de lumiere ambiante */
         .preloader::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 30% 40%, rgba(201, 162, 39, 0.03) 0%, transparent 40%),
-                        radial-gradient(circle at 70% 60%, rgba(201, 162, 39, 0.03) 0%, transparent 40%);
-            animation: preloaderAmbient 4s ease-in-out infinite alternate;
+            width: 150%;
+            height: 150%;
+            background:
+                radial-gradient(ellipse at 50% 50%, rgba(201, 162, 39, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 80%, rgba(201, 162, 39, 0.05) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 20%, rgba(201, 162, 39, 0.05) 0%, transparent 40%);
+            animation: ambientPulse 4s ease-in-out infinite;
         }
-        @keyframes preloaderAmbient {
-            0% { opacity: 0.5; }
-            100% { opacity: 1; }
+        @keyframes ambientPulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 1; }
         }
+
+        /* Transition de sortie */
         .preloader.loaded {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            display: none !important;
+            animation: preloaderExit 1.2s cubic-bezier(0.76, 0, 0.24, 1) forwards;
         }
-        .preloader-diamond {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: diamondReveal 1.5s ease forwards;
+        @keyframes preloaderExit {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+            100% { opacity: 0; transform: scale(1.1); visibility: hidden; pointer-events: none; }
+        }
+        .preloader.loaded .preloader-content {
+            animation: contentExit 0.8s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+        }
+        @keyframes contentExit {
+            to { transform: scale(0.9); opacity: 0; }
+        }
+
+        /* Conteneur principal */
+        .preloader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             position: relative;
+            z-index: 10;
         }
-        .preloader-diamond::before {
+
+        /* Anneaux rotatifs exterieurs */
+        .preloader-rings {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .preloader-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid transparent;
+        }
+        .preloader-ring:nth-child(1) {
+            width: 100%;
+            height: 100%;
+            border-color: rgba(201, 162, 39, 0.1);
+            animation: ringRotate1 8s linear infinite;
+        }
+        .preloader-ring:nth-child(2) {
+            width: 85%;
+            height: 85%;
+            border-color: rgba(201, 162, 39, 0.15);
+            border-style: dashed;
+            animation: ringRotate2 12s linear infinite reverse;
+        }
+        .preloader-ring:nth-child(3) {
+            width: 70%;
+            height: 70%;
+            border-color: rgba(201, 162, 39, 0.2);
+            animation: ringRotate1 6s linear infinite;
+        }
+        @keyframes ringRotate1 {
+            to { transform: rotate(360deg); }
+        }
+        @keyframes ringRotate2 {
+            to { transform: rotate(-360deg); }
+        }
+
+        /* Points lumineux sur les anneaux */
+        .preloader-ring::before {
             content: '';
             position: absolute;
-            inset: -50%;
-            background: radial-gradient(ellipse at center, rgba(201, 162, 39, 0.2) 0%, transparent 60%);
-            animation: diamondGlow 2s ease-in-out infinite;
+            width: 6px;
+            height: 6px;
+            background: var(--or);
+            border-radius: 50%;
+            top: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 15px var(--or), 0 0 30px var(--or);
         }
-        @keyframes diamondGlow {
-            0%, 100% { transform: scale(0.8); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 1; }
+
+        /* Diamant central 3D */
+        .preloader-diamond {
+            width: 90px;
+            height: 90px;
+            position: relative;
+            margin-bottom: 2.5rem;
+            perspective: 500px;
+            opacity: 0;
+            animation: diamondAppear 1s ease-out 0.3s forwards;
         }
+        @keyframes diamondAppear {
+            0% { opacity: 0; transform: scale(0) rotateY(-180deg); }
+            60% { transform: scale(1.1) rotateY(20deg); }
+            100% { opacity: 1; transform: scale(1) rotateY(0deg); }
+        }
+
         .preloader-diamond svg {
             width: 100%;
             height: 100%;
             fill: none;
             stroke: var(--or);
-            stroke-width: 1;
-            filter: drop-shadow(0 0 30px rgba(201, 162, 39, 0.6)) drop-shadow(0 0 60px rgba(201, 162, 39, 0.3));
-            animation: diamondSpin 3s ease-in-out infinite;
-            position: relative;
-            z-index: 1;
+            stroke-width: 1.5;
+            filter: drop-shadow(0 0 20px rgba(201, 162, 39, 0.8))
+                    drop-shadow(0 0 40px rgba(201, 162, 39, 0.4))
+                    drop-shadow(0 0 60px rgba(201, 162, 39, 0.2));
+            animation: diamondFloat 3s ease-in-out infinite, diamondShine 2s ease-in-out infinite;
         }
-        @keyframes diamondReveal {
-            0% { opacity: 0; transform: scale(0.5) translateY(20px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
+        @keyframes diamondFloat {
+            0%, 100% { transform: translateY(0) rotateY(0deg); }
+            50% { transform: translateY(-10px) rotateY(10deg); }
         }
-        @keyframes diamondSpin {
-            0%, 100% { transform: rotateY(0deg); }
-            50% { transform: rotateY(180deg); }
+        @keyframes diamondShine {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(201, 162, 39, 0.8)) drop-shadow(0 0 40px rgba(201, 162, 39, 0.4)); }
+            50% { filter: drop-shadow(0 0 30px rgba(201, 162, 39, 1)) drop-shadow(0 0 60px rgba(201, 162, 39, 0.6)); }
         }
+
+        /* Reflet du diamant */
+        .preloader-diamond::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 20px;
+            background: radial-gradient(ellipse, rgba(201, 162, 39, 0.3) 0%, transparent 70%);
+            filter: blur(5px);
+            animation: reflectionPulse 3s ease-in-out infinite;
+        }
+        @keyframes reflectionPulse {
+            0%, 100% { opacity: 0.5; transform: translateX(-50%) scaleX(1); }
+            50% { opacity: 0.8; transform: translateX(-50%) scaleX(1.2); }
+        }
+
+        /* Logo texte */
         .preloader-logo {
+            text-align: center;
+            opacity: 0;
+            animation: logoReveal 1.2s ease-out 0.8s forwards;
+        }
+        @keyframes logoReveal {
+            0% { opacity: 0; transform: translateY(30px); letter-spacing: 0.8em; }
+            100% { opacity: 1; transform: translateY(0); letter-spacing: 0.25em; }
+        }
+
+        .preloader-logo-main {
             font-family: 'Cinzel', serif;
-            font-size: var(--text-4xl);
-            font-weight: 500;
-            background: linear-gradient(90deg, var(--or) 0%, var(--or-clair) 30%, var(--or-pale) 50%, var(--or-clair) 70%, var(--or) 100%);
-            background-size: 200% auto;
+            font-size: clamp(1.8rem, 8vw, 3rem);
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--or) 0%, #f4e4a6 25%, var(--or) 50%, #f4e4a6 75%, var(--or) 100%);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-transform: uppercase;
+            display: block;
+            animation: goldShimmer 3s ease-in-out infinite;
+            text-shadow: none;
+        }
+        @keyframes goldShimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .preloader-logo-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(0.7rem, 3vw, 1rem);
+            font-weight: 400;
+            color: rgba(201, 162, 39, 0.7);
             letter-spacing: 0.4em;
             text-transform: uppercase;
-            margin-bottom: var(--space-lg);
+            margin-top: 0.8rem;
+            display: block;
             opacity: 0;
-            animation: fadeInUp 1s ease forwards 0.5s, preloaderShimmer 3s linear infinite 1.5s;
-            filter: drop-shadow(0 4px 30px rgba(201, 162, 39, 0.4));
-            position: relative;
+            animation: subReveal 1s ease-out 1.3s forwards;
         }
-        @keyframes preloaderShimmer {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
+        @keyframes subReveal {
+            to { opacity: 1; }
         }
-        .preloader-line {
-            width: 200px;
-            height: 1px;
-            background: var(--noir-elevated);
+
+        /* Barre de progression elegante */
+        .preloader-progress {
+            width: clamp(150px, 40vw, 250px);
+            height: 2px;
+            background: rgba(201, 162, 39, 0.15);
+            border-radius: 2px;
+            margin-top: 3rem;
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            animation: progressAppear 0.5s ease 1.5s forwards;
         }
-        .preloader-line::after {
-            content: '';
+        @keyframes progressAppear {
+            to { opacity: 1; }
+        }
+
+        .preloader-progress-bar {
             position: absolute;
-            left: 0;
             top: 0;
+            left: 0;
             height: 100%;
             width: 0;
-            background: linear-gradient(90deg, var(--or), var(--or-clair));
-            animation: loadingBar 2s ease forwards;
+            background: linear-gradient(90deg, var(--or), #f4e4a6, var(--or));
+            background-size: 200% 100%;
+            border-radius: 2px;
+            animation: progressFill 2s ease-in-out 1.6s forwards, progressShine 1s linear infinite;
+            box-shadow: 0 0 10px var(--or), 0 0 20px rgba(201, 162, 39, 0.5);
         }
-        @keyframes loadingBar { to { width: 100%; } }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes progressFill {
+            to { width: 100%; }
+        }
+        @keyframes progressShine {
+            to { background-position: 200% 0; }
+        }
+
+        /* Particules flottantes */
+        .preloader-particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .preloader-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--or);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat 4s ease-in-out infinite;
+        }
+        .preloader-particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .preloader-particle:nth-child(2) { left: 20%; top: 80%; animation-delay: 0.5s; }
+        .preloader-particle:nth-child(3) { left: 80%; top: 30%; animation-delay: 1s; }
+        .preloader-particle:nth-child(4) { left: 90%; top: 70%; animation-delay: 1.5s; }
+        .preloader-particle:nth-child(5) { left: 50%; top: 10%; animation-delay: 2s; }
+        .preloader-particle:nth-child(6) { left: 30%; top: 60%; animation-delay: 0.8s; }
+        .preloader-particle:nth-child(7) { left: 70%; top: 85%; animation-delay: 1.2s; }
+        .preloader-particle:nth-child(8) { left: 15%; top: 45%; animation-delay: 1.8s; }
+        @keyframes particleFloat {
+            0%, 100% { opacity: 0; transform: translateY(0) scale(0); }
+            20% { opacity: 1; transform: translateY(-20px) scale(1); }
+            80% { opacity: 1; transform: translateY(-60px) scale(1); }
+            100% { opacity: 0; transform: translateY(-80px) scale(0); }
+        }
+
+        /* Lignes decoratives */
+        .preloader-lines {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .preloader-line-h {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.3), transparent);
+            animation: lineExpand 2s ease-out forwards;
+        }
+        .preloader-line-h:nth-child(1) { top: 30%; left: 0; right: 60%; animation-delay: 0.5s; }
+        .preloader-line-h:nth-child(2) { top: 70%; left: 60%; right: 0; animation-delay: 0.7s; }
+        @keyframes lineExpand {
+            from { transform: scaleX(0); opacity: 0; }
+            to { transform: scaleX(1); opacity: 1; }
         }
 
         /* NAVIGATION */
@@ -4188,18 +4373,66 @@
 
     <!-- Preloader -->
     <div class="preloader" id="preloader">
-        <div class="preloader-diamond">
-            <svg viewBox="0 0 100 100">
-                <polygon points="50,5 90,35 50,95 10,35" fill="none" stroke-linejoin="round"/>
-                <line x1="10" y1="35" x2="90" y2="35"/>
-                <line x1="50" y1="5" x2="30" y2="35"/>
-                <line x1="50" y1="5" x2="70" y2="35"/>
-                <line x1="30" y1="35" x2="50" y2="95"/>
-                <line x1="70" y1="35" x2="50" y2="95"/>
-            </svg>
+        <!-- Particules flottantes -->
+        <div class="preloader-particles">
+            <div class="preloader-particle"></div>
+            <div class="preloader-particle"></div>
+            <div class="preloader-particle"></div>
+            <div class="preloader-particle"></div>
+            <div class="preloader-particle"></div>
+            <div class="preloader-particle"></div>
+            <div class="preloader-particle"></div>
+            <div class="preloader-particle"></div>
         </div>
-        <div class="preloader-logo">Stef Creations</div>
-        <div class="preloader-line"></div>
+
+        <!-- Lignes decoratives -->
+        <div class="preloader-lines">
+            <div class="preloader-line-h"></div>
+            <div class="preloader-line-h"></div>
+        </div>
+
+        <!-- Contenu principal -->
+        <div class="preloader-content">
+            <!-- Anneaux rotatifs -->
+            <div class="preloader-rings">
+                <div class="preloader-ring"></div>
+                <div class="preloader-ring"></div>
+                <div class="preloader-ring"></div>
+            </div>
+
+            <!-- Diamant central -->
+            <div class="preloader-diamond">
+                <svg viewBox="0 0 100 100">
+                    <defs>
+                        <linearGradient id="diamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#C9A227"/>
+                            <stop offset="50%" style="stop-color:#f4e4a6"/>
+                            <stop offset="100%" style="stop-color:#C9A227"/>
+                        </linearGradient>
+                    </defs>
+                    <polygon points="50,5 90,35 50,95 10,35" stroke="url(#diamondGrad)" stroke-linejoin="round"/>
+                    <line x1="10" y1="35" x2="90" y2="35" stroke="url(#diamondGrad)"/>
+                    <line x1="50" y1="5" x2="30" y2="35" stroke="url(#diamondGrad)"/>
+                    <line x1="50" y1="5" x2="70" y2="35" stroke="url(#diamondGrad)"/>
+                    <line x1="30" y1="35" x2="50" y2="95" stroke="url(#diamondGrad)"/>
+                    <line x1="70" y1="35" x2="50" y2="95" stroke="url(#diamondGrad)"/>
+                    <!-- Facettes interieures -->
+                    <line x1="50" y1="35" x2="50" y2="95" stroke="url(#diamondGrad)" opacity="0.5"/>
+                    <line x1="30" y1="35" x2="70" y2="35" stroke="url(#diamondGrad)" opacity="0.3"/>
+                </svg>
+            </div>
+
+            <!-- Logo -->
+            <div class="preloader-logo">
+                <span class="preloader-logo-main">Stef Creations</span>
+                <span class="preloader-logo-sub">Maison de Joaillerie</span>
+            </div>
+
+            <!-- Barre de progression -->
+            <div class="preloader-progress">
+                <div class="preloader-progress-bar"></div>
+            </div>
+        </div>
     </div>
 
     <!-- Navigation -->
@@ -5090,11 +5323,16 @@
             });
         }
 
-        // Preloader
+        // Preloader - Animation luxueuse (4 secondes)
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('preloader').classList.add('loaded');
-            }, 1000);
+                // Supprimer completement apres l'animation de sortie
+                setTimeout(() => {
+                    const preloader = document.getElementById('preloader');
+                    if (preloader) preloader.style.display = 'none';
+                }, 1500);
+            }, 4000);
         });
 
         // Compteurs animes

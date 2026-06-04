@@ -2644,73 +2644,106 @@
            SECTION RACHAT D'OR - DESIGN LUXE JOAILLERIE
            ================================================ */
         .estimation-section {
-            background: var(--noir-profond);
+            background: linear-gradient(180deg,
+                var(--noir) 0%,
+                rgba(25, 20, 10, 1) 20%,
+                rgba(30, 24, 12, 1) 50%,
+                rgba(25, 20, 10, 1) 80%,
+                var(--noir) 100%);
             position: relative;
             overflow: hidden;
-            padding: 4rem 0 5rem;
+            padding: 5rem 0 6rem;
+            border-top: 1px solid rgba(201, 162, 39, 0.3);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
         }
 
-        /* Fond decoratif art deco */
+        /* Lueur dorée centrale */
         .estimation-section::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
             background:
-                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(201, 162, 39, 0.03) 0%, transparent 50%),
-                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(201, 162, 39, 0.02) 0%, transparent 50%);
+                radial-gradient(ellipse 60% 40% at 50% 30%, rgba(201, 162, 39, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse 80% 50% at 30% 70%, rgba(201, 162, 39, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse 70% 40% at 70% 60%, rgba(201, 162, 39, 0.05) 0%, transparent 50%);
             pointer-events: none;
         }
 
-        /* Motif geometrique subtil */
+        /* Bordures dorées en haut et bas */
         .estimation-section::after {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image:
-                linear-gradient(90deg, rgba(201, 162, 39, 0.02) 1px, transparent 1px),
-                linear-gradient(rgba(201, 162, 39, 0.02) 1px, transparent 1px);
-            background-size: 60px 60px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--or), rgba(255, 215, 0, 0.8), var(--or), transparent);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.5), 0 0 40px rgba(201, 162, 39, 0.3);
             pointer-events: none;
-            opacity: 0.5;
         }
 
         .estimation-header {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             position: relative;
             z-index: 2;
+        }
+
+        /* Icône or animée */
+        .estimation-header::before {
+            content: '💰';
+            display: block;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: goldBounce 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(201, 162, 39, 0.6));
+        }
+        @keyframes goldBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.05); }
         }
 
         .estimation-header .section-eyebrow {
             display: inline-flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 1rem;
             font-family: 'Jost', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 500;
+            font-size: 0.75rem;
+            font-weight: 600;
             color: var(--or);
             letter-spacing: 0.35em;
             text-transform: uppercase;
-            margin-bottom: 1rem;
-            padding: 0.5rem 1.2rem;
-            background: rgba(201, 162, 39, 0.08);
-            border: 1px solid rgba(201, 162, 39, 0.2);
+            margin-bottom: 1.2rem;
+            padding: 0.6rem 1.5rem;
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.15) 0%, rgba(201, 162, 39, 0.05) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            border-radius: 30px;
+            box-shadow: 0 4px 20px rgba(201, 162, 39, 0.2);
+        }
+        .estimation-header .section-eyebrow::before,
+        .estimation-header .section-eyebrow::after {
+            content: '◆';
+            font-size: 0.5rem;
         }
 
         .estimation-header h2 {
             font-family: 'Cinzel', serif;
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            font-weight: 400;
-            color: var(--blanc);
-            letter-spacing: 0.08em;
-            margin-bottom: 1rem;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.2rem;
             line-height: 1.2;
+            background: linear-gradient(135deg, var(--or-clair) 0%, var(--or) 30%, #fff 50%, var(--or) 70%, var(--or-clair) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldShimmerLuxe 4s ease-in-out infinite;
+            filter: drop-shadow(0 4px 15px rgba(201, 162, 39, 0.4));
         }
 
         .estimation-header h2 span {
@@ -2724,16 +2757,16 @@
             bottom: -4px;
             left: 0;
             right: 0;
-            height: 1px;
+            height: 2px;
             background: linear-gradient(90deg, transparent, var(--or), transparent);
         }
 
         .estimation-header p {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
+            font-size: 1.15rem;
             font-style: italic;
-            color: rgba(255, 255, 255, 0.6);
-            max-width: 500px;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 550px;
             margin: 0 auto 1.5rem;
             line-height: 1.8;
         }
@@ -4543,11 +4576,18 @@
             }
 
             /* ===== ESTIMATION / CALCULATEUR ===== */
-            .estimation-section { padding: 3.5rem 0; }
-            .estimation-header { margin-bottom: 2rem; padding: 0 1.25rem; }
-            .estimation-header .section-eyebrow { font-size: 0.55rem; padding: 0.4rem 0.8rem; }
-            .estimation-header h2 { font-size: 1.5rem; margin-bottom: 0.8rem; }
-            .estimation-header p { font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; }
+            .estimation-section { padding: 4rem 0; }
+            .estimation-header { margin-bottom: 2.5rem; padding: 0 1.25rem; }
+            .estimation-header::before { font-size: 2.5rem; margin-bottom: 1rem; }
+            .estimation-header .section-eyebrow {
+                font-size: 0.6rem;
+                padding: 0.5rem 1rem;
+                gap: 0.6rem;
+            }
+            .estimation-header .section-eyebrow::before,
+            .estimation-header .section-eyebrow::after { font-size: 0.4rem; }
+            .estimation-header h2 { font-size: 1.7rem; margin-bottom: 1rem; }
+            .estimation-header p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem; }
             .estimation-container {
                 gap: 1.5rem;
                 padding: 0 1rem;
@@ -4846,10 +4886,12 @@
             .service-card { padding: 1.5rem 1.2rem; }
             .testimonial-card { padding: 1.5rem 1.2rem; }
 
-            .estimation-section { padding: 2.5rem 0; }
+            .estimation-section { padding: 3rem 0; }
             .estimation-container { gap: 1.2rem; padding: 0 0.8rem; }
             .estimation-header { padding: 0 0.8rem; }
-            .estimation-header h2 { font-size: 1.3rem; }
+            .estimation-header::before { font-size: 2rem; }
+            .estimation-header h2 { font-size: 1.5rem; }
+            .estimation-header .section-eyebrow { font-size: 0.55rem; padding: 0.4rem 0.8rem; }
 
             .price-card-header, .price-card-body, .price-card-footer { padding: 0.8rem 1rem; }
             .price-card-footer {

@@ -598,11 +598,11 @@
 
         /* Diamant central avec SC */
         .preloader-diamond {
-            width: 120px;
-            height: 130px;
+            width: 130px;
+            height: 145px;
             position: relative;
             margin-bottom: 2rem;
-            animation: diamondAppear 1.2s ease-out forwards;
+            animation: diamondAppear 1.2s ease-out forwards, diamondFloat 4s ease-in-out infinite 1.2s;
         }
         @keyframes diamondAppear {
             0% { opacity: 0; transform: scale(0.5); }
@@ -614,7 +614,6 @@
             height: 100%;
             filter: drop-shadow(0 0 15px rgba(201, 162, 39, 0.6))
                     drop-shadow(0 0 30px rgba(201, 162, 39, 0.3));
-            animation: diamondFloat 4s ease-in-out infinite;
         }
         .preloader-diamond svg .diamond-outline {
             fill: none;
@@ -640,25 +639,21 @@
         /* Texte SC dans le diamant du preloader */
         .preloader-diamond-text {
             position: absolute;
-            top: 36%;
+            top: 35%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 500;
+            font-style: italic;
+            letter-spacing: 0.15em;
             color: var(--or);
             text-shadow:
                 0 0 20px rgba(201, 162, 39, 0.9),
                 0 0 40px rgba(201, 162, 39, 0.5),
                 0 2px 4px rgba(0, 0, 0, 0.9);
             z-index: 2;
-            padding-left: 0.1em;
-            animation: textGlow 2s ease-in-out infinite;
-        }
-        @keyframes textGlow {
-            0%, 100% { text-shadow: 0 0 20px rgba(201, 162, 39, 0.9), 0 0 40px rgba(201, 162, 39, 0.5); }
-            50% { text-shadow: 0 0 30px rgba(201, 162, 39, 1), 0 0 60px rgba(201, 162, 39, 0.7); }
+            padding-left: 0.08em;
         }
 
         /* Reflet du diamant */
@@ -1880,22 +1875,23 @@
             stroke: none;
         }
 
-        /* Lettres SC parfaitement centrées */
+        /* Lettres SC - Police luxueuse */
         .boutique-logo-text {
             position: absolute;
-            top: 38%;
+            top: 36%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            font-style: italic;
+            letter-spacing: 0.12em;
             color: var(--or);
             text-shadow:
                 0 0 15px rgba(201, 162, 39, 0.8),
                 0 2px 4px rgba(0, 0, 0, 0.9);
             z-index: 2;
-            padding-left: 0.1em;
+            padding-left: 0.05em;
         }
 
         /* Point brillant au sommet */
@@ -4112,12 +4108,12 @@
                 margin-bottom: 1.2rem;
             }
             .boutique-logo-diamond {
-                width: 80px;
-                height: 90px;
+                width: 85px;
+                height: 95px;
             }
             .boutique-logo-text {
-                font-size: 1.1rem;
-                top: 36%;
+                font-size: 1.4rem;
+                top: 35%;
             }
             .boutique-logo-shine {
                 width: 5px;

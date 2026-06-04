@@ -1,15 +1,15 @@
 {
   "or24k": {
-    "marge": 5
+    "marge": 13
   },
   "or18k": {
-    "marge": 5
+    "marge": 13
   },
   "or14k": {
-    "marge": 5
+    "marge": 13
   },
   "or9k": {
-    "marge": 8
+    "marge": 13
   },
   "pieces": {
     "marge": 3

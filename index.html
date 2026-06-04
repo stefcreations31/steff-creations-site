@@ -3688,10 +3688,18 @@
            ============================================== */
         @media (max-width: 768px) {
             /* === OPTIMISATIONS PERFORMANCE === */
-            .hero-diamond,
             .hero-particles,
             .cursor,
             .cursor-dot { display: none !important; }
+
+            /* Diamant hero - garder visible mais optimisé */
+            .hero-diamond {
+                opacity: 0.12;
+                width: 90vw;
+                height: 90vw;
+                max-width: 450px;
+                max-height: 450px;
+            }
 
             body::before { opacity: 0.015; }
 
@@ -3700,6 +3708,21 @@
             .reveal, .reveal-left, .reveal-right {
                 opacity: 1 !important;
                 transform: none !important;
+            }
+
+            /* Forcer visibilité des éléments hero sur mobile */
+            .hero-eyebrow,
+            .hero-title,
+            .hero-subtitle,
+            .hero-description,
+            .hero-actions {
+                opacity: 1 !important;
+                transform: none !important;
+                animation: none !important;
+            }
+            .hero-title span {
+                -webkit-text-fill-color: var(--or) !important;
+                background: none !important;
             }
 
             /* === BASE === */

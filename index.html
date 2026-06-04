@@ -1099,17 +1099,25 @@
         }
         .mobile-lang-selector .lang-btn {
             padding: 0.8rem 1rem;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             min-width: 50px;
             min-height: 50px;
-            border-radius: 10px;
-            background: rgba(201, 162, 39, 0.1);
-            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 8px;
+            background: transparent;
+            border: none;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        .mobile-lang-selector .lang-btn:hover,
+        .mobile-lang-selector .lang-btn:active {
+            opacity: 1;
+            transform: scale(1.1);
         }
         .mobile-lang-selector .lang-btn.active {
-            background: rgba(201, 162, 39, 0.25);
-            border-color: var(--or);
-            box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+            opacity: 1;
+            background: transparent;
+            border: none;
+            transform: scale(1.15);
         }
 
         /* HERO */

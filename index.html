@@ -1803,11 +1803,24 @@
             z-index: 1;
         }
         .boutique-section .section-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
             font-size: 0.85rem;
             letter-spacing: 0.5em;
             color: var(--or);
             margin-bottom: 1.2rem;
             text-shadow: 0 0 20px rgba(201, 162, 39, 0.5);
+        }
+        .boutique-section .section-eyebrow::before,
+        .boutique-section .section-eyebrow::after {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--or));
+        }
+        .boutique-section .section-eyebrow::after {
+            background: linear-gradient(90deg, var(--or), transparent);
         }
         .boutique-section .section-title {
             font-size: clamp(2.2rem, 5vw, 3.5rem);
@@ -3943,6 +3956,11 @@
                 font-size: 0.7rem;
                 letter-spacing: 0.35em;
                 margin-bottom: 0.8rem;
+                gap: 0.8rem;
+            }
+            .boutique-section .section-eyebrow::before,
+            .boutique-section .section-eyebrow::after {
+                width: 30px;
             }
             .boutique-section .section-title {
                 font-size: 1.9rem;

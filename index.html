@@ -3692,13 +3692,18 @@
             .cursor,
             .cursor-dot { display: none !important; }
 
-            /* Diamant hero - garder visible mais optimisé */
+            /* Diamant hero - plus visible sur mobile */
             .hero-diamond {
-                opacity: 0.12;
-                width: 90vw;
-                height: 90vw;
-                max-width: 450px;
-                max-height: 450px;
+                opacity: 0.28;
+                width: 95vw;
+                height: 95vw;
+                max-width: 500px;
+                max-height: 500px;
+                filter: drop-shadow(0 0 30px rgba(201, 162, 39, 0.4));
+            }
+            .hero-diamond svg {
+                stroke-width: 1.2;
+                filter: drop-shadow(0 0 15px rgba(201, 162, 39, 0.6));
             }
 
             body::before { opacity: 0.015; }
@@ -3753,22 +3758,22 @@
             }
             .hero-content { padding-bottom: 1.5rem; }
             .hero-scroll { display: none; }
-            .hero-eyebrow { margin-bottom: 1rem; }
-            .hero-eyebrow-text { font-size: 0.55rem; letter-spacing: 0.25em; }
-            .hero-eyebrow-line { width: 20px; }
+            .hero-eyebrow { margin-bottom: 1.2rem; }
+            .hero-eyebrow-text { font-size: 0.7rem; letter-spacing: 0.28em; }
+            .hero-eyebrow-line { width: 25px; }
             .hero-title {
-                font-size: clamp(2.2rem, 11vw, 3.5rem);
-                letter-spacing: 0.06em;
-                margin-bottom: 0.2rem;
+                font-size: clamp(2.8rem, 13vw, 4.2rem);
+                letter-spacing: 0.08em;
+                margin-bottom: 0.3rem;
             }
             .hero-subtitle {
-                font-size: 0.9rem;
-                letter-spacing: 0.12em;
+                font-size: 1.05rem;
+                letter-spacing: 0.15em;
                 margin-bottom: 1.5rem;
             }
             .hero-description {
-                font-size: 0.9rem;
-                line-height: 1.7;
+                font-size: 1rem;
+                line-height: 1.75;
                 margin-bottom: 2rem;
                 padding: 0 0.5rem;
             }
@@ -4306,10 +4311,10 @@
 
             .section { padding: 3rem 1rem; }
             .hero { padding: 0 1rem 1.5rem; }
-            .hero-title { font-size: clamp(1.8rem, 10vw, 2.5rem); }
-            .hero-subtitle { font-size: 0.8rem; margin-bottom: 1.2rem; }
-            .hero-description { font-size: 0.85rem; margin-bottom: 1.5rem; }
-            .btn-primary, .btn-secondary { padding: 0.9rem 1.2rem; font-size: 0.7rem; }
+            .hero-title { font-size: clamp(2.2rem, 12vw, 3rem); }
+            .hero-subtitle { font-size: 0.95rem; margin-bottom: 1.2rem; }
+            .hero-description { font-size: 0.92rem; margin-bottom: 1.5rem; }
+            .hero-eyebrow-text { font-size: 0.62rem; }
 
             .stats-grid { gap: 1.2rem 0.8rem; }
             .stat-number { font-size: 1.7rem; }
@@ -4368,8 +4373,10 @@
            MOBILE TINY - 380px (Très petits écrans)
            ============================================== */
         @media (max-width: 380px) {
-            .hero-title { font-size: 1.6rem; }
-            .hero-subtitle { font-size: 0.75rem; }
+            .hero-title { font-size: 2rem; }
+            .hero-subtitle { font-size: 0.85rem; }
+            .hero-description { font-size: 0.88rem; }
+            .hero-eyebrow-text { font-size: 0.58rem; }
             .section-title { font-size: 1.3rem; }
 
             .stats-grid { grid-template-columns: 1fr 1fr; gap: 1rem 0.5rem; }

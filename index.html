@@ -4512,85 +4512,47 @@
                 letter-spacing: 0.12em;
             }
 
-            /* ===== TESTIMONIALS - DESIGN PREMIUM MOBILE ===== */
+            /* ===== AVIS GOOGLE - SECTION COMPACTE ===== */
             .testimonials-section {
-                padding: 3.5rem 1rem;
+                padding: 2.5rem 1rem;
+            }
+            .testimonials-section .section-header {
+                margin-bottom: 1.5rem;
             }
             .testimonials-section .section-title {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
                 margin-bottom: 0.5rem;
             }
-            .testimonials-section .section-subtitle {
-                font-size: 0.85rem;
-                margin-bottom: 2rem;
+            .testimonials-section .section-eyebrow {
+                font-size: 0.55rem;
             }
-            .testimonials-grid {
-                gap: 1.2rem;
-                padding: 0;
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .testimonial-card {
-                padding: 1.8rem 1.5rem;
-                border-radius: 16px;
+            .google-reviews-widget {
                 max-width: 100%;
-                background: linear-gradient(160deg, rgba(20, 18, 14, 0.98) 0%, rgba(12, 10, 6, 0.99) 100%);
-                border: 1px solid rgba(201, 162, 39, 0.2);
-                position: relative;
-                text-align: left;
-                box-shadow:
-                    0 8px 25px rgba(0, 0, 0, 0.4),
-                    inset 0 1px 0 rgba(201, 162, 39, 0.08);
+                margin: 0 auto;
+                padding: 0 0.5rem;
             }
-            .testimonial-card::before {
-                content: '"';
-                position: absolute;
-                top: 1rem;
-                right: 1.2rem;
-                left: auto;
-                transform: none;
-                font-family: 'Cormorant Garamond', serif;
-                font-size: 4rem;
-                color: rgba(201, 162, 39, 0.12);
-                line-height: 1;
+            /* Placeholder temporaire */
+            .reviews-placeholder {
+                background: linear-gradient(160deg, rgba(20, 18, 14, 0.95) 0%, rgba(12, 10, 6, 0.98) 100%);
+                border: 1px dashed rgba(201, 162, 39, 0.3);
+                border-radius: 12px;
+                padding: 2rem 1.5rem;
+                text-align: center;
             }
-            .testimonial-card::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 1.5rem;
-                right: 1.5rem;
-                height: 2px;
-                background: linear-gradient(90deg, transparent, var(--or), transparent);
-                opacity: 0.4;
+            .reviews-placeholder-icon {
+                color: var(--or);
+                margin-bottom: 0.8rem;
+                opacity: 0.6;
             }
-            .testimonial-stars {
+            .reviews-placeholder-text {
                 font-size: 0.9rem;
-                margin-bottom: 1rem;
                 color: var(--or);
-                letter-spacing: 0.15em;
-                text-shadow: 0 0 8px rgba(201, 162, 39, 0.4);
+                margin-bottom: 0.3rem;
+                font-family: 'Cinzel', serif;
             }
-            .testimonial-text {
-                font-size: 0.95rem;
-                line-height: 1.75;
-                margin-bottom: 1.2rem;
-                font-style: italic;
-                color: rgba(255, 255, 255, 0.85);
-                font-family: 'Cormorant Garamond', serif;
-            }
-            .testimonial-author {
-                font-size: 0.8rem;
-                color: var(--or);
-                font-weight: 600;
-                letter-spacing: 0.05em;
-                margin-bottom: 0.2rem;
-            }
-            .testimonial-role {
-                font-size: 0.65rem;
+            .reviews-placeholder-note {
+                font-size: 0.7rem;
                 color: rgba(255, 255, 255, 0.5);
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
             }
 
             /* ===== ATELIER ===== */
@@ -5607,10 +5569,10 @@
 
     </section>
 
-    <!-- Temoignages -->
+    <!-- Avis Google -->
     <section class="section section-dark testimonials-section" id="temoignages">
         <div class="section-header reveal">
-            <span class="section-eyebrow" data-translate="reviews">Avis Clients</span>
+            <span class="section-eyebrow" data-translate="reviews">Avis Google</span>
             <h2 class="section-title" data-translate="trust_us">Ils Nous Font Confiance</h2>
             <div class="section-divider">
                 <span class="section-divider-line"></span>
@@ -5619,35 +5581,21 @@
             </div>
         </div>
 
-        <div class="testimonials-grid">
-            <div class="testimonial-card reveal">
-                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="testimonial-text" data-translate="test1_text">
-                    Un accueil chaleureux et un travail d'une qualite exceptionnelle.
-                    Ma bague de fiancailles sur mesure est exactement comme je l'imaginais.
-                </p>
-                <div class="testimonial-author">Marie L.</div>
-                <div class="testimonial-role" data-translate="test1_role">Creation sur mesure</div>
-            </div>
+        <!-- Widget Elfsight Google Reviews -->
+        <div class="google-reviews-widget reveal">
+            <!-- REMPLACER CE COMMENTAIRE PAR LE CODE ELFSIGHT -->
+            <!-- Exemple: <script src="https://static.elfsight.com/platform/platform.js" async></script> -->
+            <!-- <div class="elfsight-app-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" data-elfsight-app-lazy></div> -->
 
-            <div class="testimonial-card reveal">
-                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="testimonial-text" data-translate="test2_text">
-                    Tres satisfait du rachat de mes bijoux en or. Prix transparent,
-                    paiement immediat et equipe tres professionnelle.
-                </p>
-                <div class="testimonial-author">Jean-Pierre M.</div>
-                <div class="testimonial-role" data-translate="test2_role">Rachat d'or</div>
-            </div>
-
-            <div class="testimonial-card reveal">
-                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="testimonial-text" data-translate="test3_text">
-                    Ils ont restaure la bague de ma grand-mere avec un soin incroyable.
-                    Elle est comme neuve tout en gardant son ame.
-                </p>
-                <div class="testimonial-author">Sophie D.</div>
-                <div class="testimonial-role" data-translate="test3_role">Restauration</div>
+            <!-- Placeholder temporaire - A SUPPRIMER apres integration Elfsight -->
+            <div class="reviews-placeholder">
+                <div class="reviews-placeholder-icon">
+                    <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                </div>
+                <p class="reviews-placeholder-text">Widget Avis Google</p>
+                <p class="reviews-placeholder-note">Configurez Elfsight pour afficher vos vrais avis</p>
             </div>
         </div>
     </section>

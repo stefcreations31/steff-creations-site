@@ -2493,85 +2493,107 @@
         .horaires-row span:last-child { color: var(--blanc); }
         .horaires-row.closed span:last-child { color: var(--or); }
 
-        /* TESTIMONIALS */
+        /* AVIS GOOGLE */
         .testimonials-section {
             text-align: center;
         }
+        /* Header Google */
+        .google-reviews-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .google-rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .google-icon {
+            width: 24px;
+            height: 24px;
+        }
+        .google-stars {
+            color: #FBBC04;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+        .google-score {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .google-count {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+        /* Grille des avis */
         .testimonials-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            max-width: 1400px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 1rem;
         }
         .testimonial-card {
-            flex: 1 1 340px;
-            max-width: 400px;
-            text-align: center;
-            padding: 3rem 2.5rem;
-            background: linear-gradient(160deg, rgba(17, 17, 17, 0.9), rgba(26, 26, 26, 0.7));
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
+            text-align: left;
+            padding: 1.8rem;
+            background: linear-gradient(160deg, rgba(22, 20, 16, 0.95), rgba(15, 13, 10, 0.98));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
             position: relative;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
-            box-shadow:
-                0 20px 50px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.05),
-                inset 0 0 30px rgba(201, 162, 39, 0.02);
+            transition: all 0.3s ease;
         }
         .testimonial-card:hover {
-            transform: translateY(-8px);
-            box-shadow:
-                0 35px 70px rgba(0, 0, 0, 0.4),
-                0 0 50px rgba(201, 162, 39, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            border-color: rgba(201, 162, 39, 0.4);
+            transform: translateY(-4px);
+            border-color: rgba(201, 162, 39, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
         }
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 1.5rem;
-            left: 50%;
-            transform: none;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 5rem;
-            color: var(--or);
-            opacity: 0.12;
-            line-height: 1;
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
         }
-        .testimonial-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: none;
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--or), transparent);
+        .testimonial-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--or), #B8922A);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #000;
+            flex-shrink: 0;
         }
-        .testimonial-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--or);
-            box-shadow: 0 20px 40px rgba(201, 162, 39, 0.15);
+        .testimonial-info {
+            flex: 1;
+        }
+        .testimonial-author {
+            font-size: 0.95rem;
+            color: white;
+            font-weight: 500;
+            margin-bottom: 0.15rem;
+        }
+        .testimonial-date {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
         }
         .testimonial-stars {
-            color: var(--or);
-            font-size: 1.1rem;
-            letter-spacing: 0.2em;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 10px rgba(201, 162, 39, 0.5);
+            color: #FBBC04;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            letter-spacing: 2px;
         }
         .testimonial-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.15rem;
-            font-style: italic;
-            color: var(--blanc);
-            line-height: 1.9;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
             margin-bottom: 2rem;
             position: relative;
             z-index: 1;
@@ -4517,7 +4539,7 @@
                 padding: 2.5rem 1rem;
             }
             .testimonials-section .section-header {
-                margin-bottom: 1.5rem;
+                margin-bottom: 1rem;
             }
             .testimonials-section .section-title {
                 font-size: 1.3rem;
@@ -4526,33 +4548,94 @@
             .testimonials-section .section-eyebrow {
                 font-size: 0.55rem;
             }
-            .google-reviews-widget {
-                max-width: 100%;
-                margin: 0 auto;
-                padding: 0 0.5rem;
-            }
-            /* Placeholder temporaire */
-            .reviews-placeholder {
-                background: linear-gradient(160deg, rgba(20, 18, 14, 0.95) 0%, rgba(12, 10, 6, 0.98) 100%);
-                border: 1px dashed rgba(201, 162, 39, 0.3);
-                border-radius: 12px;
-                padding: 2rem 1.5rem;
+            /* Header Google */
+            .google-reviews-header {
                 text-align: center;
+                margin-bottom: 1.2rem;
             }
-            .reviews-placeholder-icon {
-                color: var(--or);
-                margin-bottom: 0.8rem;
-                opacity: 0.6;
+            .google-rating {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                background: rgba(255, 255, 255, 0.05);
+                padding: 0.6rem 1.2rem;
+                border-radius: 30px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
             }
-            .reviews-placeholder-text {
+            .google-icon {
+                width: 18px;
+                height: 18px;
+            }
+            .google-stars {
+                color: #FBBC04;
                 font-size: 0.9rem;
-                color: var(--or);
-                margin-bottom: 0.3rem;
-                font-family: 'Cinzel', serif;
+                letter-spacing: 1px;
             }
-            .reviews-placeholder-note {
-                font-size: 0.7rem;
+            .google-score {
+                color: white;
+                font-weight: 600;
+                font-size: 0.9rem;
+            }
+            .google-count {
                 color: rgba(255, 255, 255, 0.5);
+                font-size: 0.7rem;
+            }
+            /* Grille des avis */
+            .testimonials-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+                padding: 0;
+            }
+            .testimonial-card {
+                padding: 1.2rem;
+                border-radius: 12px;
+                background: linear-gradient(160deg, rgba(25, 23, 18, 0.95) 0%, rgba(15, 13, 8, 0.98) 100%);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                text-align: left;
+            }
+            .testimonial-header {
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+                margin-bottom: 0.6rem;
+            }
+            .testimonial-avatar {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, var(--or), #B8922A);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 0.9rem;
+                font-weight: 600;
+                color: #000;
+                flex-shrink: 0;
+            }
+            .testimonial-info {
+                flex: 1;
+            }
+            .testimonial-author {
+                font-size: 0.8rem;
+                color: white;
+                font-weight: 500;
+                margin-bottom: 0.1rem;
+            }
+            .testimonial-date {
+                font-size: 0.6rem;
+                color: rgba(255, 255, 255, 0.4);
+            }
+            .testimonial-stars {
+                color: #FBBC04;
+                font-size: 0.75rem;
+                margin-bottom: 0.5rem;
+                letter-spacing: 2px;
+            }
+            .testimonial-text {
+                font-size: 0.82rem;
+                line-height: 1.6;
+                color: rgba(255, 255, 255, 0.8);
             }
 
             /* ===== ATELIER ===== */
@@ -5581,21 +5664,63 @@
             </div>
         </div>
 
-        <!-- Widget Elfsight Google Reviews -->
-        <div class="google-reviews-widget reveal">
-            <!-- REMPLACER CE COMMENTAIRE PAR LE CODE ELFSIGHT -->
-            <!-- Exemple: <script src="https://static.elfsight.com/platform/platform.js" async></script> -->
-            <!-- <div class="elfsight-app-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" data-elfsight-app-lazy></div> -->
+        <!-- Vrais Avis Google -->
+        <div class="google-reviews-header reveal">
+            <div class="google-rating">
+                <img src="https://www.google.com/favicon.ico" alt="Google" class="google-icon">
+                <span class="google-stars">★★★★★</span>
+                <span class="google-score">5.0</span>
+                <span class="google-count">sur Google</span>
+            </div>
+        </div>
 
-            <!-- Placeholder temporaire - A SUPPRIMER apres integration Elfsight -->
-            <div class="reviews-placeholder">
-                <div class="reviews-placeholder-icon">
-                    <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">I</div>
+                    <div class="testimonial-info">
+                        <div class="testimonial-author">Isabelle PONCE</div>
+                        <div class="testimonial-date">Il y a 4 mois</div>
+                    </div>
                 </div>
-                <p class="reviews-placeholder-text">Widget Avis Google</p>
-                <p class="reviews-placeholder-note">Configurez Elfsight pour afficher vos vrais avis</p>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">Bijouterie artisanale. Stephane fabrique lui-même les bijoux avec beaucoup de talent et de passion. Depuis qu'il a repris la bijouterie familiale, il perpétue le savoir-faire avec cœur et professionnalisme. Une adresse précieuse. Je recommande les yeux fermés.</p>
+            </div>
+
+            <div class="testimonial-card reveal">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">H</div>
+                    <div class="testimonial-info">
+                        <div class="testimonial-author">Hagai Mayost</div>
+                        <div class="testimonial-date">Il y a 5 mois</div>
+                    </div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">Quelle belle découverte ! C'est une petite boutique charmante et très chaleureuse. L'artisan est d'une gentillesse incroyable et très à l'écoute. Je suis absolument ravie de son travail et de la qualité du bijou. Je recommande vivement.</p>
+            </div>
+
+            <div class="testimonial-card reveal">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">S</div>
+                    <div class="testimonial-info">
+                        <div class="testimonial-author">Smile Smile</div>
+                        <div class="testimonial-date">Il y a 4 mois</div>
+                    </div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">J'ai fait réparer ma bague chez Stef Création et je suis vraiment ravie, elle est comme neuve. La réparation a été très rapide, parfaitement réalisée, avec un résultat impeccable. Je recommande cette bijouterie les yeux fermés !</p>
+            </div>
+
+            <div class="testimonial-card reveal">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">D</div>
+                    <div class="testimonial-info">
+                        <div class="testimonial-author">Dada Dada</div>
+                        <div class="testimonial-date">Il y a 4 mois</div>
+                    </div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">J'ai fait réaliser la création d'un pendentif et le résultat est tout simplement magnifique. Le travail a été rapide, soigné et d'une grande qualité. Une bijouterie de confiance que je recommande sans hésiter.</p>
             </div>
         </div>
     </section>
